@@ -134,7 +134,7 @@ public class AdmMascotasController{
     @FXML
     private void eliminarMascota() throws IOException {
         
-        /*ArrayList<Mascota> mascotas = Mascota.cargarMascotas(App.pathMascotas);//cargar la lista del archivo
+        ArrayList<Mascota> mascotas = Mascota.cargarMascotas(App.pathMascotas);//cargar la lista del archivo
         ArrayList<Dueno> listDuenos = Dueno.cargarDuenos(App.pathDuenos);
         
         Mascota m = (Mascota) adMascota.getSelectionModel().getSelectedItem();
@@ -143,7 +143,8 @@ public class AdmMascotasController{
         int posicionDue=0;
      
         System.out.println("Eliminando dueno");
-        for(Mascota mas :mascotas){
+        
+        for(Mascota mas:mascotas){
             if(mas.getId().equals(m.getId())){
                 posicion=mascotas.indexOf(mas);
                 System.out.println(mascotas.get(posicion));
@@ -172,7 +173,7 @@ public class AdmMascotasController{
                     }
                     Dueno d = listDuenos.get(posicionDue);
                     //Mascota(String id,String nombre, String tipoMascota, String raza, String fechaNacimiento, String foto, Dueno dueno)
-                    bufferedWriter.write(m1.getId()+","+m1.getNombre()+","+m1.getTipoMascota()+","+m1.getRaza()+","+m1.getFechaNacimiento()+","+m1.getFoto()+","+d.getCedula());
+                    bufferedWriter.write(m1.getId()+";"+m1.getNombre()+";"+m1.getTipoMascota()+";"+m1.getRaza()+";"+m1.getFechaNacimiento()+";"+m1.getFoto()+";"+d.getCedula());
                     bufferedWriter.newLine(); 
                 }
                 
@@ -191,7 +192,7 @@ public class AdmMascotasController{
         }else{
             // ... user chose CANCEL or closed the
             System.out.println(mascotas.get(posicion)+" no fue eliminado");
-        }*/
+        }
     }
     
 }
