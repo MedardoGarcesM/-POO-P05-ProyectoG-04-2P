@@ -116,11 +116,16 @@ public class AdmDuenosController{
         
         ArrayList<Dueno> duenos = Dueno.cargarDuenos(App.pathDuenos);//cargar la lista del archivo
         ArrayList<Ciudad> lisCiu =Ciudad.cargarCiudades(App.pathCiudades);
+        ArrayList<Mascota> mascotas = Mascota.cargarMascotas(App.pathMascotas);
+        ArrayList<Integer> listapos = new ArrayList<>();
         
         Dueno d = (Dueno) adDuenio.getSelectionModel().getSelectedItem();
         //int posicion =adDuenio.getSelectionModel().getSelectedIndex();
         int posicion=0;
         int posicionCiu=0;
+        int posicionMascota=0;
+        int posicionDue=0;
+        int controladorPosiciones=0;
      
         System.out.println("Eliminando dueno");
         for(Dueno due :duenos){
@@ -139,7 +144,52 @@ public class AdmDuenosController{
         if (result.get() == ButtonType.OK){
             // ... user chose OK
             //duenos.remove(posicion);
+            System.out.println(duenos.get(posicion)+" sera eliminado");
+            
+            
+            for(Mascota mascotaeliminada:mascotas){
+                if(mascotaeliminada.getDueno().getCedula().equals(duenos.get(posicion).getCedula())){
+                    listapos.add(mascotas.indexOf(mascotaeliminada));
+                }
+            }
+            
+            if(listapos.size()>0){
+                for(Integer i:listapos){
+                    mascotas.remove(i.intValue()+controladorPosiciones);
+                    controladorPosiciones--;
+                }
+            }
+            
+            
+            try {
+                FileWriter writer = new FileWriter("src/main/resources/"+App.pathMascotas);//true significa que escribe al final del archivo
+                BufferedWriter bf = new BufferedWriter(writer);
+
+                for(Mascota m1:mascotas){
+                    for(Dueno selecDu:duenos){
+                        if(selecDu.getCedula().equals(m1.getDueno().getCedula())){
+                            posicionDue=duenos.indexOf(selecDu);
+                        }
+                    }
+                    Dueno dsel = duenos.get(posicionDue);
+                    //Mascota(String id,String nombre, String tipoMascota, String raza, String fechaNacimiento, String foto, Dueno dueno)
+                    bf.write(m1.getId()+";"+m1.getNombre()+";"+m1.getTipoMascota()+";"+m1.getRaza()+";"+m1.getFechaNacimiento()+";"+m1.getFoto()+";"+dsel.getCedula());
+                    bf.newLine(); 
+                }
+
+
+                bf.close();
+                /*Alert conf = new Alert(Alert.AlertType.INFORMATION);
+                conf.setTitle("Mensaje de confirmacion");
+                conf.setHeaderText("Mascota eliminada correctamente");
+                conf.showAndWait();*/
+            
+            }catch (IOException e) {
+                e.printStackTrace();
+            }
+            
             System.out.println(duenos.remove(posicion)+" fue eliminado");
+            
             try {
                 FileWriter writer = new FileWriter("src/main/resources/"+App.pathDuenos);//true significa que escribe al final del archivo
                 BufferedWriter bufferedWriter = new BufferedWriter(writer);
@@ -164,6 +214,7 @@ public class AdmDuenosController{
 
                 conf.showAndWait();            
                 App.setRoot("admDuenos");
+                
                 
             }catch (IOException e) {
                 e.printStackTrace();

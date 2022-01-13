@@ -6,10 +6,12 @@
 package com.mycompany.proyectog4parcial2;
 
 import java.io.IOException;
-
+import com.mycompany.proyectog4parcial2.modelo.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import utils.Correo;
 
 /**
@@ -17,21 +19,40 @@ import utils.Correo;
  *
  * @author USUARIO
  */
-public class AdConcursoController{
+public class AdConcursoController {
 
     /**
      * Initializes the controller class.
      */
     @FXML
-    private void switchToMenu() throws IOException {
+    private TableView<Concurso> adConcurso;
+
+    @FXML
+    private TableColumn<Concurso, String> colCod;
+
+    @FXML
+    private TableColumn<Concurso, String> colNombres;
+
+    @FXML
+    private TableColumn<Concurso, String> colFecha;
+    private TableColumn<Concurso, String> colCiudad;
+    private TableColumn<Concurso, String> colCorreo;
+    private Button crearconcursoadC;
+    private Button editarConcurso;
+    private Button elimConcurso;
+    private Button enviarCorreo;
+    private Button menuP;
+
+    @FXML
+    private void switchToMenuPrincipal() throws IOException {
         App.setRoot("menu");
     }
-    
+
     @FXML
     private void switchToCrearConcurso() throws IOException {
         App.setRoot("concurso");
-    } 
-    
+    }
+
     @FXML
     private void probarCorreo() {
         System.out.println("Enviar correo");
@@ -39,14 +60,14 @@ public class AdConcursoController{
         String asunto = "Invitacion a un nuevo concurso";
         String cuerpo = "Cuerpo de email.  Saludos";
         Correo.enviarCorreo(destinatario, asunto, cuerpo);
-        
+
         Alert alert = new Alert(Alert.AlertType.INFORMATION);//mostrar informacion sobre el correo a enviar
         alert.setTitle("Informacion del correo");
         alert.setHeaderText("Enviar correo");
         alert.setContentText("Enviando correo....");
         alert.setContentText("Correo enviado!");
         alert.showAndWait();///
-        
+
         System.out.println("Correo enviado!");
     }
 }
