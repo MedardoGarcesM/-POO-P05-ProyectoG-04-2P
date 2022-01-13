@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -26,6 +27,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 
 /**
  * FXML Controller class
@@ -79,7 +81,7 @@ public class AdmMascotasController{
     }
     
     @FXML
-    private void mostrarDetalle(){
+    private void mostrarDetalle() throws IOException{
         Mascota m = (Mascota) adMascota.getSelectionModel().getSelectedItem();
         //se puede recuperar el indice del elemento recuperado con getSelectedIndex
         System.out.println(adMascota.getSelectionModel().getSelectedIndex());
@@ -112,7 +114,7 @@ public class AdmMascotasController{
         }
     }
     
-    private void cargarFotoDefecto(){
+    private void cargarFotoDefecto() throws IOException{
         InputStream  input = null;
         try {           
             input =  App.class.getResource(App.pathImg+"nofoto.png").openStream();
@@ -122,6 +124,7 @@ public class AdmMascotasController{
             System.out.println("No se pudo cargar foto por defecto");
         } finally {
             if (input!=null){
+                //buscar archivo
             try {
                 input.close();
             } catch (IOException ex) {
@@ -193,6 +196,22 @@ public class AdmMascotasController{
             // ... user chose CANCEL or closed the
             System.out.println(mascotas.get(posicion)+" no fue eliminado");
         }
+    }
+    
+    @FXML
+    private void editarMascota() throws IOException {
+        Mascota m = (Mascota) adMascota.getSelectionModel().getSelectedItem();
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("editarMascota.fxml"));//no tiene el controlador especificado
+        EditarMascotaController dt = new EditarMascotaController();
+
+        fxmlLoader.setController(dt);//se asigna el controlador
+
+        VBox root = (VBox) fxmlLoader.load(); 
+
+        dt.llenarComboM(Dueno.cargarDuenos (App.pathDuenos));
+        dt.llenarCamposM(m);
+        App.changeRoot(root);
+
     }
     
 }
