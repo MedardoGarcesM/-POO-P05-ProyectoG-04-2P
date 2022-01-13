@@ -53,7 +53,7 @@
                   </Label>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="editMascota" mnemonicParsing="false" text="Editar">
+                        <Button fx:id="editMascota" mnemonicParsing="false" onAction="#editarMascota" text="Editar">
                            <HBox.margin>
                               <Insets left="120.0" top="5.0" />
                            </HBox.margin>

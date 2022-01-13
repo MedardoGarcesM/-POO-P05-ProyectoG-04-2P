@@ -87,6 +87,7 @@ public class MascotaController{
     private void buscarArchivo(ActionEvent event) {
     }
     
+    @FXML
     private void initialize() {
         duenoM.getItems().setAll(Dueno.cargarDuenos(App.pathDuenos));
     }
@@ -127,7 +128,7 @@ public class MascotaController{
                 }
                 Dueno dueEscrito = duenos.get(posicion);
                 //Mascota(String id,String nombre, String tipoMascota, String raza, String fechaNacimiento, String foto, Dueno dueno)
-                bufferedWriter.write(m.getId()+";"+m.getNombre()+";"+m.getTipoMascota()+";"+m.getRaza()+";"+m.getFechaNacimiento()+";"+m.getFoto()+";"+m.getDueno());
+                bufferedWriter.write(m.getId()+";"+m.getNombre()+";"+m.getTipoMascota()+";"+m.getRaza()+";"+m.getFechaNacimiento()+";"+m.getFoto()+";"+dueEscrito.getCedula());
                 bufferedWriter.newLine(); 
             }
             bufferedWriter.close();

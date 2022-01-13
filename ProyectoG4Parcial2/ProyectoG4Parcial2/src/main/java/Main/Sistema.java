@@ -258,7 +258,8 @@ public class Sistema {
         gc2.add(mascotas.get(8).getNombre());
         concurso.add(new Concurso("Mas rapido", LocalDate.of(2021, 9, 5), LocalTime.of(11, 10), LocalDate.of(2021, 5, 10), LocalDate.of(2021, 9, 1), ciudades.get(1), "parque Samanes", premios, auspiciantes.get(1), "Perro", generarIdConcurso(), true, mic2, gc2));
     }
-
+    
+    /*
     public void crearConcurso(){
         sc = new Scanner(System.in);
         
@@ -352,7 +353,7 @@ public class Sistema {
         concurso.add(cn);
         System.out.println("El concurso se ha creado correctamente.");
         System.out.println(cn.toString());  
-    }
+    }*/
 
     public static String generarIdConcurso() {
         return "M-" + idconcurso++;

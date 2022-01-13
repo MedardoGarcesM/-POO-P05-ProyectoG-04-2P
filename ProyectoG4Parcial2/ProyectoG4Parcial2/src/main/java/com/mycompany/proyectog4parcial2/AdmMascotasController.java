@@ -199,6 +199,21 @@ public class AdmMascotasController{
     }
     
     @FXML
+    private void mostrarVentana() throws IOException {
+        //App.setRoot("nuevo");
+        //se carga el fxml de nueva ventana
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("editarMascota.fxml"));//no tiene el controlador especificado
+        EditarMascotaController ct2 = new EditarMascotaController();
+
+        fxmlLoader.setController(ct2);//se asigna el controlador
+
+        VBox root = (VBox) fxmlLoader.load();
+        //luego que el fxml ha sido cargado puedo utilizar el controlador para realizar cambios
+        ct2.llenarComboM(Dueno.cargarDuenos(App.pathDuenos));
+        App.changeRoot(root);
+    }
+    
+    @FXML
     private void editarMascota() throws IOException {
         Mascota m = (Mascota) adMascota.getSelectionModel().getSelectedItem();
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("editarMascota.fxml"));//no tiene el controlador especificado
