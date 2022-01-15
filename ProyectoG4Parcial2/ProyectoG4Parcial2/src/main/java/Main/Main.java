@@ -33,14 +33,16 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         
         //sistema.llenadoDuenos();
-        sistema.llenadoMascotas();
-        sistema.llenadoCiudades();
-        sistema.llenadoAuspiciantes();
-        sistema.llenandoConcurso();
+        //sistema.llenadoMascotas();
+        //sistema.llenadoCiudades();
+        //sistema.llenadoAuspiciantes();
+        //sistema.llenandoConcurso();
         int opcion;
         
         do {
             sistema.presentarSistemai();
+            Concurso.crearArchivo();
+            Concurso.cargarConcursos(App.pathConcurso);
             opcion = sc.nextInt();
             sc.nextLine();
 
