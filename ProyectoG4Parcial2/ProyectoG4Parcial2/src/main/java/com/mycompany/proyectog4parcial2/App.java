@@ -23,6 +23,7 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("menu"),600,400);
+        scene.getStylesheets().add(App.class.getResource("css/estilos.css").toExternalForm());//le agrega estilos a las interfaces
         stage.setScene(scene);
         stage.show();
     }
@@ -44,5 +45,7 @@ public class App extends Application {
     static void changeRoot(Parent rootNode) {
         scene.setRoot(rootNode);
     }
+    
+    
 
 }

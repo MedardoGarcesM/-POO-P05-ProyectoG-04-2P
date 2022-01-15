@@ -57,7 +57,7 @@ public class Main {
                     switch (opcion1) {
                         case 1:
                             //crear concurso
-                            sistema.crearConcurso();
+                            //sistema.crearConcurso();
                             break;
                         case 2:
                             //inscribir participante

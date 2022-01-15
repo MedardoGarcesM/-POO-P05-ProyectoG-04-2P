@@ -15,9 +15,17 @@ import java.time.LocalTime;
  */
 public class Extras {
     public static LocalDate obtenerFecha(){
-        System.out.print("Fecha (dd/mm8yyyy): ");
+        System.out.print("Fecha (dd-mm-yyyy): ");
 
-        String[] fechaEvento = Sistema.getInstance().getScanner().nextLine().split("/");
+        String[] fechaEvento = Sistema.getInstance().getScanner().nextLine().split("-");
+        int anio = Integer.parseInt(fechaEvento[2]);
+        int mes = Integer.parseInt(fechaEvento[1]);
+        int dia = Integer.parseInt(fechaEvento[0]);
+        return LocalDate.of(anio, mes, dia);
+    }
+    
+    public static LocalDate fechaStringLocal(String a){
+        String[] fechaEvento=a.split("-");
         int anio = Integer.parseInt(fechaEvento[2]);
         int mes = Integer.parseInt(fechaEvento[1]);
         int dia = Integer.parseInt(fechaEvento[0]);

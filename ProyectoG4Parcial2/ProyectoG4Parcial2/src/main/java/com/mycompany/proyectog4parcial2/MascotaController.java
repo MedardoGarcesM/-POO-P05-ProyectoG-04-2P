@@ -64,7 +64,8 @@ public class MascotaController{
     private Button fotoM;
     @FXML
     private ComboBox duenoM;
-
+    @FXML
+    private ImageView ivFotoMascota;
     /**
      * Initializes the controller class.
      */ 
@@ -84,9 +85,31 @@ public class MascotaController{
     }
 
     @FXML
-    private void buscarArchivo(ActionEvent event) {
+    private void buscarArchivo(ActionEvent event) throws IOException   {
+          FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Buscar archivo");//para abrir el explorador de archivo
+
+        // Agregar filtros para facilitar la busqueda, solo busca archivos jpg o png
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("All Images", "*.*"),
+                new FileChooser.ExtensionFilter("JPG", "*.jpg"),
+                new FileChooser.ExtensionFilter("PNG", "*.png")
+        );
+        File imgFile = fileChooser.showOpenDialog(null); //obtengo la foto que escogio el usuario
+
+        // Mostar la imagen
+        if (imgFile != null) {
+            Image image = new Image("file:" + imgFile.getAbsolutePath());
+            System.out.println(imgFile.getAbsolutePath());//recupero ruta de la imagen
+            ivFotoMascota.setImage(image);//muestro la foto en el image view
+            Path from = Paths.get(imgFile.toURI()); //copiar la imagen
+            Path to = Paths.get("archivos/" + imgFile.getName());
+            Files.copy(from, to);
+        
+ }
     }
     
+    @FXML
     private void initialize() {
         duenoM.getItems().setAll(Dueno.cargarDuenos(App.pathDuenos));
     }
@@ -127,7 +150,7 @@ public class MascotaController{
                 }
                 Dueno dueEscrito = duenos.get(posicion);
                 //Mascota(String id,String nombre, String tipoMascota, String raza, String fechaNacimiento, String foto, Dueno dueno)
-                bufferedWriter.write(m.getId()+";"+m.getNombre()+";"+m.getTipoMascota()+";"+m.getRaza()+";"+m.getFechaNacimiento()+";"+m.getFoto()+";"+m.getDueno());
+                bufferedWriter.write(m.getId()+";"+m.getNombre()+";"+m.getTipoMascota()+";"+m.getRaza()+";"+m.getFechaNacimiento()+";"+m.getFoto()+";"+dueEscrito.getCedula());
                 bufferedWriter.newLine(); 
             }
             bufferedWriter.close();
@@ -144,4 +167,6 @@ public class MascotaController{
             e.printStackTrace();
         }
     }
+    
+    
 }
