@@ -52,10 +52,11 @@ public class detalleMascotaController {
     private void switchToMascota()throws IOException {
         App.setRoot("Mascota");
     }
-    
+    /*
     @FXML
     private void buscarArchivo() throws IOException {
-       
+        
+        System.out.println("HOLAAAAAA");
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Buscar archivo");//para abrir el explorador de archivo
 
@@ -77,7 +78,7 @@ public class detalleMascotaController {
             Files.copy(from, to);
         
 } 
-    }
+    }*/
 }
         
         

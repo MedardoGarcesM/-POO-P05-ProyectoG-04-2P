@@ -124,7 +124,7 @@ public class AdmMascotasController{
             System.out.println("No se pudo cargar foto por defecto");
         } finally {
             if (input!=null){
-                //buscar archivo
+               
             try {
                 input.close();
             } catch (IOException ex) {
@@ -198,6 +198,7 @@ public class AdmMascotasController{
         }
     }
     
+   
     @FXML
     private void mostrarVentana() throws IOException {
         //App.setRoot("nuevo");

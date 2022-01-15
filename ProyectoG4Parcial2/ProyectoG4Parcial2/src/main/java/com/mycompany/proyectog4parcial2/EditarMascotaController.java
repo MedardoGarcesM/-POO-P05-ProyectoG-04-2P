@@ -10,9 +10,13 @@ import com.mycompany.proyectog4parcial2.modelo.Ciudad;
 import com.mycompany.proyectog4parcial2.modelo.Dueno;
 import com.mycompany.proyectog4parcial2.modelo.Mascota;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -29,6 +33,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
 /**
  * FXML Controller class
  *
@@ -60,6 +67,8 @@ public class EditarMascotaController{
     private DatePicker nacimientoM;
     @FXML
     private Button fotoM;
+    @FXML
+    private ImageView ivFMascotaa;
     /**
      * Initializes the controller class.
      */  
@@ -75,7 +84,31 @@ public class EditarMascotaController{
     }
 
     @FXML
-    private void buscarArchivo(ActionEvent event) {
+    private void buscarArchivo(ActionEvent event)throws IOException  {
+        System.out.println("MAJOOO WIIIII");
+        
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Buscar archivo");//para abrir el explorador de archivo
+
+        // Agregar filtros para facilitar la busqueda, solo busca archivos jpg o png
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("All Images", "*.*"),
+                new FileChooser.ExtensionFilter("JPG", "*.jpg"),
+                new FileChooser.ExtensionFilter("PNG", "*.png")
+        );
+        File imgFile = fileChooser.showOpenDialog(null); //obtengo la foto que escogio el usuario
+
+        // Mostar la imagen
+        if (imgFile != null) {
+            Image image = new Image("file:" + imgFile.getAbsolutePath());
+            System.out.println(imgFile.getAbsolutePath());//recupero ruta de la imagen
+            ivFMascotaa.setImage(image);//muestro la foto en el image view
+            Path from = Paths.get(imgFile.toURI()); //copiar la imagen
+            Path to = Paths.get("archivos/" + imgFile.getName());
+            Files.copy(from, to);
+        
+ } 
+        
     }
     
     public void llenarComboM(ArrayList<Dueno> duenos) {
@@ -168,5 +201,10 @@ public class EditarMascotaController{
         }
 
     }
+    
+    
+    
+    
+    
     
 }
