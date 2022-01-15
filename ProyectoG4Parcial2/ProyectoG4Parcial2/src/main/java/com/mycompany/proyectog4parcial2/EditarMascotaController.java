@@ -85,7 +85,7 @@ public class EditarMascotaController{
 
     @FXML
     private void buscarArchivo(ActionEvent event)throws IOException  {
-        System.out.println("MAJOOO WIIIII");
+        
         
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Buscar archivo");//para abrir el explorador de archivo
