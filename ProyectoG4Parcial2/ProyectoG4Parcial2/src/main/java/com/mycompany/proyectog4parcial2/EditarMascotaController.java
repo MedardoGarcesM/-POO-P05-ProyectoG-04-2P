@@ -89,15 +89,15 @@ public class EditarMascotaController implements Initializable {
         
     }
     
-    public void llenarCamposM(Mascota m){
-        lblTituloM.setText("Editar mascota");
-        razaM.setText(m.getRaza());
-        NombreM.setText(m.getNombre());
-        nacimientoM.setValue(m.getFechaNacimiento());
-        dueñoM.setValue(m.getDueno());
-        fotoM.setText(m.getFoto());
-        tipoMascota.setSelectedToggle(m.selectedRadioButton.getText());
+   //public void llenarCamposM(Mascota m){
+     //   lblTituloM.setText("Editar mascota");
+       // razaM.setText(m.getRaza());
+        //NombreM.setText(m.getNombre());
+        //nacimientoM.setValue(m.getFechaNacimiento());
+        //dueñoM.setValue(m.getDueno());
+        //fotoM.setText(m.getFoto());
+        //tipoMascota.setSelectedToggle(m.selectedRadioButton.getText());
        
-    }   
+    //}
     
 }

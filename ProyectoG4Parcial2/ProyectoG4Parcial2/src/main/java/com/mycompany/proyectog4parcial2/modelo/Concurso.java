@@ -14,7 +14,12 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Scanner;
 import com.mycompany.proyectog4parcial2.modelo.*;
+import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.Collections;
+
 public class Concurso extends Sistema implements Serializable {
+
     private static int idausp = 1;
     private String nombre;
     private LocalDate fechaEvento;
@@ -48,76 +53,76 @@ public class Concurso extends Sistema implements Serializable {
         this.mascotasInscri = mascotasInscri;
         this.ganadores = ganadores;
     }
-    
+
     public Concurso() {
-        
+
     }
 
     //getters y setters
     public String getNombre() {
         return nombre;
     }
-    
+
     public LocalDate getFechaEvento() {
         return fechaEvento;
     }
-    
+
     public LocalTime getHoraEvento() {
         return horaEvento;
     }
-    
+
     public LocalDate getFechaInicioInscripción() {
         return fechaInicioInscripción;
     }
-    
+
     public LocalDate getFechaCierreInscripción() {
         return fechaCierreInscripción;
     }
-    
+
     public Ciudad getCiudad() {
         return ciudad;
     }
-    
+
     public String getLugar() {
         return lugar;
     }
-    
+
     public String[] getPremios() {
         return premios;
     }
-    
+
     public Auspiciante getAuspiciantes() {
         return auspiciantes;
     }
-    
+
     public String getCodigo() {
         return codigo;
     }
-    
+
     public String getDirigido() {
         return dirigido;
     }
-    
+
     public boolean isConcursoAbierto() {
         return concursoAbierto;
     }
-    
+
     public ArrayList<Mascota> getMascotasInscri() {
         return mascotasInscri;
     }
-    
+
     public ArrayList<String> getGanadores() {
         return ganadores;
     }
-    
+
     public void setMascotasInscri(ArrayList<Mascota> mascotasInscri) {
         this.mascotasInscri = mascotasInscri;
     }
-    
+
     public void setGanadores(ArrayList<String> ganadores) {
         this.ganadores = ganadores;
     }
-    
+
     public static void mostrarListaConcursoss() {
         System.out.println("\nLista de Concursos agregados: \n");
         for (Concurso c : concurso) {// recorre la lista de concurso y la imprime 
@@ -128,11 +133,9 @@ public class Concurso extends Sistema implements Serializable {
 
     @Override
     public String toString() {
-        return   codigo + ";"+ nombre + ";" + fechaEvento + ";" + horaEvento + ";" + fechaInicioInscripción + ";" + fechaCierreInscripción + ";" + ciudad + ";" + lugar + ";" + premios[0]+","+ premios[1]+","+ premios[2]+ ";" + auspiciantes.getNombreA() + ";" + dirigido + ";"  + concursoAbierto + ";" + mascotasInscri + ";" + ganadores + '}';
+        return codigo + ";" + nombre + ";" + fechaEvento + ";" + horaEvento + ";" + fechaInicioInscripción + ";" + fechaCierreInscripción + ";" + ciudad + ";" + lugar + ";" + premios[0] + "," + premios[1] + "," + premios[2] + ";" + auspiciantes.getNombreA() + ";" + dirigido + ";" + concursoAbierto + ";" + mascotasInscri + ";" + ganadores + '}';
     }
-    
-   
-    
+
     public static void mostrarMascotasInscri(Concurso c) {
         System.out.println("\nLista de Mascotas Inscritas: \n");
         for (Mascota m : c.mascotasInscri) {// recorre la lista e imprime la info de las mascotas inscritas en el concurso 
@@ -140,11 +143,11 @@ public class Concurso extends Sistema implements Serializable {
         }
         System.out.println();
     }
-    
+
     public static void mostrarMascotasGanadoras(Concurso c) {
         int posicion = 1;
         System.out.println("\nLista de Mascotas que ganaron fueron:\n");
-        
+
         for (String mascgan : c.ganadores) {// recorre la lista de ganadores e imprime suposicion 
             if (posicion == 1 || posicion == 3) {
                 System.out.println("    " + posicion + "er Ganador: " + mascgan + " " + c.premios[posicion - 1]);
@@ -156,7 +159,7 @@ public class Concurso extends Sistema implements Serializable {
         System.out.println();
         System.out.println("Los premios fueron auspiciados por: " + c.auspiciantes.getNombreA());
     }
-    
+
     public void inscribirParticipante() {
         mascotasInscri = new ArrayList<Mascota>();
         Scanner sc = new Scanner(System.in);
@@ -205,27 +208,20 @@ public class Concurso extends Sistema implements Serializable {
             Concurso.mostrarMascotasGanadoras(concurEleg);
         }
     }
-    
-    
-    
-    // 2P
-    
-    public static void main(String[] args) {
-        concurso = new ArrayList<Concurso>();
-        ArrayList<Auspiciante> auspiciantes = new ArrayList<Auspiciante>();
-        auspiciantes.add(new Auspiciante("Dog Chow", "Via daule", "2390832", "Guayaquil", "info@dogchow.ec", "www.dogchow.ec", "A-" + idausp++));
-        auspiciantes.add(new Auspiciante("Pronaca", "Via duran tambo", "2286984", "Duran", "pronaca@pronaca.com", "www.pronaca.com", "A-" + idausp++));
-        auspiciantes.add(new Auspiciante("Austrovet", "Av Gonzales Suarez", "501236", "Cuenca", "info@austrovet.net", "www.vetAustro.com", "A-" + idausp++));
-    
 
-   
+    // 2P
+    public static ArrayList<Concurso> crearArchivo() {
+        concurso = new ArrayList<Concurso>();
+        ArrayList<Auspiciante> auspiciantes = new ArrayList<>(Auspiciante.generarAus());
+        
+
         String[] premios = new String[3];
         ArrayList<Mascota> mic1 = new ArrayList<>();
         ArrayList<Mascota> mic2 = new ArrayList<>();
-        ArrayList gc1 = new ArrayList ();
+        ArrayList gc1 = new ArrayList();
         ArrayList gc2 = new ArrayList<>();
         ArrayList<Mascota> mic3 = new ArrayList<>();
-         ArrayList gc3 = new ArrayList<>();
+        ArrayList gc3 = new ArrayList<>();
         ArrayList<Mascota> lisMas = Mascota.cargarMascotas(App.pathMascotas);
         ArrayList<Ciudad> lisCiu = Ciudad.cargarCiudades(App.pathCiudades);
         for (int i = 0; i < premios.length; i++) {
@@ -235,7 +231,8 @@ public class Concurso extends Sistema implements Serializable {
                 premios[i] = " segundo lugar premio $750";
             } else if (i == 2) {
                 premios[i] = " tercer lugar premio $500";
-            }}
+            }
+        }
         //consurso anterior
         mic1.add(lisMas.get(0));
         mic1.add(lisMas.get(3));
@@ -248,7 +245,7 @@ public class Concurso extends Sistema implements Serializable {
         Concurso concun = new Concurso("Mas obediente", LocalDate.of(2021, 10, 14), LocalTime.of(8, 30), LocalDate.of(2021, 9, 14), LocalDate.of(2021, 10, 13), lisCiu.get(0), "parque Samanes", premios, auspiciantes.get(0), "Gato", Sistema.generarIdConcurso(), false, mic1, gc1);
         System.out.println(gc1);
         concurso.add(concun);
-       
+
         //concurso pasados
         mic2.add(lisMas.get(1));
         mic2.add(lisMas.get(2));
@@ -263,8 +260,7 @@ public class Concurso extends Sistema implements Serializable {
         Concurso convig = new Concurso("Mas rapido", LocalDate.of(2021, 9, 5), LocalTime.of(11, 10), LocalDate.of(2021, 5, 10), LocalDate.of(2021, 9, 1), lisCiu.get(1), "parque Samanes", premios, auspiciantes.get(1), "Perro", Sistema.generarIdConcurso(), true, mic2, gc2);
         concurso.add(convig);
         System.out.println(gc2);
-        
-        
+
         mic3.add(lisMas.get(30));
         mic3.add(lisMas.get(36));
         mic3.add(lisMas.get(25));
@@ -282,14 +278,13 @@ public class Concurso extends Sistema implements Serializable {
         PrintWriter pw = null;
         try {
             fichero = new FileWriter("concursos.txt");
-           pw= new PrintWriter(fichero);
-           for (Concurso c: concurso){
-               System.out.println(c);
-               fichero.write(c.toString()+"\r\n" );
-               
-           }
-            
-            
+            pw = new PrintWriter(fichero);
+            for (Concurso c : concurso) {
+                System.out.println(c);
+                fichero.write(c.toString() + "\r\n");
+
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -304,6 +299,71 @@ public class Concurso extends Sistema implements Serializable {
                 e2.printStackTrace();
             }
         }
+        return concurso;
     }
-}
+/*
+    // metodo de lectura del archivo 
+    public static ArrayList<Concurso> cargarConcursos(String ruta)  {
 
+        int posicion = 1;
+        ArrayList<Auspiciante> auspiciantes = new ArrayList<>();
+        auspiciantes.add(new Auspiciante("Dog Chow", "Via daule", "2390832", "Guayaquil", "info@dogchow.ec", "www.dogchow.ec", "A-" + idausp++));
+        auspiciantes.add(new Auspiciante("Pronaca", "Via duran tambo", "2286984", "Duran", "pronaca@pronaca.com", "www.pronaca.com", "A-" + idausp++));
+        auspiciantes.add(new Auspiciante("Austrovet", "Av Gonzales Suarez", "501236", "Cuenca", "info@austrovet.net", "www.vetAustro.com", "A-" + idausp++));
+
+        ArrayList<Concurso> listaConcurso = new ArrayList<>();
+        InputStream input = Concurso.class.getClassLoader().getResourceAsStream(ruta);
+        ArrayList<Ciudad> lisCiu = Ciudad.cargarCiudades(App.pathCiudades);
+        ArrayList<Mascota> lismas = Mascota.cargarMascotas(App.pathMascotas);
+        ArrayList<Mascota> mascins = new ArrayList<>();
+        ArrayList<String> gana= new ArrayList<>();
+
+        try(BufferedReader br = new BufferedReader(new InputStreamReader(input))) {
+            String line = br.readLine();
+            while (line != null) {
+
+                if (line.equals("id,apellidos,nombres,direccion,telefono,ciudad,email")) {//Evitamos leer la primera linea del archivo
+                    line = br.readLine();
+                } else {
+                    String[] datos = line.split(";");
+                    for (Ciudad c : lisCiu) {
+                        if (datos[6].equals(c.getNombreC())) {
+                            posicion = lisCiu.indexOf(c);
+                        }
+                    }
+                    Ciudad ciu = lisCiu.get(posicion);
+
+                    for (Auspiciante c : auspiciantes) {
+                        if (datos[9].equals(c.getNombreA())) {
+                            posicion = auspiciantes.indexOf(c);
+                        }
+                    }
+                    Auspiciante au = auspiciantes.get(posicion);
+
+                    String[] masc = datos[12].split(",");
+                    for (int i = 0; i < masc.length; i++) {
+                        for (Mascota m: lismas){
+                            if(m.getNombre().contains(masc[i])){
+                                mascins.add(m);
+                            }
+                        }
+                    }
+                    String[] gan= datos [13].split(",");
+                    for (int i = 0; i < gan.length; i++) {
+                        gana.add(gan[i]);
+                    }
+
+                    Concurso c = new Concurso(datos[1], LocalDate.parse(datos[2]), LocalTime.parse(datos[3]), LocalDate.parse(datos[4]), LocalDate.parse(datos[5]), ciu , datos[7], datos[8].split(","), au, datos[10], datos[0], Boolean.parseBoolean(datos[11]), mascins, gana);
+                    System.out.println(c);
+                    listaConcurso.add(c);
+                    line = br.readLine();
+                    System.out.println(listaConcurso);
+                }
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } 
+        return listaConcurso;
+    }  */
+}

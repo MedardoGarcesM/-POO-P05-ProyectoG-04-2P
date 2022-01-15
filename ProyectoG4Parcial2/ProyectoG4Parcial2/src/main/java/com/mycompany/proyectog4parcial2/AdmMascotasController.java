@@ -209,7 +209,7 @@ public class AdmMascotasController{
         VBox root = (VBox) fxmlLoader.load(); 
 
         dt.llenarComboM(Dueno.cargarDuenos (App.pathDuenos));
-        dt.llenarCamposM(m);
+//        dt.llenarCamposM(m);
         App.changeRoot(root);
 
     }

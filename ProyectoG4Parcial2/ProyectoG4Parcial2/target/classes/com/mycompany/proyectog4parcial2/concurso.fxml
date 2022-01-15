@@ -6,8 +6,6 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.SplitMenuButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
@@ -18,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="383.0" prefWidth="584.0" spacing="20.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyectog4parcial2.ConcursoController">
+<VBox alignment="CENTER" prefHeight="383.0" prefWidth="584.0" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyectog4parcial2.ConcursoController">
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
    </padding>
@@ -114,34 +112,19 @@
                   <DatePicker fx:id="CCinicioInscripcion" prefHeight="25.0" prefWidth="134.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                   <DatePicker fx:id="CCcierreInscripcion" prefHeight="25.0" prefWidth="134.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                   <ComboBox fx:id="CCciudad" prefHeight="25.0" prefWidth="134.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                  <Spinner fx:id="CCAuspiciantes" prefHeight="25.0" prefWidth="135.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
                   <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="9">
                      <children>
-                        <SplitMenuButton fx:id="CCPremiosLugar" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" text="Lugar">
-                          <items>
-                            <MenuItem mnemonicParsing="false" text="Action 1" />
-                            <MenuItem mnemonicParsing="false" text="Action 2" />
-                          </items>
-                        </SplitMenuButton>
-                        <MenuButton fx:id="CCPremioDescripcion" mnemonicParsing="false" text="Descripcion">
-                          <items>
-                            <MenuItem mnemonicParsing="false" text="Action 1" />
-                            <MenuItem mnemonicParsing="false" text="Action 2" />
-                          </items>
-                        </MenuButton>
-                        <MenuButton fx:id="CCPremiosAuspiciantes" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" text="Auspiciante">
-                          <items>
-                            <MenuItem mnemonicParsing="false" text="Action 1" />
-                            <MenuItem mnemonicParsing="false" text="Action 2" />
-                          </items>
-                        </MenuButton>
+                        <SplitMenuButton fx:id="CCPremiosLugar" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" text="Lugar" />
+                        <MenuButton fx:id="CCPremioDescripcion" mnemonicParsing="false" text="Descripcion" />
+                        <MenuButton fx:id="CCPremiosAuspiciantes" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" text="Auspiciante" />
                      </children>
                   </HBox>
-                  <Button fx:id="CCAñadirPremio" mnemonicParsing="false" text="Añadir premio" GridPane.columnIndex="1" GridPane.rowIndex="10" onAction="#switchToAdmPremios" >
+                  <Button fx:id="CCAñadirPremio" mnemonicParsing="false" onAction="#switchToAdmPremios" text="Añadir premio" GridPane.columnIndex="1" GridPane.rowIndex="10">
                      <GridPane.margin>
                         <Insets left="180.0" />
                      </GridPane.margin>
                   </Button>
+                  <ComboBox fx:id="CCAuspiciantes" prefHeight="25.0" prefWidth="133.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
                </children>
             </GridPane>
          </center>
@@ -160,12 +143,12 @@
                         <Insets />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="CCCancelar" alignment="TOP_CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Cancelar" onAction="#switchToAdmConcurso" >
+                  <Button fx:id="CCCancelar" alignment="TOP_CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#switchToAdmConcurso" text="Cancelar">
                      <HBox.margin>
                         <Insets left="50.0" right="50.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="menuP" mnemonicParsing="false" text="Menu Principal" onAction="#switchToMenuPrincipal" />
+                  <Button fx:id="menuP" mnemonicParsing="false" onAction="#switchToMenuPrincipal" text="Menu Principal" />
                </children>
             </HBox>
          </bottom>
