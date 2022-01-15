@@ -3,7 +3,12 @@ package com.mycompany.proyectog4parcial2;
 import Main.Sistema;
 import com.mycompany.proyectog4parcial2.modelo.Auspiciante;
 import com.mycompany.proyectog4parcial2.modelo.Ciudad;
+import com.mycompany.proyectog4parcial2.modelo.Concurso;
+import com.mycompany.proyectog4parcial2.modelo.*;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.ArrayList;
 import javafx.collections.ObservableList;
 import javafx.collections.*;
 import javafx.fxml.FXML;
@@ -44,6 +49,8 @@ public class ConcursoController {
 
     @FXML
     private SplitMenuButton CCPremiosLugar;
+     @FXML
+    private TextField CCcod;
 
     @FXML
     private MenuButton CCPremioDescripcion;
@@ -74,14 +81,14 @@ public class ConcursoController {
         items.addAll("Perro", "Gato");
         CCDirigidoa.getItems().setAll(items);
 
-// Setea a los auspiciantes recorriendo la lista de auspiciantes 
+// Setea a los auspiciantes recorriendo la lista de auspiciantes
         for (Auspiciante a : Auspiciante.generarAus()) {
             CCAuspiciantes.getItems().addAll(a.getNombreA());
              MenuItem A1 = new MenuItem(a.getNombreA());
              CCPremiosAuspiciantes.getItems().add(A1);}
-             
 
-//Setea los premios 
+
+//Setea los premios
         MenuItem m1 = new MenuItem("Primer lugar");
         MenuItem m2 = new MenuItem("Segundo lugar");
         MenuItem m3 = new MenuItem("Tercer lugar");
@@ -89,16 +96,16 @@ public class ConcursoController {
         CCPremiosLugar.getItems().add(m2);
         CCPremiosLugar.getItems().add(m3);
 
-        // setea la descricion 
+        // setea la descricion
         MenuItem n1 = new MenuItem("$1500");
         MenuItem n2 = new MenuItem("$750");
         MenuItem n3 = new MenuItem("$500");
         CCPremioDescripcion.getItems().add(n1);
         CCPremioDescripcion.getItems().add(n2);
         CCPremioDescripcion.getItems().add(n3);
-        
-        // setea los auspiciantes 
-       
+
+        // setea los auspiciantes
+
 
     }
 
@@ -119,5 +126,16 @@ public class ConcursoController {
         App.setRoot("menu");
 
     }
+@FXML
+    private void guardarConcurso() {
+         int posicion=0;
+        ArrayList<Concurso> concurso = Concurso.crearArchivo();//cargar la lista del archivo
+        ArrayList<Ciudad> lisCiu = Ciudad.cargarCiudades(App.pathCiudades);
+        ArrayList<String> gana = new ArrayList<>();
+        ArrayList<Mascota> mas= new ArrayList<>();
 
+        System.out.println("Creando concurso");
+        //Concurso(String nombre, LocalDate fechaEvento, LocalTime horaEvento, LocalDate fechaInicioInscripción, LocalDate fechaCierreInscripción, Ciudad ciudad, String lugar, String[] premios, Auspiciante auspiciantes, String dirigido, String codigo, boolean concursoAbierto, ArrayList<Mascota> mascotasInscri, ArrayList<String> ganadores)
+        //Concurso c= new Concurso(CCnombre.getText(), LocalDate.of(2022,1,15),CChora.getValue(),CCinicioInscripcion.getValue(),CCcierreInscripcion.getValue(),(Ciudad) CCciudad.getValue(),CClugar.getText(),CCPremioDescripcion.getText(), (Auspiciante) CCAuspiciantes.getValue(),CCcod.getText(),true,mas,gana);
+    }
 }

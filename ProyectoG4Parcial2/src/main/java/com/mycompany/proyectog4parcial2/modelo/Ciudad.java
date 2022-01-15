@@ -11,14 +11,14 @@ import java.util.Collections;
 
 public class Ciudad extends Sistema{// implements Comparable<Ciudad>
 
-    private String nombreC;
+    public String nombreC;
     private String provincia;
-    private String codigoC;//
+    private String codigo;//
     //String[] ciudadesL = new String [];
 
     //constructores
-    public Ciudad(String codicoC, String nombreC, String provincia) {
-        this.codigoC = codigoC;
+    public Ciudad(String codigo, String nombreC, String provincia) {
+        this.codigo = codigo;
         this.nombreC = nombreC;
         this.provincia = provincia;
 
@@ -60,6 +60,10 @@ public class Ciudad extends Sistema{// implements Comparable<Ciudad>
 
     public String getNombreC() {
         return nombreC;
+    }
+
+    public String getCodigo() {
+        return codigo;
     }
 
     public String getProvincia() {

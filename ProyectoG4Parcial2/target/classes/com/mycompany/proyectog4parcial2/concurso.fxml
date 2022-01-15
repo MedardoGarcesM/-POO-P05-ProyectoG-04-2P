@@ -42,7 +42,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label text="Dirigido a:">
+                  <Label text="Codigo" GridPane.rowIndex="10">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -104,7 +104,7 @@
                         <Insets />
                      </opaqueInsets>
                   </TextField>
-                  <TextField fx:id="CChora" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                  <TextField fx:id="CCcod" GridPane.columnIndex="1" GridPane.rowIndex="10">
                      <GridPane.margin>
                         <Insets right="140.0" />
                      </GridPane.margin>
@@ -135,6 +135,19 @@
                      </GridPane.margin>
                   </Button>
                   <ComboBox fx:id="CCAuspiciantes" prefHeight="25.0" prefWidth="136.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                  <TextField fx:id="CChora" layoutX="282.0" layoutY="35.0" prefHeight="25.0" prefWidth="178.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <GridPane.margin>
+                        <Insets right="140.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <Label layoutX="10.0" layoutY="242.0" text="Dirigido A:">
+                     <padding>
+                        <Insets left="150.0" />
+                     </padding>
+                  </Label>
                </children>
             </GridPane>
          </center>

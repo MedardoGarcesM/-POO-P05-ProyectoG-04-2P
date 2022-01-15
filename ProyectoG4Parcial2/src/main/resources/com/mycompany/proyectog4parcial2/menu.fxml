@@ -7,14 +7,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="87.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyectog4parcial2.MenuController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="87.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyectog4parcial2.MenuController">
    <children>
-      <Label alignment="CENTER" contentDisplay="TOP" prefHeight="17.0" prefWidth="636.0" text="Menu">
+      <Label alignment="CENTER" contentDisplay="TOP" prefHeight="54.0" prefWidth="626.0" text="Menu">
          <font>
             <Font size="23.0" />
          </font>
       </Label>
-      <HBox prefHeight="55.0" prefWidth="600.0">
+      <HBox prefHeight="90.0" prefWidth="600.0">
          <children>
             <Button fx:id="admCon" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#switchToAdmConcurso" text="Administrador Concurso">
                <HBox.margin>
@@ -36,6 +36,11 @@
             </Button>
          </children>
       </HBox>
+      <Button fx:id="admCiu" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#switchToAdmCiudad" prefHeight="25.0" prefWidth="148.0" text="Administrador Ciudad">
+         <VBox.margin>
+            <Insets bottom="10.0" left="65.0" />
+         </VBox.margin>
+      </Button>
    </children>
    <opaqueInsets>
       <Insets bottom="500.0" />

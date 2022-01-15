@@ -24,7 +24,14 @@ public class MenuController{
     @FXML
     private Button admMas;
     
+    @FXML
+    private Button admCiu;
 
+    @FXML
+    void switchToAdmCiudad() throws IOException {
+        App.setRoot("AdmCiudad");
+
+    }
     @FXML
     private void switchToAdmConcurso() throws IOException {
         App.setRoot("admConcurso");
