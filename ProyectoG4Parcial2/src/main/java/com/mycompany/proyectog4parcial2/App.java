@@ -17,6 +17,7 @@ public class App extends Application {
     public static String pathDuenos="com/mycompany/proyectog4parcial2/files/duenos.csv";
     public static String pathCiudades="com/mycompany/proyectog4parcial2/files/ciudades.csv";
     public static String pathMascotas="com/mycompany/proyectog4parcial2/files/mascotas.csv";//com/mycompany/proyectog4parcial2/files/mascotas.csv
+    public static String pathAuspiciantes="com/mycompany/proyectog4parcial2/files/auspiciantes.csv";
     public static String pathConcurso="com/mycompany/proyectog4parcial2/files/concurso.txt";
     public static String pathImg="ImagenesMascotas/";//
 

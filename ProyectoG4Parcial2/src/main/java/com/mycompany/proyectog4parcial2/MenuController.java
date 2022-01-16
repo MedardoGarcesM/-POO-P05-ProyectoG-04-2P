@@ -6,6 +6,7 @@
 package com.mycompany.proyectog4parcial2;
 
 import java.io.IOException;
+import javafx.event.ActionEvent;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -26,6 +27,8 @@ public class MenuController{
     
     @FXML
     private Button admCiu;
+    @FXML
+    private Button admAuspiciantes;
 
     @FXML
     void switchToAdmCiudad() throws IOException {
@@ -45,6 +48,11 @@ public class MenuController{
     @FXML
     private void switchToAdmMascota() throws IOException{
         App.setRoot("admMascotas");
+    }
+    
+    @FXML
+    private void switchToAdmAuspiciantes() throws IOException{
+        App.setRoot("admAuspiciante");
     }
     
 }

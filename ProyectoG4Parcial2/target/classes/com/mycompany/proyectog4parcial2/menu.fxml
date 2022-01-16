@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="87.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyectog4parcial2.MenuController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="134.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyectog4parcial2.MenuController">
    <children>
       <Label alignment="CENTER" contentDisplay="TOP" prefHeight="54.0" prefWidth="626.0" text="Menu">
          <font>
@@ -37,6 +37,11 @@
          </children>
       </HBox>
       <Button fx:id="admCiu" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#switchToAdmCiudad" prefHeight="25.0" prefWidth="148.0" text="Administrador Ciudad">
+         <VBox.margin>
+            <Insets bottom="5.0" left="65.0" />
+         </VBox.margin>
+      </Button>
+      <Button fx:id="admAuspiciantes" mnemonicParsing="false" onAction="#switchToAdmAuspiciantes" prefHeight="25.0" prefWidth="173.0" text="Administrador Auspiciantes">
          <VBox.margin>
             <Insets bottom="10.0" left="65.0" />
          </VBox.margin>
