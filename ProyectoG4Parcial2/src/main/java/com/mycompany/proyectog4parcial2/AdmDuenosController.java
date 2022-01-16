@@ -54,6 +54,7 @@ public class AdmDuenosController{
     @FXML
     private Button elimDueno;
     
+    @FXML
     public void initialize(){
         colCedula.setCellValueFactory(new PropertyValueFactory<>("cedula"));
         colNombres.setCellValueFactory(new PropertyValueFactory<>("nombres"));
