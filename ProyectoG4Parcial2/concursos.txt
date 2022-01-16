@@ -1,3 +1,0 @@
-M-1;Mas obediente;2021-10-14;08:30;2021-09-14;2021-10-13;Guayaquil;parque Samanes; primer lugar premio $1500, segundo lugar premio $750, tercer lugar premio $500;Dog Chow;Gato;false;[Loki, Chaval, Hercules, Hércules, Wini, Pau, Chico, Chester];[]}
-M-2;Mas rapido;2021-09-05;11:10;2021-05-10;2021-09-01;Quito;parque Samanes; primer lugar premio $1500, segundo lugar premio $750, tercer lugar premio $500;Pronaca;Perro;true;[Chato, Harpo, Checa, Chico, Chipi, Nix, Henko];[Chato, Harpo, Henko]}
-M-3;Mejor Portado;2021-09-05;11:10;2021-05-10;2021-09-01;Cuenca;parque nacional cajas ; primer lugar premio $1500, segundo lugar premio $750, tercer lugar premio $500;Austrovet;Perro;true;[Chato, Harpo, Checa, Chico, Chipi, Nix, Henko];[Chato, Harpo, Henko]}

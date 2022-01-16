@@ -33,14 +33,15 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         
         //sistema.llenadoDuenos();
-        sistema.llenadoMascotas();
-        sistema.llenadoCiudades();
-        sistema.llenadoAuspiciantes();
-        sistema.llenandoConcurso();
+        //sistema.llenadoMascotas();
+        //sistema.llenadoCiudades();
+        //sistema.llenadoAuspiciantes();
+        //sistema.llenandoConcurso();
         int opcion;
         
         do {
             sistema.presentarSistemai();
+            Concurso.crearArchivo();
             opcion = sc.nextInt();
             sc.nextLine();
 
@@ -74,7 +75,7 @@ public class Main {
                     //lista de dueños existentes
                     Dueno.mostrarListaDuenos();
                     sistema.presentarSistema2();// presenta las opciones 3, 4 y 5
-
+Concurso.crearArchivo();
                     int opcion2 = sc.nextInt();
                     sc.nextLine();
                     switch (opcion2) {

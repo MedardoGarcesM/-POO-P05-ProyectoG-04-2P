@@ -161,7 +161,7 @@
          <bottom>
             <HBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="44.0" prefWidth="567.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="CCguardar" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Guardar">
+                  <Button fx:id="CCguardar" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#guardarConcurso" text="Guardar">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>

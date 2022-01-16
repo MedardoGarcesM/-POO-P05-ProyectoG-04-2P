@@ -5,13 +5,17 @@ import com.mycompany.proyectog4parcial2.modelo.Auspiciante;
 import com.mycompany.proyectog4parcial2.modelo.Ciudad;
 import com.mycompany.proyectog4parcial2.modelo.Concurso;
 import com.mycompany.proyectog4parcial2.modelo.*;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.StringTokenizer;
 import javafx.collections.ObservableList;
 import javafx.collections.*;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -49,7 +53,7 @@ public class ConcursoController {
 
     @FXML
     private SplitMenuButton CCPremiosLugar;
-     @FXML
+    @FXML
     private TextField CCcod;
 
     @FXML
@@ -84,9 +88,9 @@ public class ConcursoController {
 // Setea a los auspiciantes recorriendo la lista de auspiciantes
         for (Auspiciante a : Auspiciante.generarAus()) {
             CCAuspiciantes.getItems().addAll(a.getNombreA());
-             MenuItem A1 = new MenuItem(a.getNombreA());
-             CCPremiosAuspiciantes.getItems().add(A1);}
-
+            MenuItem A1 = new MenuItem(a.getNombreA());
+            CCPremiosAuspiciantes.getItems().add(A1);
+        }
 
 //Setea los premios
         MenuItem m1 = new MenuItem("Primer lugar");
@@ -105,8 +109,6 @@ public class ConcursoController {
         CCPremioDescripcion.getItems().add(n3);
 
         // setea los auspiciantes
-
-
     }
 
     @FXML
@@ -126,16 +128,51 @@ public class ConcursoController {
         App.setRoot("menu");
 
     }
-@FXML
+
+    @FXML
     private void guardarConcurso() {
-         int posicion=0;
-        ArrayList<Concurso> concurso = Concurso.crearArchivo();//cargar la lista del archivo
+        int posicion = 0;
+        ArrayList<Concurso> concurso = Concurso.cargarArchivo(App.pathConcurso);//cargar la lista del archivo
         ArrayList<Ciudad> lisCiu = Ciudad.cargarCiudades(App.pathCiudades);
         ArrayList<String> gana = new ArrayList<>();
-        ArrayList<Mascota> mas= new ArrayList<>();
+        ArrayList<Mascota> mas = new ArrayList<>();
+        ArrayList<Auspiciante> auspiciante=Auspiciante.generarAus();
+        String[] premio = new String[]{CCPremiosLugar.getText(), CCPremioDescripcion.getText(), CCPremiosAuspiciantes.getText()};
+        String[] st = CChora.getText().split(":");
+        LocalTime hora = LocalTime.of(Integer.parseInt(st[0]), Integer.parseInt(st[1]));
+       for(Auspiciante a : auspiciante){
+           if (CCAuspiciantes.getValue().equals(a.getNombreA())){
+               posicion=auspiciante.indexOf(a);
+           }
+       }Auspiciante aaa = auspiciante.get(posicion);
 
         System.out.println("Creando concurso");
         //Concurso(String nombre, LocalDate fechaEvento, LocalTime horaEvento, LocalDate fechaInicioInscripción, LocalDate fechaCierreInscripción, Ciudad ciudad, String lugar, String[] premios, Auspiciante auspiciantes, String dirigido, String codigo, boolean concursoAbierto, ArrayList<Mascota> mascotasInscri, ArrayList<String> ganadores)
-        //Concurso c= new Concurso(CCnombre.getText(), LocalDate.of(2022,1,15),CChora.getValue(),CCinicioInscripcion.getValue(),CCcierreInscripcion.getValue(),(Ciudad) CCciudad.getValue(),CClugar.getText(),CCPremioDescripcion.getText(), (Auspiciante) CCAuspiciantes.getValue(),CCcod.getText(),true,mas,gana);
+        Concurso c = new Concurso(CCnombre.getText(), LocalDate.of(2022, 1, 15), hora, CCinicioInscripcion.getValue(), CCcierreInscripcion.getValue(), (Ciudad) CCciudad.getValue(), CClugar.getText(), premio, aaa, CCDirigidoa.getValue(), CCcod.getText(), true, mas, gana);
+        concurso.add(c);
+        System.out.println("nuevo concurso " + c);
+
+        try {
+            FileWriter writer = new FileWriter("src/main/resources/"+App.pathConcurso, true);//true significa que escribe al final del archivo
+            BufferedWriter bufferedWriter = new BufferedWriter(writer);
+
+            //(String cedula, String nombres, String apellidos, String direccion, String telefono, Ciudad ciudad, String email)
+            bufferedWriter.write(CCcod.getText()+";"+CCnombre.getText()+";"+ LocalDate.of(2022, 1, 15)+";"+ hora+";"+ CCinicioInscripcion.getValue()+";"+CCcierreInscripcion.getValue()+";"+ (Ciudad) CCciudad.getValue()+";"+ CClugar.getText()+";"+ premio+";"+ aaa.getNombreA() +";"+ CCDirigidoa.getValue()+";"+  true+";"+ mas+";"+ gana);
+            bufferedWriter.newLine();
+
+            bufferedWriter.close();
+
+            //mostrar informacion
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Mensaje de confirmacion");
+            alert.setHeaderText("Resultado de la operacion");
+            alert.setContentText("Nuevo Concurso agregado correctamente");
+
+            alert.showAndWait();
+            App.setRoot("admConcurso");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }

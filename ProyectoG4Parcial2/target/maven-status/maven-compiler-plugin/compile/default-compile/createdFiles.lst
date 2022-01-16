@@ -1,6 +1,7 @@
 Main\Extras.class
 com\mycompany\proyectog4parcial2\modelo\Ciudad.class
 com\mycompany\proyectog4parcial2\detalleMascotaController.class
+com\mycompany\proyectog4parcial2\ConcursoController.class
 utils\Correo.class
 com\mycompany\proyectog4parcial2\DuenoController.class
 com\mycompany\proyectog4parcial2\PremioController.class
@@ -11,6 +12,7 @@ com\mycompany\proyectog4parcial2\AdConcursoController.class
 com\mycompany\proyectog4parcial2\modelo\Auspiciante.class
 com\mycompany\proyectog4parcial2\EditarDuenoController.class
 Main\Sistema.class
+com\mycompany\proyectog4parcial2\MenuController.class
 com\mycompany\proyectog4parcial2\App.class
 com\mycompany\proyectog4parcial2\AdmCiudadController.class
 com\mycompany\proyectog4parcial2\modelo\Concurso.class

@@ -50,7 +50,7 @@ public class AdConcursoController {
     private Button enviarCorreo;
     @FXML
     private Button menuP;
-
+@FXML
     public void initialize(){
        
         colCod.setCellValueFactory(new PropertyValueFactory<>("codigo"));
@@ -59,7 +59,7 @@ public class AdConcursoController {
         colCiudad.setCellValueFactory(new PropertyValueFactory<>("ciudad"));
         //colCorreo.setCellValueFactory(new PropertyValueFactory<>("email"));
         
-        adConcurso.getItems().setAll(Concurso.crearArchivo());    }    
+        adConcurso.getItems().setAll(Concurso.cargarArchivo(App.pathConcurso));    }    
     @FXML
     private void switchToMenuPrincipal() throws IOException {
         App.setRoot("menu");
