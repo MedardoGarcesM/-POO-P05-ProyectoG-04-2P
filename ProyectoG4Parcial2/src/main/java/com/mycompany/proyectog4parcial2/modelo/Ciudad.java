@@ -70,15 +70,6 @@ public class Ciudad extends Sistema{// implements Comparable<Ciudad>
         return provincia;
     }
     
-    /*
-    public void mostrarListaCiudades(){
-        System.out.println("\nLista de ciudades: \n");
-        for(Ciudad ciudad: ciudades){
-            System.out.println(" " + ciudad.nombreC );
-        }
-        System.out.println();
-    }*/
-    
     @Override
     public String toString() {
         return nombreC;
