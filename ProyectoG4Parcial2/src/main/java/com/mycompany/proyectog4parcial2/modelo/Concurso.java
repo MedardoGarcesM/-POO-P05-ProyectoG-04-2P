@@ -307,8 +307,9 @@ public class Concurso extends Sistema implements Serializable {
         ArrayList<Concurso> liscon = new ArrayList<>();
         ArrayList<Auspiciante> lisau = Auspiciante.generarAus();
 
-        InputStream input = Concurso.class.getClassLoader().getResourceAsStream(ruta);
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(input))) {
+        //InputStream input = Concurso.class.getClassLoader().getResourceAsStream(ruta);
+        //try (BufferedReader br = new BufferedReader(new InputStreamReader(input))) 
+        try (BufferedReader br = new BufferedReader(new FileReader(ruta))){
             String line = br.readLine();
             while (line != null) {
 

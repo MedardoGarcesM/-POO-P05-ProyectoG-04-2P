@@ -139,7 +139,8 @@ public class MascotaController{
         
         
         try {
-            FileWriter writer = new FileWriter("src/main/resources/"+App.pathMascotas);//true significa que escribe al final del archivo
+            //"src/main/resources/"+
+            FileWriter writer = new FileWriter(App.pathMascotas);//true significa que escribe al final del archivo
             BufferedWriter bufferedWriter = new BufferedWriter(writer);
             
             for(Mascota m:mascotas){

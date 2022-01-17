@@ -170,10 +170,10 @@ public class Dueno extends Sistema implements Comparable<Dueno>{
         int posicion=1;
         ArrayList<Ciudad> lisCiu =Ciudad.cargarCiudades(App.pathCiudades);
         ArrayList<Dueno> listaDuenos = new ArrayList<>();
-        InputStream input = Dueno.class.getClassLoader().getResourceAsStream(ruta);
-
-        try(BufferedReader br = new BufferedReader(new InputStreamReader(input)))
-         {
+        //InputStream input = Dueno.class.getClassLoader().getResourceAsStream(ruta);
+        //try(BufferedReader br = new BufferedReader(new InputStreamReader(input)))
+        
+        try (BufferedReader br = new BufferedReader(new FileReader(ruta))){
             String line = br.readLine();
             while (line != null){
                 

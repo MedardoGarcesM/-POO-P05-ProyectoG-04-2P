@@ -139,7 +139,8 @@ public class AdmAuspicianteController{
             System.out.println(auspiciantes.remove(posicion)+" fue eliminado");
             
             try {
-                FileWriter writer = new FileWriter("src/main/resources/"+App.pathAuspiciantes);//true significa que escribe al final del archivo
+                //FileWriter writer = new FileWriter("src/main/resources/"+App.pathAuspiciantes);
+                FileWriter writer = new FileWriter(App.pathAuspiciantes);//true significa que escribe al final del archivo
                 BufferedWriter bufferedWriter = new BufferedWriter(writer);
                 
                 for(Auspiciante a1:auspiciantes){

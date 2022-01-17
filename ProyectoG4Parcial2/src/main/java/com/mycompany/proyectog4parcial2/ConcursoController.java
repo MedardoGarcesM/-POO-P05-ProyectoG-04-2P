@@ -153,7 +153,8 @@ public class ConcursoController {
         System.out.println("nuevo concurso " + c);
 
         try {
-            FileWriter writer = new FileWriter("src/main/resources/"+App.pathConcurso, true);//true significa que escribe al final del archivo
+            //"src/main/resources/"+
+            FileWriter writer = new FileWriter(App.pathConcurso, true);//true significa que escribe al final del archivo
             BufferedWriter bufferedWriter = new BufferedWriter(writer);
 
             //(String cedula, String nombres, String apellidos, String direccion, String telefono, Ciudad ciudad, String email)

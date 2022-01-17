@@ -3,6 +3,7 @@ package com.mycompany.proyectog4parcial2.modelo;
 import Main.Sistema;
 import static Main.Sistema.ciudades;
 import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -35,9 +36,8 @@ public class Ciudad extends Sistema{// implements Comparable<Ciudad>
         
         ArrayList<Ciudad> listaCiudades = new ArrayList<>();
         InputStream input = Ciudad.class.getClassLoader().getResourceAsStream(ruta);
-
-        try(BufferedReader br = new BufferedReader(new InputStreamReader(input)))
-         {
+        //try(BufferedReader br = new BufferedReader(new InputStreamReader(input)))
+        try (BufferedReader br = new BufferedReader(new FileReader(ruta))){
             String line = br.readLine();
             while (line != null){
                 

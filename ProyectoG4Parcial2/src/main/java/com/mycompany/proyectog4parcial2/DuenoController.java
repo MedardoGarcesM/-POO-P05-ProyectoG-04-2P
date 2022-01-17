@@ -97,7 +97,8 @@ public class DuenoController{
         
         
         try {
-            FileWriter writer = new FileWriter("src/main/resources/"+App.pathDuenos);//true significa que escribe al final del archivo
+            //"src/main/resources/"+
+            FileWriter writer = new FileWriter(App.pathDuenos);//true significa que escribe al final del archivo
             BufferedWriter bufferedWriter = new BufferedWriter(writer);
             
             for(Dueno m:duenos){

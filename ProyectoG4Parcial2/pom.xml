@@ -98,7 +98,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>com.mycompany.proyectog4parcial2.App</mainClass>
+                            <mainClass>com.mycompany.proyectog4parcial2.GUIStarter</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
@@ -113,7 +113,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>com.mycompany.proyectog4parcial2.App</mainClass>
+                            <mainClass>com.mycompany.proyectog4parcial2.GUIStarter</mainClass>
                         </manifest>
                      </archive>
             </configuration>

@@ -107,8 +107,7 @@ public class EditarMascotaController{
             Path to = Paths.get("archivos/" + imgFile.getName());
             Files.copy(from, to);
         
- } 
-        
+        } 
     }
     
     public void llenarComboM(ArrayList<Dueno> duenos) {
@@ -172,7 +171,8 @@ public class EditarMascotaController{
         mascotas.set(posBuscad, masEditada);
         //------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         try {
-            FileWriter writer = new FileWriter("src/main/resources/"+App.pathMascotas);//true significa que escribe al final del archivo
+            //"src/main/resources/"+
+            FileWriter writer = new FileWriter(App.pathMascotas);//true significa que escribe al final del archivo
             BufferedWriter bufferedWriter = new BufferedWriter(writer);
             
             for(Mascota m:mascotas){
@@ -201,10 +201,5 @@ public class EditarMascotaController{
         }
 
     }
-    
-    
-    
-    
-    
     
 }

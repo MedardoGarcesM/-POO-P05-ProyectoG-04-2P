@@ -8,9 +8,12 @@ import Main.Sistema;
 import static Main.Sistema.auspiciantes;
 import com.mycompany.proyectog4parcial2.App;
 import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -90,24 +93,18 @@ public class Auspiciante extends Sistema {
     public static ArrayList<Auspiciante> cargarAuspiciantes(String ruta){
         
         ArrayList<Auspiciante> listaAuspiciantes = new ArrayList<>();
-        InputStream input = Dueno.class.getClassLoader().getResourceAsStream(ruta);
-
-        try(BufferedReader br = new BufferedReader(new InputStreamReader(input)))
-         {
+        //InputStream input = Dueno.class.getClassLoader().getResourceAsStream(ruta);
+        //try(BufferedReader br = new BufferedReader(new InputStreamReader(input)))
+        try (BufferedReader br = new BufferedReader(new FileReader(ruta))){
             String line = br.readLine();
             while (line != null){
-                
-                if(line.equals("id,apellidos,nombres,direccion,telefono,ciudad,email")){//Evitamos leer la primera linea del archivo
-                    line = br.readLine();
-                }else{
-                    String[] datos = line.split(",");
-                    //String codigoA,String nombreA, String direccionA, String telefonoA, String ciudadA, String emailA, String webPage
-                    //1,Dog Chow,Via daule,2390832,Guayaquil,info@dogchow.ec,www.dogchow.ec
-                    Auspiciante a = new Auspiciante(datos[0], datos[1], datos[2], datos[3], datos[4], datos[5],datos[6]);
-                    //System.out.println(d);
-                    listaAuspiciantes.add(a);
-                    line = br.readLine();
-                }
+                String[] datos = line.split(",");
+                //String codigoA,String nombreA, String direccionA, String telefonoA, String ciudadA, String emailA, String webPage
+                //1,Dog Chow,Via daule,2390832,Guayaquil,info@dogchow.ec,www.dogchow.ec
+                Auspiciante a = new Auspiciante(datos[0], datos[1], datos[2], datos[3], datos[4], datos[5],datos[6]);
+                //System.out.println(d);
+                listaAuspiciantes.add(a);
+                line = br.readLine();
             }
             //Collections.sort(listaAuspiciantes);
         } catch (IOException e) {

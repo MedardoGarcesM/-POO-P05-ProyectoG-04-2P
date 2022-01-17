@@ -81,7 +81,7 @@ public class EditarCiudadController{
         
         
         try {
-            FileWriter writer = new FileWriter("src/main/resources/"+App.pathCiudades);//true significa que escribe al final del archivo
+            FileWriter writer = new FileWriter(App.pathCiudades);//true significa que escribe al final del archivo
             BufferedWriter bufferedWriter = new BufferedWriter(writer);
             
             for(Ciudad c1:ciudades){
