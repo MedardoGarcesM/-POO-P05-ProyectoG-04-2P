@@ -133,67 +133,65 @@ public class AdConcursoController {
     }
 
     @FXML
-        private void eliminarConcurso() throws IOException {
-        
-        ArrayList<Concurso> concurso = Concurso.cargarArchivo(App.pathConcurso);//cargar la lista del archivo
+    private void eliminarConcurso() throws IOException {
+
+        ArrayList<Concurso> concursos = Concurso.cargarArchivo(App.pathConcurso);//cargar la lista del archivo
         ArrayList<Ciudad> listCity = Ciudad.cargarCiudades(App.pathDuenos);
-        
-        Concurso m = (Concurso) adConcurso.getSelectionModel().getSelectedItem();
+
+        Concurso concursoSelec = (Concurso) adConcurso.getSelectionModel().getSelectedItem();
         //int posicion =adDuenio.getSelectionModel().getSelectedIndex();
         int posicion=0;
         int posicionDue=0;
-     
+
         System.out.println("Eliminando Concurso");
-        
-        for(Concurso mas:concurso){
-            if(mas.getCodigo().equals(m.getCodigo())){
-                posicion=concurso.indexOf(mas);
-                System.out.println(concurso.get(posicion));
+
+        for(Concurso con:concursos){
+            if(con.getCodigo().equals(concursoSelec.getCodigo())){
+                posicion=concursos.indexOf(con);
+                System.out.println(concursos.get(posicion));
             }
         }
-        
+
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation Dialog");
         alert.setHeaderText("Debe de confirmar la ejecucion");
-        alert.setContentText("Esta seguro que desea eliminar el concurso "+m.getNombre()+" con codigo "+m.getCodigo()+"?");
+        alert.setContentText("Esta seguro que desea eliminar el concurso "+concursoSelec.getNombre()+" con codigo "+concursoSelec.getCodigo()+"?");
         Optional<ButtonType> result = alert.showAndWait();
-        
+
         if (result.get() == ButtonType.OK){
             // ... user chose OK
             //duenos.remove(posicion);
-            System.out.println(concurso.remove(posicion)+" fue eliminado");
+            System.out.println(concursos.remove(posicion)+" fue eliminado");
             try {
                 //"src/main/resources/"+
                 FileWriter writer = new FileWriter(App.pathConcurso);//true significa que escribe al final del archivo
                 BufferedWriter bufferedWriter = new BufferedWriter(writer);
-                
-                for(Concurso b:concurso){
-                    for(Ciudad selecDu:listCity){
-                        if(selecDu.getNombreC().equals(b.getCiudad())){
-                            posicionDue=listCity.indexOf(selecDu);
-                        }
+
+                for(Concurso b:concursos){
+                    String premios="";
+                    for(String prem:b.getPremios()){
+                        premios=premios+prem+",";
                     }
-                    Ciudad d = listCity.get(posicionDue);
                     //Mascota(String id,String nombre, String tipoMascota, String raza, String fechaNacimiento, String foto, Dueno dueno)
-                    bufferedWriter.write(b.getCodigo() + ";" + b.getNombre() + ";" + b.getFechaEvento() + ";" + b.getHoraEvento() + ";" + b.getFechaInicioInscripción() + ";" + b.getFechaCierreInscripción() + ";" + b.getCiudad() + ";" + b.getLugar() + ";" + b.getPremios() + ";" + b.getAuspiciantes() + ";" + b.getDirigido() + ";" + true + ";" + b.getMascotasInscri() + ";" + b.getGanadores());
+                    bufferedWriter.write(b.getCodigo() + ";" + b.getNombre() + ";" + b.getFechaEvento() + ";" + b.getHoraEvento() + ";" + b.getFechaInicioInscripción() + ";" + b.getFechaCierreInscripción() + ";" + b.getCiudad() + ";" + b.getLugar() + ";" + premios + ";" + b.getAuspiciantes() + ";" + b.getDirigido() + ";" + b.isConcursoAbierto() + ";" + b.getMascotasInscri() + ";" + b.getGanadores());
                     bufferedWriter.newLine(); 
                 }
-                
-               
+
+
                 bufferedWriter.close();
                 Alert conf = new Alert(Alert.AlertType.INFORMATION);
                 conf.setTitle("Mensaje de confirmacion");
                 conf.setHeaderText("Concurso eliminada correctamente");
                 conf.showAndWait();            
-                
+
                 App.setRoot("admConcurso");
-                
+
             }catch (IOException e) {
                 e.printStackTrace();
             }
         }else{
             // ... user chose CANCEL or closed the
-            System.out.println(concurso.get(posicion)+" no fue eliminado");
+            System.out.println(concursos.get(posicion)+" no fue eliminado");
         }
     }
 }
