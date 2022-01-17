@@ -37,12 +37,12 @@ public class MenuController{
     private ImageView imagen;
     @FXML
     private ImageView imagenPrincipal;
-
+    
     @FXML
-    void switchToAdmCiudad() throws IOException {
-        App.setRoot("AdmCiudad");
-
+    private void switchToAdmCiudad() throws IOException {
+        App.setRoot("admCiudad");
     }
+    
     @FXML
     private void switchToAdmConcurso() throws IOException {
         App.setRoot("admConcurso");

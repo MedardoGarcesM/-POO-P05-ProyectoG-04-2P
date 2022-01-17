@@ -1,5 +1,6 @@
 package com.mycompany.proyectog4parcial2;
 
+import com.mycompany.proyectog4parcial2.modelo.Concurso;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import javafx.application.Application;
@@ -49,6 +50,10 @@ public class App extends Application {
     }
     
     public static void main(String[] args) {
+        
+        for(Concurso con:Concurso.cargarArchivo(App.pathConcurso)){
+            System.out.println(con);
+        }
         launch();
     }
     
