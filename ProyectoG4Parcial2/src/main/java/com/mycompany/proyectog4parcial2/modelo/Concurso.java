@@ -305,7 +305,7 @@ public class Concurso extends Sistema implements Serializable {
         ArrayList<Ciudad> lisCiu = Ciudad.cargarCiudades(App.pathCiudades);
         ArrayList<Mascota> lismas = Mascota.cargarMascotas(App.pathMascotas);
         ArrayList<Concurso> liscon = new ArrayList<>();
-        ArrayList<Auspiciante> lisau = Auspiciante.generarAus();
+        ArrayList<Auspiciante> lisau = Auspiciante.cargarAuspiciantes(App.pathAuspiciantes);
 
         //InputStream input = Concurso.class.getClassLoader().getResourceAsStream(ruta);
         //try (BufferedReader br = new BufferedReader(new InputStreamReader(input))) 
