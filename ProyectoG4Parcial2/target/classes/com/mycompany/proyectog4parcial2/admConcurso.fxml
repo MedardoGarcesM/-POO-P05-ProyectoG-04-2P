@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="339.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyectog4parcial2.AdConcursoController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="339.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyectog4parcial2.AdConcursoController">
    <children>
       <Label alignment="CENTER" text="Administrar  Concurso">
          <font>
@@ -73,12 +73,17 @@
                   <Insets left="70.0" top="7.5" />
                </HBox.margin>
             </Button>
-            <Button fx:id="botonEditarGana" mnemonicParsing="false" onAction="#editarGanadores" prefHeight="25.0" prefWidth="120.0" text="Editar Ganadores">
+            <Button fx:id="botonEditarGana" mnemonicParsing="false" onAction="#consultarGanadores" prefHeight="25.0" prefWidth="120.0" text="Consultar Ganadores">
                <HBox.margin>
                   <Insets left="35.0" right="35.0" top="7.5" />
                </HBox.margin>
             </Button>
             <Button fx:id="menuP" mnemonicParsing="false" onAction="#switchToMenuPrincipal" prefHeight="25.0" prefWidth="105.0" text="Menu Principal">
+               <HBox.margin>
+                  <Insets right="35.0" top="7.5" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="btaaconsultarM" layoutX="80.0" layoutY="18.0" mnemonicParsing="false" onAction="#consultarM" prefHeight="25.0" prefWidth="132.0" text="Consultar inscritos">
                <HBox.margin>
                   <Insets right="35.0" top="7.5" />
                </HBox.margin>

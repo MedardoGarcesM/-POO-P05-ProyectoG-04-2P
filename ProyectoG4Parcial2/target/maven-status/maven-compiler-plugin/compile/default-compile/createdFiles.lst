@@ -22,6 +22,7 @@ com\mycompany\proyectog4parcial2\AdmCiudadController.class
 com\mycompany\proyectog4parcial2\modelo\Concurso.class
 com\mycompany\proyectog4parcial2\modelo\Mascota.class
 Main\Main.class
+com\mycompany\proyectog4parcial2\ConsultarGanadoresController.class
 com\mycompany\proyectog4parcial2\AdmMascotasController.class
 com\mycompany\proyectog4parcial2\AdmDuenosController.class
 com\mycompany\proyectog4parcial2\MascotaController.class

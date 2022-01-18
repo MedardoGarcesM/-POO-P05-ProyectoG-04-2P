@@ -53,6 +53,8 @@ public class AdConcursoController {
     @FXML
     private Button editarConcurso;
     @FXML
+    private Button btaaconsultarM;
+    @FXML
     private Button elimConcurso;
     @FXML
     private Button enviarCorreo;
@@ -251,7 +253,36 @@ public class AdConcursoController {
     private void anadirParticipantes(ActionEvent event) {
     }
 
-    @FXML
-    private void editarGanadores(ActionEvent event) {
+   
+      @FXML
+    private void consultarM(ActionEvent event) {
+
     }
+     private void mostrarVentana1() throws IOException {
+        //App.setRoot("nuevo");
+        //se carga el fxml de nueva ventana
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("consultarGanadores.fxml"));//no tiene el controlador especificado
+        ConsultarGanadoresController ct = new ConsultarGanadoresController();
+
+        fxmlLoader.setController(ct);//se asigna el controlador
+
+        VBox root = (VBox) fxmlLoader.load();
+        //luego que el fxml ha sido cargado puedo utilizar el controlador para realizar cambios
+        
+        App.changeRoot(root);
+    }
+     @FXML
+       private void consultarGanadores() throws IOException {
+        Concurso d = (Concurso) adConcurso.getSelectionModel().getSelectedItem();
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("consultarGanadores.fxml"));//no tiene el controlador especificado
+        ConsultarGanadoresController ct = new ConsultarGanadoresController();
+
+        fxmlLoader.setController(ct);//se asigna el controlador
+
+        VBox root = (VBox) fxmlLoader.load();
+        ct.llenarCampo(d);
+        App.changeRoot(root);
+
+    }
+
 }
