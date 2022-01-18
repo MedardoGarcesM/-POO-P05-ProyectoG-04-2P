@@ -129,39 +129,80 @@ public class ConcursoController {
     @FXML
     private void guardarConcurso() {
         int posicion = 0;
-        ArrayList<Concurso> concurso = Concurso.cargarArchivo(App.pathConcurso);//cargar la lista del archivo
+        ArrayList<Concurso> concursos = Concurso.cargarArchivo(App.pathConcurso);//cargar la lista del archivo
         ArrayList<Ciudad> lisCiu = Ciudad.cargarCiudades(App.pathCiudades);
         ArrayList<String> gana = new ArrayList<>();
         ArrayList<Mascota> mas = new ArrayList<>();
         ArrayList<Auspiciante> auspiciante = Auspiciante.cargarAuspiciantes(App.pathAuspiciantes);
-        String[] premio = new String[]{lbp.getText(), CCp.getText() + ";" + lbs.getText(), CCs.getText() + ";" + lbt.getText(), CCt.getText()};
+        String[] premio = new String[]{CCp.getText()+","+CCs.getText()+","+CCt.getText()};
         String[] st = CChora.getText().split(":");
         LocalTime hora = LocalTime.of(Integer.parseInt(st[0]), Integer.parseInt(st[1]));
+        
         for (Auspiciante a : auspiciante) {
             if (CCAuspiciantes.getValue().equals(a.getNombreA())) {
                 posicion = auspiciante.indexOf(a);
             }
         }
         Auspiciante aaa = auspiciante.get(posicion);
+        
         ArrayList<Integer> idC = new ArrayList<>();
-
-        for (Concurso a : concurso) {
+        for (Concurso a : concursos) {
             idC.add((Integer) Integer.parseInt(a.getCodigo()));
         }
-        String x =String.valueOf(Collections.max(idC) + 1);
+        String pos =String.valueOf(Collections.max(idC) + 1);
+        
         System.out.println("Creando concurso");
-        //Concurso(String nombre, LocalDate fechaEvento, LocalTime horaEvento, LocalDate fechaInicioInscripción, LocalDate fechaCierreInscripción, Ciudad ciudad, String lugar, String[] premios, Auspiciante auspiciantes, String dirigido, String codigo, boolean concursoAbierto, ArrayList<Mascota> mascotasInscri, ArrayList<String> ganadores)
-        Concurso c = new Concurso(CCnombre.getText(), CCfechaA.getValue(), hora, CCinicioInscripcion.getValue(), CCcierreInscripcion.getValue(), (Ciudad) CCciudad.getValue(), CClugar.getText(), premio, aaa, CCDirigidoa.getValue(), x, true, mas, gana);
-        concurso.add(c);
-        System.out.println("nuevo concurso " + c);
-
+        /*String nombre, datos[1]
+        LocalDate fechaEvento, datos[2]
+        LocalTime horaEvento, datos[3]
+        LocalDate fechaInicioInscripción, datos[4]
+        LocalDate fechaCierreInscripción, datos[5]
+        Ciudad ciudad, datos[6]
+        String lugar, datos[7]
+        String[] premios, datos[8]
+        Auspiciante auspiciantes, datos[9] 
+        String dirigido, datos[10]
+        String codigo, datos[0]
+        boolean concursoAbierto, datos[11]
+        ArrayList<Mascota> mascotasInscri, datos[12] 
+        ArrayList<String> ganadores) datos[13]*/
+        Concurso c = new Concurso(CCnombre.getText(), CCfechaA.getValue(), hora, CCinicioInscripcion.getValue(), CCcierreInscripcion.getValue(), (Ciudad) CCciudad.getValue(), CClugar.getText(), premio, aaa, CCDirigidoa.getValue(), pos, true, mas, gana);
+        concursos.add(c);
+        //System.out.println("nuevo concurso " + c);
         try {
+            //"src/main/resources/"+
+            FileWriter writer = new FileWriter(App.pathConcurso);//true significa que escribe al final del archivo
+            BufferedWriter bufferedWriter = new BufferedWriter(writer);
+
+            for(Concurso b:concursos){
+                String premios="";
+                for(String prem:b.getPremios()){
+                    premios=premios+prem+",";
+                }
+                //Mascota(String id,String nombre, String tipoMascota, String raza, String fechaNacimiento, String foto, Dueno dueno)
+                bufferedWriter.write(b.getCodigo() + ";" + b.getNombre() + ";" + b.getFechaEvento() + ";" + b.getHoraEvento() + ";" + b.getFechaInicioInscripción() + ";" + b.getFechaCierreInscripción() + ";" + b.getCiudad() + ";" + b.getLugar() + ";" + premios + ";" + b.getAuspiciantes() + ";" + b.getDirigido() + ";" + b.isConcursoAbierto() + ";" + b.getMascotasInscri() + ";" + b.getGanadores());
+                bufferedWriter.newLine(); 
+            }
+
+
+            bufferedWriter.close();
+            Alert conf = new Alert(Alert.AlertType.INFORMATION);
+            conf.setTitle("Mensaje de confirmacion");
+            conf.setHeaderText("Concurso agregado correctamente");
+            conf.showAndWait();            
+
+            App.setRoot("admConcurso");
+
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+        /*try {
             //"src/main/resources/"+
             FileWriter writer = new FileWriter(App.pathConcurso,true);//true significa que escribe al final del archivo
             BufferedWriter bufferedWriter = new BufferedWriter(writer);
             
                 //(String cedula, String nombres, String apellidos, String direccion, String telefono, Ciudad ciudad, String email)
-                bufferedWriter.write( x+ ";" + CCnombre.getText() + ";" + CCfechaA.getValue() + ";" + hora + ";" + CCinicioInscripcion.getValue() + ";" + CCcierreInscripcion.getValue() + ";" + (Ciudad) CCciudad.getValue() + ";" + CClugar.getText() + ";" + premio.toString() + ";" + aaa.getNombreA() + ";" + CCDirigidoa.getValue() + ";" + true + ";" + mas + ";" + gana);
+                bufferedWriter.write(pos+ ";" + CCnombre.getText() + ";" + CCfechaA.getValue() + ";" + hora + ";" + CCinicioInscripcion.getValue() + ";" + CCcierreInscripcion.getValue() + ";" + (Ciudad) CCciudad.getValue() + ";" + CClugar.getText() + ";" + premio.toString() + ";" + aaa.getNombreA() + ";" + CCDirigidoa.getValue() + ";" + true + ";" + mas + ";" + gana);
                // bufferedWriter.write(b.getCodigo() + ";" + b.getNombre() + ";" + b.getFechaEvento() + ";" + b.getHoraEvento() + ";" + b.getFechaInicioInscripción() + ";" + b.getFechaCierreInscripción() + ";" + b.getCiudad() + ";" + b.getLugar() + ";" + b.getPremios() + ";" + b.getAuspiciantes() + ";" + b.getDirigido() + ";" + true + ";" + b.getMascotasInscri() + ";" + b.getGanadores());
                 bufferedWriter.newLine();
             
@@ -177,7 +218,7 @@ public class ConcursoController {
             App.setRoot("admConcurso");
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
 
     }
 }
