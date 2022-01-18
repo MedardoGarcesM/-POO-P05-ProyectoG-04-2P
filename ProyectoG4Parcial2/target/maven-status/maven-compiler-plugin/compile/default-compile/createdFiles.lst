@@ -5,13 +5,16 @@ com\mycompany\proyectog4parcial2\ConcursoController.class
 utils\Correo.class
 com\mycompany\proyectog4parcial2\DuenoController.class
 com\mycompany\proyectog4parcial2\PremioController.class
+com\mycompany\proyectog4parcial2\EditarCiudadController.class
 com\mycompany\proyectog4parcial2\GUIStarter.class
 com\mycompany\proyectog4parcial2\EditarMascotaController.class
 module-info.class
 com\mycompany\proyectog4parcial2\AdConcursoController.class
 com\mycompany\proyectog4parcial2\modelo\Auspiciante.class
+com\mycompany\proyectog4parcial2\CiudadController.class
 com\mycompany\proyectog4parcial2\EditarDuenoController.class
 Main\Sistema.class
+com\mycompany\proyectog4parcial2\editarConcursoController.class
 com\mycompany\proyectog4parcial2\MenuController.class
 com\mycompany\proyectog4parcial2\App.class
 com\mycompany\proyectog4parcial2\AdmCiudadController.class

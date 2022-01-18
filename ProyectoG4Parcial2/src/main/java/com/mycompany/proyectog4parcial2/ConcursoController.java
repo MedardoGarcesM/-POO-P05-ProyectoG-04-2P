@@ -38,7 +38,8 @@ public class ConcursoController {
 
     @FXML
     private TextField CClugar;
-
+  @FXML
+    private DatePicker CCfechaEvento;
     @FXML
     private DatePicker CCinicioInscripcion;
 
@@ -141,14 +142,14 @@ public class ConcursoController {
         String[] st = CChora.getText().split(":");
         LocalTime hora = LocalTime.of(Integer.parseInt(st[0]), Integer.parseInt(st[1]));
        for(Auspiciante a : auspiciante){
-           if (CCAuspiciantes.getValue().equals(a.getNombreA())){
+           if (CCAuspiciantes.getValue().toString().equals(a.getNombreA())){
                posicion=auspiciante.indexOf(a);
            }
        }Auspiciante aaa = auspiciante.get(posicion);
 
         System.out.println("Creando concurso");
         //Concurso(String nombre, LocalDate fechaEvento, LocalTime horaEvento, LocalDate fechaInicioInscripción, LocalDate fechaCierreInscripción, Ciudad ciudad, String lugar, String[] premios, Auspiciante auspiciantes, String dirigido, String codigo, boolean concursoAbierto, ArrayList<Mascota> mascotasInscri, ArrayList<String> ganadores)
-        Concurso c = new Concurso(CCnombre.getText(), LocalDate.of(2022, 1, 15), hora, CCinicioInscripcion.getValue(), CCcierreInscripcion.getValue(), (Ciudad) CCciudad.getValue(), CClugar.getText(), premio, aaa, CCDirigidoa.getValue(), CCcod.getText(), true, mas, gana);
+        Concurso c = new Concurso(CCnombre.getText(), CCfechaEvento.getValue(), hora, CCinicioInscripcion.getValue(), CCcierreInscripcion.getValue(), (Ciudad) CCciudad.getValue(), CClugar.getText(), premio, aaa, CCDirigidoa.getValue(), CCcod.getText(), true, mas, gana);
         concurso.add(c);
         System.out.println("nuevo concurso " + c);
 
@@ -157,7 +158,7 @@ public class ConcursoController {
             BufferedWriter bufferedWriter = new BufferedWriter(writer);
 
             //(String cedula, String nombres, String apellidos, String direccion, String telefono, Ciudad ciudad, String email)
-            bufferedWriter.write(CCcod.getText()+";"+CCnombre.getText()+";"+ LocalDate.of(2022, 1, 15)+";"+ hora+";"+ CCinicioInscripcion.getValue()+";"+CCcierreInscripcion.getValue()+";"+ (Ciudad) CCciudad.getValue()+";"+ CClugar.getText()+";"+ premio+";"+ aaa.getNombreA() +";"+ CCDirigidoa.getValue()+";"+  true+";"+ mas+";"+ gana);
+            bufferedWriter.write(CCcod.getText()+";"+CCnombre.getText()+";"+ CCfechaEvento.getValue()+";"+ hora+";"+ CCinicioInscripcion.getValue()+";"+CCcierreInscripcion.getValue()+";"+ (Ciudad) CCciudad.getValue()+";"+ CClugar.getText()+";"+ premio+";"+ aaa.getNombreA().toString() +";"+ CCDirigidoa.getValue()+";"+ true+";"+ mas+";"+ gana);
             bufferedWriter.newLine();
 
             bufferedWriter.close();
@@ -167,7 +168,6 @@ public class ConcursoController {
             alert.setTitle("Mensaje de confirmacion");
             alert.setHeaderText("Resultado de la operacion");
             alert.setContentText("Nuevo Concurso agregado correctamente");
-
             alert.showAndWait();
             App.setRoot("admConcurso");
         } catch (IOException e) {

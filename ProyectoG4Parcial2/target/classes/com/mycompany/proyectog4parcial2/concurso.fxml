@@ -114,7 +114,7 @@
                         <Insets right="140.0" />
                      </GridPane.margin>
                   </TextField>
-                  <DatePicker prefHeight="25.0" prefWidth="133.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <DatePicker fx:id="CCfechaEvento" prefHeight="25.0" prefWidth="133.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <GridPane.margin>
                         <Insets bottom="5.0" top="5.0" />
                      </GridPane.margin>

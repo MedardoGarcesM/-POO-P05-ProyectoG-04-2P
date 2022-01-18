@@ -34,7 +34,7 @@
                   <TableColumn fx:id="colNombres" prefWidth="125.0" text="Nombre" />
                   <TableColumn fx:id="colFecha" prefWidth="57.0" style="-fx-alignment: CENTER;" text="Fecha" />
                   <TableColumn fx:id="colCiudad" prefWidth="72.0" style="-fx-alignment: CENTER;" text="Ciudad" />
-                  <TableColumn fx:id="colCorreo" prefWidth="114.0" text="Correo" />
+                  <TableColumn fx:id="colCorreo" prefWidth="114.0" text="Abierto" />
                </columns>
             </TableView>
          </children>
@@ -46,7 +46,7 @@
                   <Insets left="50.0" top="7.5" />
                </HBox.margin>
             </Button>
-            <Button fx:id="editarConcurso" mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" text="Editar">
+            <Button fx:id="editarConcurso" mnemonicParsing="false" onAction="#editarConcurso" prefHeight="25.0" prefWidth="85.0" text="Editar">
                <HBox.margin>
                   <Insets left="35.0" right="35.0" top="7.5" />
                </HBox.margin>

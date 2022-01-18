@@ -69,6 +69,8 @@ public class AdmDuenosController{
     private void switchToCrearDueno() throws IOException {
         App.setRoot("dueno");
     }
+    
+    
 
     @FXML
     private void switchToMenuPrincipal() throws IOException{
@@ -107,6 +109,7 @@ public class AdmDuenosController{
         VBox root = (VBox) fxmlLoader.load();
 
         ct.llenarCombo(Ciudad.cargarCiudades(App.pathCiudades));
+        
         ct.llenarCampos(d);
         App.changeRoot(root);
 

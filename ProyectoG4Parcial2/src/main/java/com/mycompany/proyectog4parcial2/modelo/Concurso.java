@@ -240,6 +240,9 @@ public class Concurso extends Sistema implements Serializable {
         mic1.add(lisMas.get(46));
         mic1.add(lisMas.get(9));
         mic1.add(lisMas.get(7));
+        gc1.add(lisMas.get(7));
+        mic1.add(lisMas.get(46));
+        mic1.add(lisMas.get(9));
         Concurso concun = new Concurso("Mas obediente", LocalDate.of(2021, 10, 14), LocalTime.of(8, 30), LocalDate.of(2021, 9, 14), LocalDate.of(2021, 10, 13), lisCiu.get(0), "parque Samanes", premios, auspiciantes.get(0), "Gato", Sistema.generarIdConcurso(), false, mic1, gc1);
         System.out.println(gc1);
         concurso.add(concun);
@@ -255,7 +258,7 @@ public class Concurso extends Sistema implements Serializable {
         gc2.add(lisMas.get(1).getNombre());
         gc2.add(lisMas.get(2).getNombre());
         gc2.add(lisMas.get(8).getNombre());
-        Concurso convig = new Concurso("Mas rapido", LocalDate.of(2021, 9, 5), LocalTime.of(11, 10), LocalDate.of(2021, 5, 10), LocalDate.of(2021, 9, 1), lisCiu.get(1), "parque Samanes", premios, auspiciantes.get(1), "Perro", Sistema.generarIdConcurso(), true, mic2, gc2);
+        Concurso convig = new Concurso("Mas rapido", LocalDate.of(2021, 9, 5), LocalTime.of(11, 10), LocalDate.of(2021, 5, 10), LocalDate.of(2021, 9, 1), lisCiu.get(1), "parque Samanes", premios, auspiciantes.get(1), "Perro", Sistema.generarIdConcurso(), false, mic2, gc2);
         concurso.add(convig);
         System.out.println(gc2);
 
@@ -269,7 +272,7 @@ public class Concurso extends Sistema implements Serializable {
         gc3.add(lisMas.get(3).getNombre());
         gc3.add(lisMas.get(10).getNombre());
         gc3.add(lisMas.get(24).getNombre());
-        Concurso con1 = new Concurso("Mejor Portado", LocalDate.of(2021, 9, 5), LocalTime.of(11, 10), LocalDate.of(2021, 5, 10), LocalDate.of(2021, 9, 1), lisCiu.get(2), "parque nacional cajas ", premios, auspiciantes.get(2), "Perro", Sistema.generarIdConcurso(), true, mic2, gc2);
+        Concurso con1 = new Concurso("Mejor Portado", LocalDate.of(2021, 9, 5), LocalTime.of(11, 10), LocalDate.of(2021, 5, 10), LocalDate.of(2021, 9, 1), lisCiu.get(2), "parque nacional cajas ", premios, auspiciantes.get(2), "Perro", Sistema.generarIdConcurso(), false, mic2, gc2);
         concurso.add(con1);
         System.out.println(gc2);
         FileWriter fichero = null;
@@ -366,18 +369,16 @@ public class Concurso extends Sistema implements Serializable {
                     nlg.addAll(Arrays.asList(ag));
 // inicia con elmcdigo el archivo
                     //("Mas rapido", LocalDate.of(2021, 9, 5), LocalTime.of(11, 10), LocalDate.of(2021, 5, 10), LocalDate.of(2021, 9, 1), lisCiu.get(1), "parque Samanes", premios, auspiciantes.get(1), "Perro", Sistema.generarIdConcurso(), true, mic2, gc2);                    
-                    Concurso d = new Concurso(datos[1], fecha1, hora, fecha2, fecha3, ciu, datos[7], premio, nau, datos[10], datos[0], Boolean.parseBoolean(datos[11]), masl,nlg);
+                    Concurso d = new Concurso(datos[1], fecha1, hora, fecha2, fecha3, ciu, datos[7], premio, nau, datos[10], datos[0], Boolean.parseBoolean(datos[11]), masl, nlg);
                     //System.out.println(d);
                     liscon.add(d);
                     line = br.readLine();
                 }
             }
-            
+
         } catch (IOException e) {
             e.printStackTrace();
-        } 
+        }
         return liscon;
     }
-        }
-
-    
+}

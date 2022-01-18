@@ -8,11 +8,13 @@ package com.mycompany.proyectog4parcial2;
 import java.io.IOException;
 import com.mycompany.proyectog4parcial2.modelo.*;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.VBox;
 import utils.Correo;
 
 /**
@@ -50,16 +52,19 @@ public class AdConcursoController {
     private Button enviarCorreo;
     @FXML
     private Button menuP;
-@FXML
-    public void initialize(){
-       
+
+    @FXML
+    public void initialize() {
+
         colCod.setCellValueFactory(new PropertyValueFactory<>("codigo"));
         colNombres.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         colFecha.setCellValueFactory(new PropertyValueFactory<>("fechaEvento"));
         colCiudad.setCellValueFactory(new PropertyValueFactory<>("ciudad"));
-        //colCorreo.setCellValueFactory(new PropertyValueFactory<>("email"));
-        
-        adConcurso.getItems().setAll(Concurso.cargarArchivo(App.pathConcurso));    }    
+        colCorreo.setCellValueFactory(new PropertyValueFactory<>("concursoAbierto"));
+
+        adConcurso.getItems().setAll(Concurso.cargarArchivo(App.pathConcurso));
+    }
+
     @FXML
     private void switchToMenuPrincipal() throws IOException {
         App.setRoot("menu");
@@ -86,5 +91,39 @@ public class AdConcursoController {
         alert.showAndWait();///
 
         System.out.println("Correo enviado!");
+    }
+
+    @FXML
+    private void mostrarVentana() throws IOException {
+        //App.setRoot("nuevo");
+        //se carga el fxml de nueva ventana
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("editarConcurso.fxml"));//no tiene el controlador especificado
+        editarConcursoController ct = new editarConcursoController();
+
+        fxmlLoader.setController(ct);//se asigna el controlador
+
+        VBox root = (VBox) fxmlLoader.load();
+        //luego que el fxml ha sido cargado puedo utilizar el controlador para realizar cambios
+        ct.llenarCombo(Ciudad.cargarCiudades(App.pathCiudades));
+        ct.llenarComboa(Auspiciante.generarAus());
+        ct.llenarCombod();
+        App.changeRoot(root);
+    }
+
+    @FXML
+    private void editarConcurso() throws IOException {
+        Concurso d = (Concurso) adConcurso.getSelectionModel().getSelectedItem();
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("editarConcurso.fxml"));//no tiene el controlador especificado
+        editarConcursoController ct = new editarConcursoController();
+
+        fxmlLoader.setController(ct);//se asigna el controlador
+
+        VBox root = (VBox) fxmlLoader.load();
+        ct.llenarCombod();
+        ct.llenarCombo(Ciudad.cargarCiudades(App.pathCiudades));
+        ct.llenarComboa(Auspiciante.generarAus());
+        ct.llenarCampos(d);
+        App.changeRoot(root);
+
     }
 }
