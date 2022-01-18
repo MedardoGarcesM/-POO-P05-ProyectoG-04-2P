@@ -10,7 +10,6 @@ com\mycompany\proyectog4parcial2\EditarCiudadController.class
 com\mycompany\proyectog4parcial2\GUIStarter.class
 com\mycompany\proyectog4parcial2\EditarMascotaController.class
 module-info.class
-com\mycompany\proyectog4parcial2\AdConcursoController.class
 com\mycompany\proyectog4parcial2\modelo\Auspiciante.class
 com\mycompany\proyectog4parcial2\CiudadController.class
 com\mycompany\proyectog4parcial2\EditarDuenoController.class

@@ -254,10 +254,7 @@ public class AdConcursoController {
     }
 
    
-      @FXML
-    private void consultarM(ActionEvent event) {
 
-    }
      private void mostrarVentana1() throws IOException {
         //App.setRoot("nuevo");
         //se carga el fxml de nueva ventana
@@ -284,5 +281,30 @@ public class AdConcursoController {
         App.changeRoot(root);
 
     }
+       private void mostrarVentana2() throws IOException {
+        //App.setRoot("nuevo");
+        //se carga el fxml de nueva ventana
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("mascotaInscrita.fxml"));//no tiene el controlador especificado
+        MascotaInscritaController ct = new MascotaInscritaController();
+
+        fxmlLoader.setController(ct);//se asigna el controlador
+
+        VBox root = (VBox) fxmlLoader.load();
+        //luego que el fxml ha sido cargado puedo utilizar el controlador para realizar cambios
+        
+        App.changeRoot(root);
+    }
+        @FXML
+       private void consultarM() throws IOException {
+        Concurso d = (Concurso) adConcurso.getSelectionModel().getSelectedItem();
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("mascotaInscrita.fxml"));//no tiene el controlador especificado
+        MascotaInscritaController ct = new MascotaInscritaController();
+
+        fxmlLoader.setController(ct);//se asigna el controlador
+
+        VBox root = (VBox) fxmlLoader.load();
+        ct.llenarCampo(d);
+        App.changeRoot(root);}
+       
 
 }
