@@ -176,12 +176,62 @@ public class ConcursoController {
 
             for(Concurso b:concursos){
                 String premios="";
+                int contPremios=0;
                 for(String prem:b.getPremios()){
-                    premios=premios+prem+",";
+                    if(contPremios!=(b.getPremios().length-1)){
+                        premios=premios+prem+",";
+                    }else{
+                        premios=premios+prem;
+                    }
+                    contPremios++;
+                }
+
+                //Generacion de ids de mascotas para poder sobreescribir al archivo concurso
+                ArrayList<String> listIdMascotasIns = new ArrayList<>();
+                for(Mascota mi:b.getMascotasInscri()){
+                    listIdMascotasIns.add(mi.getId());
+                }
+                //Para que aparezca sin los corchetes generamos un String con todos los ids
+                String mascotasInscrip="";
+                int contMasIns=0;
+                for(String id:listIdMascotasIns){
+                    if(contMasIns!=(listIdMascotasIns.size()-1)){
+                        mascotasInscrip=mascotasInscrip+id+",";
+                    }else{
+                        mascotasInscrip=mascotasInscrip+id;
+                    }
+                    contMasIns++;
+                }
+
+
+                //Generacion de ids de mascotas ganadoras para poder sobreescribir al archivo concurso
+                ArrayList<String> listIdMascotasGan = new ArrayList<>();
+                for(Mascota mascIns:b.getMascotasInscri()){
+                    for(String mascGan:b.getGanadores()){
+                        if(mascGan.equals(mascIns.getNombre())){
+                            listIdMascotasGan.add(mascIns.getId());                                
+                        }
+                    }
+                }
+                //Para que aparezca sin los corchetes generamos un String con todos los ids
+                String mascotasGanadoras="";
+                int contgan=0;
+                for(String idg:listIdMascotasGan){
+                    if(contgan!=(listIdMascotasGan.size()-1)){
+                        mascotasGanadoras=mascotasGanadoras+idg+",";
+                    }else{
+                        mascotasGanadoras=mascotasGanadoras+idg;
+                    }
+                    contgan++;
                 }
                 //Mascota(String id,String nombre, String tipoMascota, String raza, String fechaNacimiento, String foto, Dueno dueno)
-                bufferedWriter.write(b.getCodigo() + ";" + b.getNombre() + ";" + b.getFechaEvento() + ";" + b.getHoraEvento() + ";" + b.getFechaInicioInscripción() + ";" + b.getFechaCierreInscripción() + ";" + b.getCiudad() + ";" + b.getLugar() + ";" + premios + ";" + b.getAuspiciantes() + ";" + b.getDirigido() + ";" + b.isConcursoAbierto() + ";" + b.getMascotasInscri() + ";" + b.getGanadores());
-                bufferedWriter.newLine(); 
+                if(b.getMascotasInscri().size()!=0){
+                    bufferedWriter.write(b.getCodigo() + ";" + b.getNombre() + ";" + b.getFechaEvento() + ";" + b.getHoraEvento() + ";" + b.getFechaInicioInscripción() + ";" + b.getFechaCierreInscripción() + ";" + b.getCiudad() + ";" + b.getLugar() + ";" + premios + ";" + b.getAuspiciantes() + ";" + b.getDirigido() + ";" + b.isConcursoAbierto() + ";" + mascotasInscrip + ";" +mascotasGanadoras);
+                }else{
+                    bufferedWriter.write(b.getCodigo() + ";" + b.getNombre() + ";" + b.getFechaEvento() + ";" + b.getHoraEvento() + ";" + b.getFechaInicioInscripción() + ";" + b.getFechaCierreInscripción() + ";" + b.getCiudad() + ";" + b.getLugar() + ";" + premios + ";" + b.getAuspiciantes() + ";" + b.getDirigido() + ";" + b.isConcursoAbierto() + ";" + "0,0" + ";" +"0,0");
+                }
+                bufferedWriter.newLine();
+                 
             }
 
 
@@ -196,29 +246,6 @@ public class ConcursoController {
         }catch (IOException e) {
             e.printStackTrace();
         }
-        /*try {
-            //"src/main/resources/"+
-            FileWriter writer = new FileWriter(App.pathConcurso,true);//true significa que escribe al final del archivo
-            BufferedWriter bufferedWriter = new BufferedWriter(writer);
-            
-                //(String cedula, String nombres, String apellidos, String direccion, String telefono, Ciudad ciudad, String email)
-                bufferedWriter.write(pos+ ";" + CCnombre.getText() + ";" + CCfechaA.getValue() + ";" + hora + ";" + CCinicioInscripcion.getValue() + ";" + CCcierreInscripcion.getValue() + ";" + (Ciudad) CCciudad.getValue() + ";" + CClugar.getText() + ";" + premio.toString() + ";" + aaa.getNombreA() + ";" + CCDirigidoa.getValue() + ";" + true + ";" + mas + ";" + gana);
-               // bufferedWriter.write(b.getCodigo() + ";" + b.getNombre() + ";" + b.getFechaEvento() + ";" + b.getHoraEvento() + ";" + b.getFechaInicioInscripción() + ";" + b.getFechaCierreInscripción() + ";" + b.getCiudad() + ";" + b.getLugar() + ";" + b.getPremios() + ";" + b.getAuspiciantes() + ";" + b.getDirigido() + ";" + true + ";" + b.getMascotasInscri() + ";" + b.getGanadores());
-                bufferedWriter.newLine();
-            
-            bufferedWriter.close();
-
-            //mostrar informacion
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Mensaje de confirmacion");
-            alert.setHeaderText("Resultado de la operacion");
-            alert.setContentText("Nuevo Concurso agregado correctamente");
-
-            alert.showAndWait();
-            App.setRoot("admConcurso");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
 
     }
 }
