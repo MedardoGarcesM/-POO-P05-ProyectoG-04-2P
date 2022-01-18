@@ -11,6 +11,7 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Optional;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
@@ -57,8 +58,11 @@ public class AdConcursoController {
     private Button enviarCorreo;
     @FXML
     private Button menuP;
-
     @FXML
+    private Button botonAnaPartici;
+    @FXML
+    private Button botonEditarGana;
+
     public void initialize() {
 
         colCod.setCellValueFactory(new PropertyValueFactory<>("codigo"));
@@ -80,7 +84,6 @@ public class AdConcursoController {
         App.setRoot("concurso");
     }
 
-    @FXML
     private void probarCorreo() {
         System.out.println("Enviar correo");
         String destinatario = "mjmoyano@espol.edu.ec";//agregar a todos los usuarios tipo dueño
@@ -98,7 +101,6 @@ public class AdConcursoController {
         System.out.println("Correo enviado!");
     }
 
-    @FXML
     private void mostrarVentana() throws IOException {
         //App.setRoot("nuevo");
         //se carga el fxml de nueva ventana
@@ -193,5 +195,13 @@ public class AdConcursoController {
             // ... user chose CANCEL or closed the
             System.out.println(concursos.get(posicion)+" no fue eliminado");
         }
+    }
+
+    @FXML
+    private void anadirParticipantes(ActionEvent event) {
+    }
+
+    @FXML
+    private void editarGanadores(ActionEvent event) {
     }
 }

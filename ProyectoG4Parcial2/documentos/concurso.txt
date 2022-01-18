@@ -1,4 +1,3 @@
-1;Mas obediente;2021-10-14;08:30;2021-09-14;2021-10-13;Guayaquil;parque Samanes;1500,750,500,;Dog Chow;Gato;false;[Chato, Harpo, Harry, Hayki, Henko, Hiru];[Chato, Hayki, Henko]
-2;Mas rapido;2021-09-05;11:10;2021-05-10;2021-09-01;Quito;parque Samanes;1500,750,500,;Pronaca;Perro;false;[Chester, Henko, Chico, Chino, Siva];[Chester, Chino]
-3;Mejor Portado;2021-09-05;11:10;2021-05-10;2021-09-01;Cuenca;parque nacional cajas;1500,750,500,;Austrovet;Perro;false;[Chato, Chaval, Hiru, Chiri, Simi, Nil, Toque, Pelu];[Hiru, Chiri, Pelu]
-4;aaa;2022-01-31;18:30;2022-01-01;2022-01-19;Quito;udhbudhd;5,4,3,;Austrovet;Gato;true;[];[]
+1;Mas obediente;2021-10-14;08:30;2021-09-14;2021-10-13;Guayaquil;parque Samanes;1500,750,500;Dog Chow;Gato;false;30,2,3,5,7,9,15;7,9,2
+2;Mas rapido;2021-09-05;11:10;2021-05-10;2021-09-01;Quito;parque Samanes;1500,750,500;Pronaca;Perro;false;8,9,10,12,30,35;30,12,8
+3;Mejor Portado;2021-09-05;11:10;2021-05-10;2021-09-01;Cuenca;parque nacional cajas;1500,750,500;Austrovet;Perro;false;58,55,20,23,24,15,2,4;58,20,15

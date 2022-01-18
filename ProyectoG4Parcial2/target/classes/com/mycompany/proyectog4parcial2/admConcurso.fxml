@@ -10,14 +10,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="288.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyectog4parcial2.AdConcursoController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="339.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyectog4parcial2.AdConcursoController">
    <children>
       <Label alignment="CENTER" text="Administrar  Concurso">
          <font>
-            <Font name="System Bold" size="14.0" />
+            <Font name="System Bold" size="17.0" />
          </font>
          <VBox.margin>
-            <Insets left="200.0" top="5.0" />
+            <Insets left="225.0" top="10.0" />
          </VBox.margin>
       </Label>
       <FlowPane prefHeight="200.0" prefWidth="200.0">
@@ -30,18 +30,18 @@
                   <Insets />
                </opaqueInsets>
                <columns>
-                  <TableColumn fx:id="colCod" prefWidth="152.0" text="Codigo" />
-                  <TableColumn fx:id="colNombres" prefWidth="125.0" text="Nombre" />
-                  <TableColumn fx:id="colFecha" prefWidth="57.0" style="-fx-alignment: CENTER;" text="Fecha" />
-                  <TableColumn fx:id="colCiudad" prefWidth="72.0" style="-fx-alignment: CENTER;" text="Ciudad" />
-                  <TableColumn fx:id="colCorreo" prefWidth="114.0" text="Abierto" />
+                  <TableColumn fx:id="colCod" prefWidth="74.0" text="Codigo" />
+                  <TableColumn fx:id="colNombres" prefWidth="113.0" text="Nombre" />
+                  <TableColumn fx:id="colFecha" prefWidth="98.0" style="-fx-alignment: CENTER;" text="Fecha" />
+                  <TableColumn fx:id="colCiudad" prefWidth="147.0" style="-fx-alignment: CENTER;" text="Ciudad" />
+                  <TableColumn fx:id="colCorreo" prefWidth="88.0" text="Abierto" />
                </columns>
             </TableView>
          </children>
       </FlowPane>
       <HBox prefHeight="42.0" prefWidth="600.0">
          <children>
-            <Button fx:id="crearconcursoadC" alignment="CENTER" mnemonicParsing="false" onAction="#switchToCrearConcurso" text="Crear Concurso">
+            <Button fx:id="crearconcursoadC" alignment="CENTER" mnemonicParsing="false" onAction="#switchToCrearConcurso" prefHeight="25.0" prefWidth="118.0" text="Crear Concurso">
                <HBox.margin>
                   <Insets left="50.0" top="7.5" />
                </HBox.margin>
@@ -51,25 +51,39 @@
                   <Insets left="35.0" right="35.0" top="7.5" />
                </HBox.margin>
             </Button>
-            <Button fx:id="elimConcurso" mnemonicParsing="false" onAction="#eliminarConcurso" prefHeight="25.0" prefWidth="96.0" text="Eliminar">
+            <Button fx:id="elimConcurso" mnemonicParsing="false" onAction="#eliminarConcurso" prefHeight="19.0" prefWidth="96.0" text="Eliminar">
                <HBox.margin>
                   <Insets right="35.0" top="7.5" />
                </HBox.margin>
             </Button>
-            <Button fx:id="enviarCorreo" mnemonicParsing="false" prefHeight="25.0" prefWidth="96.0" text="enviar correo">
+            <Button fx:id="enviarCorreo" mnemonicParsing="false" prefHeight="25.0" prefWidth="96.0" text="Enviar Correos">
                <HBox.margin>
                   <Insets right="20.0" top="10.0" />
-               </HBox.margin>
-            </Button>
-            <Button fx:id="menuP" mnemonicParsing="false" onAction="#switchToMenuPrincipal" text="Menu Principal">
-               <HBox.margin>
-                  <Insets right="35.0" top="7.5" />
                </HBox.margin>
             </Button>
          </children>
          <VBox.margin>
             <Insets />
          </VBox.margin>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Button fx:id="botonAnaPartici" mnemonicParsing="false" onAction="#anadirParticipantes" prefHeight="25.0" prefWidth="132.0" text="Añadir Participantes">
+               <HBox.margin>
+                  <Insets left="70.0" top="7.5" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="botonEditarGana" mnemonicParsing="false" onAction="#editarGanadores" prefHeight="25.0" prefWidth="120.0" text="Editar Ganadores">
+               <HBox.margin>
+                  <Insets left="35.0" right="35.0" top="7.5" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="menuP" mnemonicParsing="false" onAction="#switchToMenuPrincipal" prefHeight="25.0" prefWidth="105.0" text="Menu Principal">
+               <HBox.margin>
+                  <Insets right="35.0" top="7.5" />
+               </HBox.margin>
+            </Button>
+         </children>
       </HBox>
    </children>
 </VBox>
