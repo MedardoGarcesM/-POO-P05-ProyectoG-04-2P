@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\Medardo Garces\Desktop\proyecto 2p\-POO-P05-ProyectoG-04-2P\ProyectoG4Parcial2\src\main\java\Main\Extras.java
 C:\Users\Medardo Garces\Desktop\proyecto 2p\-POO-P05-ProyectoG-04-2P\ProyectoG4Parcial2\src\main\java\com\mycompany\proyectog4parcial2\AdmDuenosController.java
 C:\Users\Medardo Garces\Desktop\proyecto 2p\-POO-P05-ProyectoG-04-2P\ProyectoG4Parcial2\src\main\java\com\mycompany\proyectog4parcial2\modelo\Mascota.java
@@ -25,3 +26,37 @@ C:\Users\Medardo Garces\Desktop\proyecto 2p\-POO-P05-ProyectoG-04-2P\ProyectoG4P
 C:\Users\Medardo Garces\Desktop\proyecto 2p\-POO-P05-ProyectoG-04-2P\ProyectoG4Parcial2\src\main\java\com\mycompany\proyectog4parcial2\PremioController.java
 C:\Users\Medardo Garces\Desktop\proyecto 2p\-POO-P05-ProyectoG-04-2P\ProyectoG4Parcial2\src\main\java\com\mycompany\proyectog4parcial2\GUIStarter.java
 C:\Users\Medardo Garces\Desktop\proyecto 2p\-POO-P05-ProyectoG-04-2P\ProyectoG4Parcial2\src\main\java\com\mycompany\proyectog4parcial2\EditarDuenoController.java
+=======
+C:\Users\Medardo Garces\Desktop\PROYECTO FINAL\-POO-P05-ProyectoG-04-2P\ProyectoG4Parcial2\src\main\java\Main\Extras.java
+C:\Users\Medardo Garces\Desktop\PROYECTO FINAL\-POO-P05-ProyectoG-04-2P\ProyectoG4Parcial2\src\main\java\com\mycompany\proyectog4parcial2\detalleMascotaController.java
+C:\Users\Medardo Garces\Desktop\PROYECTO FINAL\-POO-P05-ProyectoG-04-2P\ProyectoG4Parcial2\src\main\java\com\mycompany\proyectog4parcial2\GUIStarter.java
+C:\Users\Medardo Garces\Desktop\PROYECTO FINAL\-POO-P05-ProyectoG-04-2P\ProyectoG4Parcial2\src\main\java\com\mycompany\proyectog4parcial2\AdmDuenosController.java
+C:\Users\Medardo Garces\Desktop\PROYECTO FINAL\-POO-P05-ProyectoG-04-2P\ProyectoG4Parcial2\src\main\java\com\mycompany\proyectog4parcial2\modelo\Auspiciante.java
+C:\Users\Medardo Garces\Desktop\PROYECTO FINAL\-POO-P05-ProyectoG-04-2P\ProyectoG4Parcial2\src\main\java\com\mycompany\proyectog4parcial2\CiudadController.java
+C:\Users\Medardo Garces\Desktop\PROYECTO FINAL\-POO-P05-ProyectoG-04-2P\ProyectoG4Parcial2\src\main\java\com\mycompany\proyectog4parcial2\ConsultarGanadoresController.java
+C:\Users\Medardo Garces\Desktop\PROYECTO FINAL\-POO-P05-ProyectoG-04-2P\ProyectoG4Parcial2\src\main\java\com\mycompany\proyectog4parcial2\AuspicianteController.java
+C:\Users\Medardo Garces\Desktop\PROYECTO FINAL\-POO-P05-ProyectoG-04-2P\ProyectoG4Parcial2\src\main\java\com\mycompany\proyectog4parcial2\modelo\Dueno.java
+C:\Users\Medardo Garces\Desktop\PROYECTO FINAL\-POO-P05-ProyectoG-04-2P\ProyectoG4Parcial2\src\main\java\utils\Correo.java
+C:\Users\Medardo Garces\Desktop\PROYECTO FINAL\-POO-P05-ProyectoG-04-2P\ProyectoG4Parcial2\src\main\java\Main\Main.java
+C:\Users\Medardo Garces\Desktop\PROYECTO FINAL\-POO-P05-ProyectoG-04-2P\ProyectoG4Parcial2\src\main\java\com\mycompany\proyectog4parcial2\modelo\Mascota.java
+C:\Users\Medardo Garces\Desktop\PROYECTO FINAL\-POO-P05-ProyectoG-04-2P\ProyectoG4Parcial2\src\main\java\com\mycompany\proyectog4parcial2\App.java
+C:\Users\Medardo Garces\Desktop\PROYECTO FINAL\-POO-P05-ProyectoG-04-2P\ProyectoG4Parcial2\src\main\java\com\mycompany\proyectog4parcial2\EditarCiudadController.java
+C:\Users\Medardo Garces\Desktop\PROYECTO FINAL\-POO-P05-ProyectoG-04-2P\ProyectoG4Parcial2\src\main\java\com\mycompany\proyectog4parcial2\EditarConcursoController.java
+C:\Users\Medardo Garces\Desktop\PROYECTO FINAL\-POO-P05-ProyectoG-04-2P\ProyectoG4Parcial2\src\main\java\com\mycompany\proyectog4parcial2\EditarAuspcianteController.java
+C:\Users\Medardo Garces\Desktop\PROYECTO FINAL\-POO-P05-ProyectoG-04-2P\ProyectoG4Parcial2\src\main\java\com\mycompany\proyectog4parcial2\AdmAuspicianteController.java
+C:\Users\Medardo Garces\Desktop\PROYECTO FINAL\-POO-P05-ProyectoG-04-2P\ProyectoG4Parcial2\src\main\java\com\mycompany\proyectog4parcial2\AdConcursoController.java
+C:\Users\Medardo Garces\Desktop\PROYECTO FINAL\-POO-P05-ProyectoG-04-2P\ProyectoG4Parcial2\src\main\java\com\mycompany\proyectog4parcial2\DuenoController.java
+C:\Users\Medardo Garces\Desktop\PROYECTO FINAL\-POO-P05-ProyectoG-04-2P\ProyectoG4Parcial2\src\main\java\com\mycompany\proyectog4parcial2\EditarMascotaController.java
+C:\Users\Medardo Garces\Desktop\PROYECTO FINAL\-POO-P05-ProyectoG-04-2P\ProyectoG4Parcial2\src\main\java\Main\Sistema.java
+C:\Users\Medardo Garces\Desktop\PROYECTO FINAL\-POO-P05-ProyectoG-04-2P\ProyectoG4Parcial2\src\main\java\com\mycompany\proyectog4parcial2\ConcursoController.java
+C:\Users\Medardo Garces\Desktop\PROYECTO FINAL\-POO-P05-ProyectoG-04-2P\ProyectoG4Parcial2\src\main\java\com\mycompany\proyectog4parcial2\modelo\Ciudad.java
+C:\Users\Medardo Garces\Desktop\PROYECTO FINAL\-POO-P05-ProyectoG-04-2P\ProyectoG4Parcial2\src\main\java\com\mycompany\proyectog4parcial2\MascotaController.java
+C:\Users\Medardo Garces\Desktop\PROYECTO FINAL\-POO-P05-ProyectoG-04-2P\ProyectoG4Parcial2\src\main\java\com\mycompany\proyectog4parcial2\AdmCiudadController.java
+C:\Users\Medardo Garces\Desktop\PROYECTO FINAL\-POO-P05-ProyectoG-04-2P\ProyectoG4Parcial2\src\main\java\com\mycompany\proyectog4parcial2\PremioController.java
+C:\Users\Medardo Garces\Desktop\PROYECTO FINAL\-POO-P05-ProyectoG-04-2P\ProyectoG4Parcial2\src\main\java\com\mycompany\proyectog4parcial2\EditarDuenoController.java
+C:\Users\Medardo Garces\Desktop\PROYECTO FINAL\-POO-P05-ProyectoG-04-2P\ProyectoG4Parcial2\src\main\java\com\mycompany\proyectog4parcial2\AdmMascotasController.java
+C:\Users\Medardo Garces\Desktop\PROYECTO FINAL\-POO-P05-ProyectoG-04-2P\ProyectoG4Parcial2\src\main\java\com\mycompany\proyectog4parcial2\MenuController.java
+C:\Users\Medardo Garces\Desktop\PROYECTO FINAL\-POO-P05-ProyectoG-04-2P\ProyectoG4Parcial2\src\main\java\com\mycompany\proyectog4parcial2\modelo\Concurso.java
+C:\Users\Medardo Garces\Desktop\PROYECTO FINAL\-POO-P05-ProyectoG-04-2P\ProyectoG4Parcial2\src\main\java\module-info.java
+C:\Users\Medardo Garces\Desktop\PROYECTO FINAL\-POO-P05-ProyectoG-04-2P\ProyectoG4Parcial2\src\main\java\com\mycompany\proyectog4parcial2\MascotaInscritaController.java
+>>>>>>> 1e311a7a600b72efe3ba267f5521ae774ec13702

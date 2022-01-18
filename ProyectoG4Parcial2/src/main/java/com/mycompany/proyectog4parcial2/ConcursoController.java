@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.StringTokenizer;
 import javafx.collections.ObservableList;
 import javafx.collections.*;
@@ -19,6 +20,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.Spinner;
@@ -29,10 +31,25 @@ public class ConcursoController {
 
     @FXML
     private ComboBox< String> CCDirigidoa;
+    @FXML
+    private Label lbs;
 
     @FXML
-    private TextField CCnombre;
+    private Label lbp;
+    @FXML
+    private Label lbt;
 
+    @FXML
+    private TextField CCs;
+
+    @FXML
+    private TextField CCt;
+    @FXML
+    private TextField CCp;
+    @FXML
+    private TextField CCnombre;
+    @FXML
+    private DatePicker CCfechaA;
     @FXML
     private TextField CChora;
 
@@ -54,8 +71,6 @@ public class ConcursoController {
 
     @FXML
     private SplitMenuButton CCPremiosLugar;
-    @FXML
-    private TextField CCcod;
 
     @FXML
     private MenuButton CCPremioDescripcion;
@@ -87,29 +102,11 @@ public class ConcursoController {
         CCDirigidoa.getItems().setAll(items);
 
 // Setea a los auspiciantes recorriendo la lista de auspiciantes
-        for (Auspiciante a : Auspiciante.generarAus()) {
+        for (Auspiciante a : Auspiciante.cargarAuspiciantes(App.pathAuspiciantes)) {
             CCAuspiciantes.getItems().addAll(a.getNombreA());
-            MenuItem A1 = new MenuItem(a.getNombreA());
-            CCPremiosAuspiciantes.getItems().add(A1);
+
         }
 
-//Setea los premios
-        MenuItem m1 = new MenuItem("Primer lugar");
-        MenuItem m2 = new MenuItem("Segundo lugar");
-        MenuItem m3 = new MenuItem("Tercer lugar");
-        CCPremiosLugar.getItems().add(m1);
-        CCPremiosLugar.getItems().add(m2);
-        CCPremiosLugar.getItems().add(m3);
-
-        // setea la descricion
-        MenuItem n1 = new MenuItem("$1500");
-        MenuItem n2 = new MenuItem("$750");
-        MenuItem n3 = new MenuItem("$500");
-        CCPremioDescripcion.getItems().add(n1);
-        CCPremioDescripcion.getItems().add(n2);
-        CCPremioDescripcion.getItems().add(n3);
-
-        // setea los auspiciantes
     }
 
     @FXML
@@ -133,14 +130,15 @@ public class ConcursoController {
     @FXML
     private void guardarConcurso() {
         int posicion = 0;
-        ArrayList<Concurso> concurso = Concurso.cargarArchivo(App.pathConcurso);//cargar la lista del archivo
+        ArrayList<Concurso> concursos = Concurso.cargarArchivo(App.pathConcurso);//cargar la lista del archivo
         ArrayList<Ciudad> lisCiu = Ciudad.cargarCiudades(App.pathCiudades);
         ArrayList<String> gana = new ArrayList<>();
         ArrayList<Mascota> mas = new ArrayList<>();
-        ArrayList<Auspiciante> auspiciante=Auspiciante.generarAus();
-        String[] premio = new String[]{CCPremiosLugar.getText(), CCPremioDescripcion.getText(), CCPremiosAuspiciantes.getText()};
+        ArrayList<Auspiciante> auspiciante = Auspiciante.cargarAuspiciantes(App.pathAuspiciantes);
+        String[] premio = new String[]{CCp.getText()+","+CCs.getText()+","+CCt.getText()};
         String[] st = CChora.getText().split(":");
         LocalTime hora = LocalTime.of(Integer.parseInt(st[0]), Integer.parseInt(st[1]));
+<<<<<<< HEAD
        for(Auspiciante a : auspiciante){
            if (CCAuspiciantes.getValue().toString().equals(a.getNombreA())){
                posicion=auspiciante.indexOf(a);
@@ -153,24 +151,130 @@ public class ConcursoController {
         concurso.add(c);
         System.out.println("nuevo concurso " + c);
 
+=======
+        
+        for (Auspiciante a : auspiciante) {
+            if (CCAuspiciantes.getValue().equals(a.getNombreA())) {
+                posicion = auspiciante.indexOf(a);
+            }
+        }
+        Auspiciante aaa = auspiciante.get(posicion);
+        
+        ArrayList<Integer> idC = new ArrayList<>();
+        for (Concurso a : concursos) {
+            idC.add((Integer) Integer.parseInt(a.getCodigo()));
+        }
+        String pos =String.valueOf(Collections.max(idC) + 1);
+        
+        System.out.println("Creando concurso");
+        /*String nombre, datos[1]
+        LocalDate fechaEvento, datos[2]
+        LocalTime horaEvento, datos[3]
+        LocalDate fechaInicioInscripción, datos[4]
+        LocalDate fechaCierreInscripción, datos[5]
+        Ciudad ciudad, datos[6]
+        String lugar, datos[7]
+        String[] premios, datos[8]
+        Auspiciante auspiciantes, datos[9] 
+        String dirigido, datos[10]
+        String codigo, datos[0]
+        boolean concursoAbierto, datos[11]
+        ArrayList<Mascota> mascotasInscri, datos[12] 
+        ArrayList<String> ganadores) datos[13]*/
+        Concurso c = new Concurso(CCnombre.getText(), CCfechaA.getValue(), hora, CCinicioInscripcion.getValue(), CCcierreInscripcion.getValue(), (Ciudad) CCciudad.getValue(), CClugar.getText(), premio, aaa, CCDirigidoa.getValue(), pos, true, mas, gana);
+        concursos.add(c);
+        //System.out.println("nuevo concurso " + c);
+>>>>>>> 1e311a7a600b72efe3ba267f5521ae774ec13702
         try {
-            FileWriter writer = new FileWriter("src/main/resources/"+App.pathConcurso, true);//true significa que escribe al final del archivo
+            //"src/main/resources/"+
+            FileWriter writer = new FileWriter(App.pathConcurso);//true significa que escribe al final del archivo
             BufferedWriter bufferedWriter = new BufferedWriter(writer);
 
+<<<<<<< HEAD
             //(String cedula, String nombres, String apellidos, String direccion, String telefono, Ciudad ciudad, String email)
             bufferedWriter.write(CCcod.getText()+";"+CCnombre.getText()+";"+ CCfechaEvento.getValue()+";"+ hora+";"+ CCinicioInscripcion.getValue()+";"+CCcierreInscripcion.getValue()+";"+ (Ciudad) CCciudad.getValue()+";"+ CClugar.getText()+";"+ premio+";"+ aaa.getNombreA().toString() +";"+ CCDirigidoa.getValue()+";"+ true+";"+ mas+";"+ gana);
             bufferedWriter.newLine();
+=======
+            for(Concurso b:concursos){
+                String premios="";
+                int contPremios=0;
+                for(String prem:b.getPremios()){
+                    if(contPremios!=(b.getPremios().length-1)){
+                        premios=premios+prem+",";
+                    }else{
+                        premios=premios+prem;
+                    }
+                    contPremios++;
+                }
 
-            bufferedWriter.close();
+                //Generacion de ids de mascotas para poder sobreescribir al archivo concurso
+                ArrayList<String> listIdMascotasIns = new ArrayList<>();
+                for(Mascota mi:b.getMascotasInscri()){
+                    listIdMascotasIns.add(mi.getId());
+                }
+                //Para que aparezca sin los corchetes generamos un String con todos los ids
+                String mascotasInscrip="";
+                int contMasIns=0;
+                for(String id:listIdMascotasIns){
+                    if(contMasIns!=(listIdMascotasIns.size()-1)){
+                        mascotasInscrip=mascotasInscrip+id+",";
+                    }else{
+                        mascotasInscrip=mascotasInscrip+id;
+                    }
+                    contMasIns++;
+                }
 
+
+                //Generacion de ids de mascotas ganadoras para poder sobreescribir al archivo concurso
+                ArrayList<String> listIdMascotasGan = new ArrayList<>();
+                for(Mascota mascIns:b.getMascotasInscri()){
+                    for(String mascGan:b.getGanadores()){
+                        if(mascGan.equals(mascIns.getNombre())){
+                            listIdMascotasGan.add(mascIns.getId());                                
+                        }
+                    }
+                }
+                //Para que aparezca sin los corchetes generamos un String con todos los ids
+                String mascotasGanadoras="";
+                int contgan=0;
+                for(String idg:listIdMascotasGan){
+                    if(contgan!=(listIdMascotasGan.size()-1)){
+                        mascotasGanadoras=mascotasGanadoras+idg+",";
+                    }else{
+                        mascotasGanadoras=mascotasGanadoras+idg;
+                    }
+                    contgan++;
+                }
+                //Mascota(String id,String nombre, String tipoMascota, String raza, String fechaNacimiento, String foto, Dueno dueno)
+                if(b.getMascotasInscri().size()!=0){
+                    bufferedWriter.write(b.getCodigo() + ";" + b.getNombre() + ";" + b.getFechaEvento() + ";" + b.getHoraEvento() + ";" + b.getFechaInicioInscripción() + ";" + b.getFechaCierreInscripción() + ";" + b.getCiudad() + ";" + b.getLugar() + ";" + premios + ";" + b.getAuspiciantes() + ";" + b.getDirigido() + ";" + b.isConcursoAbierto() + ";" + mascotasInscrip + ";" +mascotasGanadoras);
+                }else{
+                    bufferedWriter.write(b.getCodigo() + ";" + b.getNombre() + ";" + b.getFechaEvento() + ";" + b.getHoraEvento() + ";" + b.getFechaInicioInscripción() + ";" + b.getFechaCierreInscripción() + ";" + b.getCiudad() + ";" + b.getLugar() + ";" + premios + ";" + b.getAuspiciantes() + ";" + b.getDirigido() + ";" + b.isConcursoAbierto() + ";" + "0,0" + ";" +"0,0");
+                }
+                bufferedWriter.newLine();
+                 
+            }
+>>>>>>> 1e311a7a600b72efe3ba267f5521ae774ec13702
+
+
+<<<<<<< HEAD
             //mostrar informacion
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Mensaje de confirmacion");
             alert.setHeaderText("Resultado de la operacion");
             alert.setContentText("Nuevo Concurso agregado correctamente");
             alert.showAndWait();
+=======
+            bufferedWriter.close();
+            Alert conf = new Alert(Alert.AlertType.INFORMATION);
+            conf.setTitle("Mensaje de confirmacion");
+            conf.setHeaderText("Concurso agregado correctamente");
+            conf.showAndWait();            
+
+>>>>>>> 1e311a7a600b72efe3ba267f5521ae774ec13702
             App.setRoot("admConcurso");
-        } catch (IOException e) {
+
+        }catch (IOException e) {
             e.printStackTrace();
         }
 

@@ -308,10 +308,11 @@ public class Concurso extends Sistema implements Serializable {
         ArrayList<Ciudad> lisCiu = Ciudad.cargarCiudades(App.pathCiudades);
         ArrayList<Mascota> lismas = Mascota.cargarMascotas(App.pathMascotas);
         ArrayList<Concurso> liscon = new ArrayList<>();
-        ArrayList<Auspiciante> lisau = Auspiciante.generarAus();
+        ArrayList<Auspiciante> lisau = Auspiciante.cargarAuspiciantes(App.pathAuspiciantes);
 
-        InputStream input = Concurso.class.getClassLoader().getResourceAsStream(ruta);
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(input))) {
+        //InputStream input = Concurso.class.getClassLoader().getResourceAsStream(ruta);
+        //try (BufferedReader br = new BufferedReader(new InputStreamReader(input))) 
+        try (BufferedReader br = new BufferedReader(new FileReader(ruta))){
             String line = br.readLine();
             while (line != null) {
 
@@ -327,49 +328,101 @@ public class Concurso extends Sistema implements Serializable {
                     }
 
                     Ciudad ciu = lisCiu.get(posicion);
-
+                    /*1; 0
+                    Mas obediente; 1
+                    2021-10-14; 2
+                    08:30; 3
+                    2021-09-14; 4
+                    2021-10-13; 5
+                    Guayaquil; 6
+                    parque Samanes; 7
+                    primer lugar premio $1500, segundo lugar premio $750, tercer lugar premio $500; 8
+                    Dog Chow; 9
+                    Gato; 10
+                    false; 11
+                    [Max, Chaval, Hercules, Hércules, Wini, Pau, Chico, Chester, Pau, Chico]; 12
+                    [Chester] 13*/
+                    
+                    /*String nombre, datos[1]
+                    LocalDate fechaEvento, datos[2]
+                    LocalTime horaEvento, datos[3]
+                    LocalDate fechaInicioInscripción, datos[4]
+                    LocalDate fechaCierreInscripción, datos[5]
+                    Ciudad ciudad, datos[6]
+                    String lugar, datos[7]
+                    String[] premios, datos[8]
+                    Auspiciante auspiciantes, datos[9] 
+                    String dirigido, datos[10]
+                    String codigo, datos[0]
+                    boolean concursoAbierto, datos[11]
+                    ArrayList<Mascota> mascotasInscri, datos[12] 
+                    ArrayList<String> ganadores) datos[13]*/
+                    
+                    //Concurso abierto o cerrado
+                    boolean concursoAbiCerr;
+                    if(datos[11].equals("false")){
+                        concursoAbiCerr=false;
+                    }else{
+                        concursoAbiCerr=true;
+                    }
+                    
+                    // para el array de mascotas 
+                    String[] nm = datos[12].split(",");
+                    ArrayList<Mascota> listMascotasSelec = new ArrayList<>();
+                    for (Mascota m : lismas){
+                        for (int i = 0; i < nm.length; i++) {
+                            if (nm[i].equals(m.getId())) {
+                                posicion = lismas.indexOf(m);
+                                listMascotasSelec.add(lismas.get(lismas.indexOf(m)));
+                            }
+                            //Mascota masc = lismas.get(posicion);
+                            //listMascotasSelec.add(masc);
+                        }
+                    }
+                    
+                    // para el array de ganadores 
+                    String[] ag = datos[13].split(",");
+                    ArrayList<String> listMascotaGanadoras = new ArrayList<>();
+                    for (Mascota m : lismas){
+                        for (int e = 0; e < ag.length; e++) {
+                            if (ag[e].equals(m.getId())) {
+                                posicion = lismas.indexOf(m);
+                                listMascotaGanadoras.add(lismas.get(lismas.indexOf(m)).getNombre());
+                            }
+                        }
+                    }
+              
                     // conversion del string a array y posterior en local date y time 
                     String[] st = datos[2].split("-");
-                    LocalDate fecha1 = LocalDate.of(Integer.parseInt(st[0]), Integer.parseInt(st[1]), Integer.parseInt(st[2]));
+                    LocalDate fechaEven = LocalDate.of(Integer.parseInt(st[0]), Integer.parseInt(st[1]), Integer.parseInt(st[2]));
 
                     String[] hr = datos[3].split(":");
                     LocalTime hora = LocalTime.of(Integer.parseInt(hr[0]), Integer.parseInt(hr[1]));
 
                     String[] fa = datos[4].split("-");
-                    LocalDate fecha2 = LocalDate.of(Integer.parseInt(fa[0]), Integer.parseInt(fa[1]), Integer.parseInt(fa[2]));
+                    LocalDate fechaInIns = LocalDate.of(Integer.parseInt(fa[0]), Integer.parseInt(fa[1]), Integer.parseInt(fa[2]));
 
                     String[] fb = datos[5].split("-");
-                    LocalDate fecha3 = LocalDate.of(Integer.parseInt(fb[0]), Integer.parseInt(fb[1]), Integer.parseInt(fb[2]));
+                    LocalDate fechaCieIns = LocalDate.of(Integer.parseInt(fb[0]), Integer.parseInt(fb[1]), Integer.parseInt(fb[2]));
 
                     String[] premio = datos[8].split(",");
 // para los auspiciantes
-                    for (Auspiciante a : lisau) {
+                    for (Auspiciante a:lisau) {
                         if (datos[9].equals(a.getNombreA())) {
                             posicion = lisau.indexOf(a);
                         }
                     }
-                    Auspiciante nau = lisau.get(posicion);
-// para el array de mascotas 
-                    String[] nm = datos[12].split(",");
-                    ArrayList<Mascota> masl = new ArrayList<>();
-                    for (Mascota m : lismas) {
-                        for (int i = 0; i < nm.length; i++) {
-                            if (nm[i].equals(m.getNombre())) {
-                                posicion = lismas.indexOf(m);
-                            }
-                            Mascota masc = lismas.get(posicion);
-                            masl.add(masc);
+                    Auspiciante ausConcurso = lisau.get(posicion);
 
-                        }
-                    }
 
-// para el array de ganadores 
-                    String[] ag = datos[13].split(",");
-                    ArrayList<String> nlg = new ArrayList<>();
-                    nlg.addAll(Arrays.asList(ag));
+
 // inicia con elmcdigo el archivo
+<<<<<<< HEAD
                     //("Mas rapido", LocalDate.of(2021, 9, 5), LocalTime.of(11, 10), LocalDate.of(2021, 5, 10), LocalDate.of(2021, 9, 1), lisCiu.get(1), "parque Samanes", premios, auspiciantes.get(1), "Perro", Sistema.generarIdConcurso(), true, mic2, gc2);                    
                     Concurso d = new Concurso(datos[1], fecha1, hora, fecha2, fecha3, ciu, datos[7], premio, nau, datos[10], datos[0], Boolean.parseBoolean(datos[11]), masl, nlg);
+=======
+                    Concurso d = new Concurso(datos[1], fechaEven, hora, fechaInIns, fechaCieIns, ciu, datos[7], premio, ausConcurso, datos[10], datos[0],concursoAbiCerr,listMascotasSelec,listMascotaGanadoras);
+>>>>>>> 1e311a7a600b72efe3ba267f5521ae774ec13702
                     //System.out.println(d);
                     liscon.add(d);
                     line = br.readLine();
@@ -382,3 +435,8 @@ public class Concurso extends Sistema implements Serializable {
         return liscon;
     }
 }
+<<<<<<< HEAD
+=======
+
+    
+>>>>>>> 1e311a7a600b72efe3ba267f5521ae774ec13702

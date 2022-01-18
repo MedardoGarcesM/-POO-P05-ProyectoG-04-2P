@@ -15,6 +15,7 @@ import Main.Sistema;
 import static Main.Sistema.mascotas;
 import com.mycompany.proyectog4parcial2.App;
 import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -106,11 +107,10 @@ public class Mascota extends Sistema implements Comparable<Mascota>{
         
         int pos=0;
         ArrayList<Mascota> listaMascotas = new ArrayList<>();
-        InputStream input = Dueno.class.getClassLoader().getResourceAsStream(ruta);
+        //InputStream input = Dueno.class.getClassLoader().getResourceAsStream(ruta);
         ArrayList<Dueno> lisDue = Dueno.cargarDuenos(App.pathDuenos);
-
-        try(BufferedReader br = new BufferedReader(new InputStreamReader(input)))
-         {
+        //try(BufferedReader br = new BufferedReader(new InputStreamReader(input)))
+        try (BufferedReader br = new BufferedReader(new FileReader(ruta))){
             String line = br.readLine();
             while (line != null){
                 //System.out.println(line);

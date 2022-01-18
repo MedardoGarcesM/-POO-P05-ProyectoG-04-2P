@@ -1,5 +1,8 @@
 package com.mycompany.proyectog4parcial2;
 
+import com.mycompany.proyectog4parcial2.modelo.Concurso;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,10 +17,19 @@ import java.io.IOException;
 public class App extends Application {
 
     private static Scene scene;
+    /*
+    private static Scene scene;
     public static String pathDuenos="com/mycompany/proyectog4parcial2/files/duenos.csv";
     public static String pathCiudades="com/mycompany/proyectog4parcial2/files/ciudades.csv";
     public static String pathMascotas="com/mycompany/proyectog4parcial2/files/mascotas.csv";//com/mycompany/proyectog4parcial2/files/mascotas.csv
+    public static String pathAuspiciantes="com/mycompany/proyectog4parcial2/files/auspiciantes.csv";
     public static String pathConcurso="com/mycompany/proyectog4parcial2/files/concurso.txt";
+    */
+    public static String pathDuenos="documentos/duenos.csv";
+    public static String pathCiudades="documentos/ciudades.csv";
+    public static String pathMascotas="documentos/mascotas.csv";//com/mycompany/proyectog4parcial2/files/mascotas.csv
+    public static String pathAuspiciantes="documentos/auspiciantes.csv";
+    public static String pathConcurso="documentos/concurso.txt";
     public static String pathImg="ImagenesMascotas/";//
 
     @Override
@@ -38,7 +50,10 @@ public class App extends Application {
     }
     
     public static void main(String[] args) {
-        System.out.println("hola");
+        
+        for(Concurso con:Concurso.cargarArchivo(App.pathConcurso)){
+            System.out.println(con);
+        }
         launch();
     }
     

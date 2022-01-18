@@ -5,8 +5,6 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.SplitMenuButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -40,9 +38,10 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label text="Codigo" GridPane.rowIndex="10">
+                  <Label fx:id="lbs" text="Segundo Lugar" GridPane.rowIndex="10">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -90,7 +89,7 @@
                         <Insets left="150.0" />
                      </padding>
                   </Label>
-                  <Label text="Premios:" GridPane.rowIndex="9">
+                  <Label fx:id="lbp" text="Primer Lugar" GridPane.rowIndex="9">
                      <padding>
                         <Insets left="150.0" />
                      </padding>
@@ -104,17 +103,16 @@
                         <Insets />
                      </opaqueInsets>
                   </TextField>
-                  <TextField fx:id="CCcod" GridPane.columnIndex="1" GridPane.rowIndex="10">
-                     <GridPane.margin>
-                        <Insets right="140.0" />
-                     </GridPane.margin>
-                  </TextField>
                   <TextField fx:id="CClugar" prefHeight="25.0" prefWidth="83.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
                      <GridPane.margin>
                         <Insets right="140.0" />
                      </GridPane.margin>
                   </TextField>
+<<<<<<< HEAD
                   <DatePicker fx:id="CCfechaEvento" prefHeight="25.0" prefWidth="133.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+=======
+                  <DatePicker fx:id="CCfechaA" prefHeight="25.0" prefWidth="133.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+>>>>>>> 1e311a7a600b72efe3ba267f5521ae774ec13702
                      <GridPane.margin>
                         <Insets bottom="5.0" top="5.0" />
                      </GridPane.margin>
@@ -124,16 +122,9 @@
                   <ComboBox fx:id="CCciudad" prefHeight="25.0" prefWidth="134.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                   <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="9">
                      <children>
-                        <SplitMenuButton fx:id="CCPremiosLugar" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" text="Lugar" />
-                        <MenuButton fx:id="CCPremioDescripcion" mnemonicParsing="false" text="Descripcion" />
-                        <MenuButton fx:id="CCPremiosAuspiciantes" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" text="Auspiciante" />
+                        <TextField fx:id="CCp" prefHeight="25.0" prefWidth="271.0" />
                      </children>
                   </HBox>
-                  <Button fx:id="CCAñadirPremio" mnemonicParsing="false" onAction="#switchToAdmPremios" text="Añadir premio" GridPane.columnIndex="1" GridPane.rowIndex="10">
-                     <GridPane.margin>
-                        <Insets left="180.0" />
-                     </GridPane.margin>
-                  </Button>
                   <ComboBox fx:id="CCAuspiciantes" prefHeight="25.0" prefWidth="136.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
                   <TextField fx:id="CChora" layoutX="282.0" layoutY="35.0" prefHeight="25.0" prefWidth="178.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <opaqueInsets>
@@ -148,6 +139,16 @@
                         <Insets left="150.0" />
                      </padding>
                   </Label>
+                  <Label fx:id="lbt" layoutX="160.0" layoutY="245.0" text="Tercer Lugar" GridPane.rowIndex="11">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <GridPane.margin>
+                        <Insets left="150.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <TextField fx:id="CCs" prefHeight="25.0" prefWidth="181.0" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                  <TextField fx:id="CCt" layoutX="282.0" layoutY="241.0" prefHeight="25.0" prefWidth="181.0" GridPane.columnIndex="1" GridPane.rowIndex="11" />
                </children>
             </GridPane>
          </center>

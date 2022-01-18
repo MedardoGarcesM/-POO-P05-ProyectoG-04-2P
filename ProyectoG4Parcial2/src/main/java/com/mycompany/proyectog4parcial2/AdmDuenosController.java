@@ -9,6 +9,7 @@ package com.mycompany.proyectog4parcial2;
 import com.mycompany.proyectog4parcial2.modelo.Dueno;
 import com.mycompany.proyectog4parcial2.App;
 import com.mycompany.proyectog4parcial2.modelo.Ciudad;
+import com.mycompany.proyectog4parcial2.modelo.Concurso;
 import javafx.scene.control.Button;
 import java.io.IOException;
 import javafx.fxml.FXML;
@@ -228,5 +229,7 @@ public class AdmDuenosController{
             System.out.println(duenos.get(posicion)+" no fue eliminado");
         }
     }
+    
+   
 
 }

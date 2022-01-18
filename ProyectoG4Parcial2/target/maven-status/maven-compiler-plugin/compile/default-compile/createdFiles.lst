@@ -4,24 +4,31 @@ com\mycompany\proyectog4parcial2\detalleMascotaController.class
 com\mycompany\proyectog4parcial2\ConcursoController.class
 utils\Correo.class
 com\mycompany\proyectog4parcial2\DuenoController.class
+com\mycompany\proyectog4parcial2\AdmAuspicianteController.class
 com\mycompany\proyectog4parcial2\PremioController.class
 com\mycompany\proyectog4parcial2\EditarCiudadController.class
 com\mycompany\proyectog4parcial2\GUIStarter.class
 com\mycompany\proyectog4parcial2\EditarMascotaController.class
 module-info.class
-com\mycompany\proyectog4parcial2\AdConcursoController.class
 com\mycompany\proyectog4parcial2\modelo\Auspiciante.class
 com\mycompany\proyectog4parcial2\CiudadController.class
 com\mycompany\proyectog4parcial2\EditarDuenoController.class
 Main\Sistema.class
+<<<<<<< HEAD
 com\mycompany\proyectog4parcial2\editarConcursoController.class
+=======
+com\mycompany\proyectog4parcial2\AuspicianteController.class
+>>>>>>> 1e311a7a600b72efe3ba267f5521ae774ec13702
 com\mycompany\proyectog4parcial2\MenuController.class
 com\mycompany\proyectog4parcial2\App.class
 com\mycompany\proyectog4parcial2\AdmCiudadController.class
 com\mycompany\proyectog4parcial2\modelo\Concurso.class
 com\mycompany\proyectog4parcial2\modelo\Mascota.class
 Main\Main.class
+com\mycompany\proyectog4parcial2\ConsultarGanadoresController.class
 com\mycompany\proyectog4parcial2\AdmMascotasController.class
 com\mycompany\proyectog4parcial2\AdmDuenosController.class
 com\mycompany\proyectog4parcial2\MascotaController.class
 com\mycompany\proyectog4parcial2\modelo\Dueno.class
+com\mycompany\proyectog4parcial2\EditarConcursoController.class
+com\mycompany\proyectog4parcial2\EditarAuspcianteController.class

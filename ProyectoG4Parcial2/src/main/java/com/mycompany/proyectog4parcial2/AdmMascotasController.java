@@ -165,7 +165,8 @@ public class AdmMascotasController{
             //duenos.remove(posicion);
             System.out.println(mascotas.remove(posicion)+" fue eliminado");
             try {
-                FileWriter writer = new FileWriter("src/main/resources/"+App.pathMascotas);//true significa que escribe al final del archivo
+                //"src/main/resources/"+
+                FileWriter writer = new FileWriter(App.pathMascotas);//true significa que escribe al final del archivo
                 BufferedWriter bufferedWriter = new BufferedWriter(writer);
                 
                 for(Mascota m1:mascotas){
