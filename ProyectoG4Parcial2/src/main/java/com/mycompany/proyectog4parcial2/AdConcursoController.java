@@ -256,9 +256,7 @@ public class AdConcursoController {
         }
     }
 
-    @FXML
-    private void anadirParticipantes(ActionEvent event) {
-    }
+    
 
    
 
@@ -320,4 +318,30 @@ public class AdConcursoController {
         App.changeRoot(root);}
        
 
+    // ventana para agregar concursantes
+    private void mostrarVentana3() throws IOException {
+        //App.setRoot("nuevo");
+        //se carga el fxml de nueva ventana
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("agregarMascota.fxml"));//no tiene el controlador especificado
+        AgregarMascotaController ct = new AgregarMascotaController();
+
+        fxmlLoader.setController(ct);//se asigna el controlador
+
+        VBox root = (VBox) fxmlLoader.load();
+        //luego que el fxml ha sido cargado puedo utilizar el controlador para realizar cambios
+
+        App.changeRoot(root);
+    }
+
+    @FXML
+    private void anadirParticipantes() throws IOException {
+        Concurso d = (Concurso) adConcurso.getSelectionModel().getSelectedItem();
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("agregarMascota.fxml"));//no tiene el controlador especificado
+        AgregarMascotaController ct = new AgregarMascotaController();
+        fxmlLoader.setController(ct);//se asigna el controlador
+
+        VBox root = (VBox) fxmlLoader.load();
+        ct.campos();
+        App.changeRoot(root);
+    }
 }
