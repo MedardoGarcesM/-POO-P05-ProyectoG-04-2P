@@ -120,9 +120,9 @@ public class EditarMascotaController{
         razaM.setText(m.getRaza());
         NombreM.setText(m.getNombre());
         String[] fecha = m.getFechaNacimiento().replace("-", "/").split("/");
-        int anio = Integer.parseInt(fecha[0]);
+        int anio = Integer.parseInt(fecha[2]);
         int mes = Integer.parseInt(fecha[1]);
-        int dia = Integer.parseInt(fecha[2]);
+        int dia = Integer.parseInt(fecha[0]);
         LocalDate.of(anio, mes, dia);
         nacimientoM.setValue(LocalDate.of(anio, mes, dia));
         dueñoM.setValue(m.getDueno());
