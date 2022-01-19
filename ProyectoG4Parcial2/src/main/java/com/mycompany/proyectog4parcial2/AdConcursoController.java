@@ -9,6 +9,7 @@ import java.io.IOException;
 import com.mycompany.proyectog4parcial2.modelo.*;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Optional;
 import javafx.event.ActionEvent;
@@ -122,6 +123,8 @@ public class AdConcursoController {
     @FXML
     private void editarConcurso() throws IOException {
         Concurso d = (Concurso) adConcurso.getSelectionModel().getSelectedItem();
+        LocalDate fechac = LocalDate.of(2022, 01, 01);
+        if (d.getFechaEvento().compareTo(fechac) > 0) {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("editarConcurso.fxml"));//no tiene el controlador especificado
         EditarConcursoController ct = new EditarConcursoController();
 
@@ -133,6 +136,10 @@ public class AdConcursoController {
         ct.llenarComboa(Auspiciante.cargarAuspiciantes(App.pathAuspiciantes));
         ct.llenarCampos(d);
         App.changeRoot(root);
+        } else{
+            App.mostrarAlerta(Alert.AlertType.ERROR, "CONCURSO TERMINADO, NO SE PUEDEN EDITAR LOS DATOS");
+            
+        }
 
     }
 
@@ -270,7 +277,11 @@ public class AdConcursoController {
     }
      @FXML
        private void consultarGanadores() throws IOException {
+        //Si el concurso ya ha finalizado se deberá poder consultar la lista de ganadores.
+        // menor a 0 primera fecha es anterior a segunda fecha
+        LocalDate fechac = LocalDate.of(2022, 01, 01);
         Concurso d = (Concurso) adConcurso.getSelectionModel().getSelectedItem();
+        if (d.getFechaEvento().compareTo(fechac) < 0) {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("consultarGanadores.fxml"));//no tiene el controlador especificado
         ConsultarGanadoresController ct = new ConsultarGanadoresController();
 
@@ -279,7 +290,9 @@ public class AdConcursoController {
         VBox root = (VBox) fxmlLoader.load();
         ct.llenarCampo(d);
         App.changeRoot(root);
-
+        }else {
+            App.mostrarAlerta(Alert.AlertType.ERROR, "EL CONCURSO AUN NO ACABA, NO SE PUEDEN MOSTRAR GANADORES");
+        }
     }
        private void mostrarVentana2() throws IOException {
         //App.setRoot("nuevo");
