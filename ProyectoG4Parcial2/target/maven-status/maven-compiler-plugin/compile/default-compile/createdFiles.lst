@@ -14,11 +14,7 @@ com\mycompany\proyectog4parcial2\modelo\Auspiciante.class
 com\mycompany\proyectog4parcial2\CiudadController.class
 com\mycompany\proyectog4parcial2\EditarDuenoController.class
 Main\Sistema.class
-<<<<<<< HEAD
-com\mycompany\proyectog4parcial2\editarConcursoController.class
-=======
 com\mycompany\proyectog4parcial2\AuspicianteController.class
->>>>>>> 1e311a7a600b72efe3ba267f5521ae774ec13702
 com\mycompany\proyectog4parcial2\MenuController.class
 com\mycompany\proyectog4parcial2\App.class
 com\mycompany\proyectog4parcial2\AdmCiudadController.class

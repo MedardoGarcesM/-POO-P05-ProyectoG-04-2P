@@ -60,16 +60,11 @@ public class AdConcursoController {
     private Button enviarCorreo;
     @FXML
     private Button menuP;
-<<<<<<< HEAD
-
-    @FXML
-=======
     @FXML
     private Button botonAnaPartici;
     @FXML
     private Button botonEditarGana;
 
->>>>>>> 1e311a7a600b72efe3ba267f5521ae774ec13702
     public void initialize() {
 
         colCod.setCellValueFactory(new PropertyValueFactory<>("codigo"));
@@ -108,30 +103,18 @@ public class AdConcursoController {
         System.out.println("Correo enviado!");
     }
 
-<<<<<<< HEAD
-    @FXML
-=======
->>>>>>> 1e311a7a600b72efe3ba267f5521ae774ec13702
     private void mostrarVentana() throws IOException {
         //App.setRoot("nuevo");
         //se carga el fxml de nueva ventana
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("editarConcurso.fxml"));//no tiene el controlador especificado
-<<<<<<< HEAD
-        editarConcursoController ct = new editarConcursoController();
-=======
         EditarConcursoController ct = new EditarConcursoController();
->>>>>>> 1e311a7a600b72efe3ba267f5521ae774ec13702
 
         fxmlLoader.setController(ct);//se asigna el controlador
 
         VBox root = (VBox) fxmlLoader.load();
         //luego que el fxml ha sido cargado puedo utilizar el controlador para realizar cambios
         ct.llenarCombo(Ciudad.cargarCiudades(App.pathCiudades));
-<<<<<<< HEAD
-        ct.llenarComboa(Auspiciante.generarAus());
-=======
         ct.llenarComboa(Auspiciante.cargarAuspiciantes(App.pathAuspiciantes));
->>>>>>> 1e311a7a600b72efe3ba267f5521ae774ec13702
         ct.llenarCombod();
         App.changeRoot(root);
     }
@@ -140,28 +123,18 @@ public class AdConcursoController {
     private void editarConcurso() throws IOException {
         Concurso d = (Concurso) adConcurso.getSelectionModel().getSelectedItem();
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("editarConcurso.fxml"));//no tiene el controlador especificado
-<<<<<<< HEAD
-        editarConcursoController ct = new editarConcursoController();
-=======
         EditarConcursoController ct = new EditarConcursoController();
->>>>>>> 1e311a7a600b72efe3ba267f5521ae774ec13702
 
         fxmlLoader.setController(ct);//se asigna el controlador
 
         VBox root = (VBox) fxmlLoader.load();
         ct.llenarCombod();
         ct.llenarCombo(Ciudad.cargarCiudades(App.pathCiudades));
-<<<<<<< HEAD
-        ct.llenarComboa(Auspiciante.generarAus());
-=======
         ct.llenarComboa(Auspiciante.cargarAuspiciantes(App.pathAuspiciantes));
->>>>>>> 1e311a7a600b72efe3ba267f5521ae774ec13702
         ct.llenarCampos(d);
         App.changeRoot(root);
 
     }
-<<<<<<< HEAD
-=======
 
     @FXML
     private void eliminarConcurso() throws IOException {
@@ -334,5 +307,4 @@ public class AdConcursoController {
         App.changeRoot(root);}
        
 
->>>>>>> 1e311a7a600b72efe3ba267f5521ae774ec13702
 }

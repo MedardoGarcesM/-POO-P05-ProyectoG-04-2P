@@ -30,19 +30,11 @@
                   <Insets />
                </opaqueInsets>
                <columns>
-<<<<<<< HEAD
-                  <TableColumn fx:id="colCod" prefWidth="152.0" text="Codigo" />
-                  <TableColumn fx:id="colNombres" prefWidth="125.0" text="Nombre" />
-                  <TableColumn fx:id="colFecha" prefWidth="57.0" style="-fx-alignment: CENTER;" text="Fecha" />
-                  <TableColumn fx:id="colCiudad" prefWidth="72.0" style="-fx-alignment: CENTER;" text="Ciudad" />
-                  <TableColumn fx:id="colCorreo" prefWidth="114.0" text="Abierto" />
-=======
                   <TableColumn fx:id="colCod" prefWidth="74.0" text="Codigo" />
                   <TableColumn fx:id="colNombres" prefWidth="113.0" text="Nombre" />
                   <TableColumn fx:id="colFecha" prefWidth="98.0" style="-fx-alignment: CENTER;" text="Fecha" />
                   <TableColumn fx:id="colCiudad" prefWidth="147.0" style="-fx-alignment: CENTER;" text="Ciudad" />
                   <TableColumn fx:id="colCorreo" prefWidth="88.0" text="Abierto" />
->>>>>>> 1e311a7a600b72efe3ba267f5521ae774ec13702
                </columns>
             </TableView>
          </children>

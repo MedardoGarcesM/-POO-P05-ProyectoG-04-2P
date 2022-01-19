@@ -5,14 +5,8 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<<<<<<< HEAD
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.SplitMenuButton?>
-<?import javafx.scene.control.TextField?>
-=======
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
->>>>>>> 1e311a7a600b72efe3ba267f5521ae774ec13702
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
@@ -20,14 +14,10 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<<<<<<< HEAD
-<VBox prefHeight="351.0" prefWidth="508.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
-=======
 <VBox alignment="CENTER" prefHeight="383.0" prefWidth="584.0" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
    </padding>
->>>>>>> 1e311a7a600b72efe3ba267f5521ae774ec13702
    <children>
       <HBox prefHeight="45.0" prefWidth="319.0">
          <children>
@@ -46,131 +36,6 @@
             </TextField>
          </children>
       </HBox>
-<<<<<<< HEAD
-      <GridPane prefHeight="282.0" prefWidth="276.0">
-         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         </rowConstraints>
-         <children>
-            <Label text="Fecha:" GridPane.rowIndex="2">
-               <padding>
-                  <Insets left="150.0" />
-               </padding>
-            </Label>
-            <Label text="Hora:" GridPane.rowIndex="3">
-               <padding>
-                  <Insets left="150.0" />
-               </padding>
-            </Label>
-            <Label text="Nombre:" GridPane.rowIndex="1">
-               <padding>
-                  <Insets left="150.0" />
-               </padding>
-            </Label>
-            <Label text="Inicio Inscripcion:" GridPane.rowIndex="4">
-               <padding>
-                  <Insets left="150.0" />
-               </padding>
-            </Label>
-            <Label text="Cierre Inscripcion:" GridPane.rowIndex="5">
-               <padding>
-                  <Insets left="150.0" />
-               </padding>
-            </Label>
-            <Label text="Ciudad:" GridPane.rowIndex="6">
-               <padding>
-                  <Insets left="150.0" />
-               </padding>
-            </Label>
-            <Label text="Lugar:" GridPane.rowIndex="7">
-               <padding>
-                  <Insets left="150.0" />
-               </padding>
-            </Label>
-            <Label text="Auspiciantes:" GridPane.rowIndex="8">
-               <padding>
-                  <Insets left="150.0" />
-               </padding>
-            </Label>
-            <Label text="Premios:" GridPane.rowIndex="9">
-               <padding>
-                  <Insets left="150.0" />
-               </padding>
-            </Label>
-            <ComboBox fx:id="CCDirigidoa" prefHeight="25.0" prefWidth="133.0" GridPane.columnIndex="1" />
-            <TextField fx:id="CCnombre" prefHeight="25.0" prefWidth="136.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <GridPane.margin>
-                  <Insets right="140.0" />
-               </GridPane.margin>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-            </TextField>
-            <TextField fx:id="CClugar" prefHeight="25.0" prefWidth="83.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
-               <GridPane.margin>
-                  <Insets right="140.0" />
-               </GridPane.margin>
-            </TextField>
-            <DatePicker fx:id="CCfechaEvento" prefHeight="25.0" prefWidth="133.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
-               <GridPane.margin>
-                  <Insets bottom="5.0" top="5.0" />
-               </GridPane.margin>
-            </DatePicker>
-            <DatePicker fx:id="CCinicioInscripcion" prefHeight="25.0" prefWidth="134.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <DatePicker fx:id="CCcierreInscripcion" prefHeight="25.0" prefWidth="134.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <ComboBox fx:id="CCciudad" prefHeight="25.0" prefWidth="134.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="9">
-               <children>
-                  <SplitMenuButton fx:id="CCPremiosLugar" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" text="Lugar" />
-                  <MenuButton fx:id="CCPremioDescripcion" mnemonicParsing="false" text="Descripcion" />
-                  <MenuButton fx:id="CCPremiosAuspiciantes" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" text="Auspiciante" />
-               </children>
-            </HBox>
-            <ComboBox fx:id="CCAuspiciantes" prefHeight="25.0" prefWidth="136.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-            <TextField fx:id="CChora" layoutX="282.0" layoutY="35.0" prefHeight="25.0" prefWidth="178.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <GridPane.margin>
-                  <Insets right="140.0" />
-               </GridPane.margin>
-            </TextField>
-            <Label layoutX="10.0" layoutY="242.0" text="Dirigido A:">
-               <padding>
-                  <Insets left="150.0" />
-               </padding>
-            </Label>
-         </children>
-      </GridPane>
-      <HBox prefHeight="64.0" prefWidth="600.0">
-         <children>
-            <Button fx:id="btguardar" mnemonicParsing="false" onAction="#guardarEdicion" prefHeight="25.0" prefWidth="71.0" text="Guardar">
-               <HBox.margin>
-                  <Insets left="150.0" top="10.0" />
-               </HBox.margin>
-            </Button>
-            <Button fx:id="btcancel" mnemonicParsing="false" onAction="#switchToAdmDueno" prefHeight="25.0" prefWidth="73.0" text="Cancelar">
-               <HBox.margin>
-                  <Insets left="50.0" right="50.0" top="10.0" />
-               </HBox.margin>
-            </Button>
-         </children>
-      </HBox>
-=======
       <BorderPane prefHeight="347.0" prefWidth="276.0">
          <center>
             <GridPane prefHeight="282.0" prefWidth="276.0" BorderPane.alignment="CENTER">
@@ -318,6 +183,5 @@
             </HBox>
          </bottom>
       </BorderPane>
->>>>>>> 1e311a7a600b72efe3ba267f5521ae774ec13702
    </children>
 </VBox>

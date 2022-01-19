@@ -55,8 +55,7 @@ public class ConcursoController {
 
     @FXML
     private TextField CClugar;
-  @FXML
-    private DatePicker CCfechaEvento;
+
     @FXML
     private DatePicker CCinicioInscripcion;
 
@@ -138,20 +137,6 @@ public class ConcursoController {
         String[] premio = new String[]{CCp.getText()+","+CCs.getText()+","+CCt.getText()};
         String[] st = CChora.getText().split(":");
         LocalTime hora = LocalTime.of(Integer.parseInt(st[0]), Integer.parseInt(st[1]));
-<<<<<<< HEAD
-       for(Auspiciante a : auspiciante){
-           if (CCAuspiciantes.getValue().toString().equals(a.getNombreA())){
-               posicion=auspiciante.indexOf(a);
-           }
-       }Auspiciante aaa = auspiciante.get(posicion);
-
-        System.out.println("Creando concurso");
-        //Concurso(String nombre, LocalDate fechaEvento, LocalTime horaEvento, LocalDate fechaInicioInscripción, LocalDate fechaCierreInscripción, Ciudad ciudad, String lugar, String[] premios, Auspiciante auspiciantes, String dirigido, String codigo, boolean concursoAbierto, ArrayList<Mascota> mascotasInscri, ArrayList<String> ganadores)
-        Concurso c = new Concurso(CCnombre.getText(), CCfechaEvento.getValue(), hora, CCinicioInscripcion.getValue(), CCcierreInscripcion.getValue(), (Ciudad) CCciudad.getValue(), CClugar.getText(), premio, aaa, CCDirigidoa.getValue(), CCcod.getText(), true, mas, gana);
-        concurso.add(c);
-        System.out.println("nuevo concurso " + c);
-
-=======
         
         for (Auspiciante a : auspiciante) {
             if (CCAuspiciantes.getValue().equals(a.getNombreA())) {
@@ -184,17 +169,11 @@ public class ConcursoController {
         Concurso c = new Concurso(CCnombre.getText(), CCfechaA.getValue(), hora, CCinicioInscripcion.getValue(), CCcierreInscripcion.getValue(), (Ciudad) CCciudad.getValue(), CClugar.getText(), premio, aaa, CCDirigidoa.getValue(), pos, true, mas, gana);
         concursos.add(c);
         //System.out.println("nuevo concurso " + c);
->>>>>>> 1e311a7a600b72efe3ba267f5521ae774ec13702
         try {
             //"src/main/resources/"+
             FileWriter writer = new FileWriter(App.pathConcurso);//true significa que escribe al final del archivo
             BufferedWriter bufferedWriter = new BufferedWriter(writer);
 
-<<<<<<< HEAD
-            //(String cedula, String nombres, String apellidos, String direccion, String telefono, Ciudad ciudad, String email)
-            bufferedWriter.write(CCcod.getText()+";"+CCnombre.getText()+";"+ CCfechaEvento.getValue()+";"+ hora+";"+ CCinicioInscripcion.getValue()+";"+CCcierreInscripcion.getValue()+";"+ (Ciudad) CCciudad.getValue()+";"+ CClugar.getText()+";"+ premio+";"+ aaa.getNombreA().toString() +";"+ CCDirigidoa.getValue()+";"+ true+";"+ mas+";"+ gana);
-            bufferedWriter.newLine();
-=======
             for(Concurso b:concursos){
                 String premios="";
                 int contPremios=0;
@@ -254,24 +233,14 @@ public class ConcursoController {
                 bufferedWriter.newLine();
                  
             }
->>>>>>> 1e311a7a600b72efe3ba267f5521ae774ec13702
 
 
-<<<<<<< HEAD
-            //mostrar informacion
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Mensaje de confirmacion");
-            alert.setHeaderText("Resultado de la operacion");
-            alert.setContentText("Nuevo Concurso agregado correctamente");
-            alert.showAndWait();
-=======
             bufferedWriter.close();
             Alert conf = new Alert(Alert.AlertType.INFORMATION);
             conf.setTitle("Mensaje de confirmacion");
             conf.setHeaderText("Concurso agregado correctamente");
             conf.showAndWait();            
 
->>>>>>> 1e311a7a600b72efe3ba267f5521ae774ec13702
             App.setRoot("admConcurso");
 
         }catch (IOException e) {
