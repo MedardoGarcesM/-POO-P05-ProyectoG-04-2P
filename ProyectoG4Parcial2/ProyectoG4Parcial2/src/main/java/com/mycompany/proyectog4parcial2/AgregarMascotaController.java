@@ -196,7 +196,7 @@ public class AgregarMascotaController {
     }
 
     public void llenartxt(Concurso c) {
-
+        txtCodigo.setEditable(false);
         txtCodigo.setText(c.getCodigo());
     }
 }

@@ -88,44 +88,55 @@ public class DuenoController{
         int posicion=0;
         ArrayList<Dueno> duenos = Dueno.cargarDuenos(App.pathDuenos);//cargar la lista del archivo
         ArrayList<Ciudad> lisCiu = Ciudad.cargarCiudades(App.pathCiudades);
+        int verfCedula=0;
      
-        System.out.println("Editando dueno");
+        
         //Dueno(String cedula, String nombres, String apellidos, String direccion, String telefono, Ciudad ciudad, String email)
         Dueno d = new Dueno(txtCedula.getText(), txtNom.getText(), txtApelli.getText(), txtDirecc.getText(), txtTelefono.getText(),(Ciudad) cmbCiudad.getValue(), txtEmail.getText());
-        duenos.add(d);//agregar empleado a la lista
-        System.out.println("Nuevo dueno:" + d);
         
-        
-        try {
-            //"src/main/resources/"+
-            FileWriter writer = new FileWriter(App.pathDuenos);//true significa que escribe al final del archivo
-            BufferedWriter bufferedWriter = new BufferedWriter(writer);
-            
-            for(Dueno m:duenos){
-                for(Ciudad c:lisCiu){
-                    if(m.getCiudad().getNombreC().equals(c.getNombreC())){
-                        posicion=lisCiu.indexOf(c);
-                    }
-                }
-                Ciudad ciu = lisCiu.get(posicion);
-                //(String cedula, String nombres, String apellidos, String direccion, String telefono, Ciudad ciudad, String email)
-                bufferedWriter.write(m.getCedula()+","+m.getApellidos()+","+m.getNombres()+","+m.getDireccion()+","+m.getTelefono()+","+ciu+","+m.getEmail());
-                bufferedWriter.newLine(); 
+        for(Dueno p: duenos){
+            if(p.getCedula().equals(d.getCedula())){
+                verfCedula++;
             }
-            bufferedWriter.close();
-            
-            //mostrar informacion
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Mensaje de confirmacion");
-            alert.setHeaderText("Resultado de la operacion");
-            alert.setContentText("Nuevo dueno agregado correctamente");
-
-            alert.showAndWait();
-            App.setRoot("admDuenos");
-        } catch (IOException e) {
-            e.printStackTrace();
         }
+        if(verfCedula==0){
+            duenos.add(d);
+            try {
+                //"src/main/resources/"+
+                FileWriter writer = new FileWriter(App.pathDuenos);//true significa que escribe al final del archivo
+                BufferedWriter bufferedWriter = new BufferedWriter(writer);
 
+                for(Dueno m:duenos){
+                    for(Ciudad c:lisCiu){
+                        if(m.getCiudad().getNombreC().equals(c.getNombreC())){
+                            posicion=lisCiu.indexOf(c);
+                        }
+                    }
+                    Ciudad ciu = lisCiu.get(posicion);
+                    //(String cedula, String nombres, String apellidos, String direccion, String telefono, Ciudad ciudad, String email)
+                    bufferedWriter.write(m.getCedula()+","+m.getApellidos()+","+m.getNombres()+","+m.getDireccion()+","+m.getTelefono()+","+ciu+","+m.getEmail());
+                    bufferedWriter.newLine(); 
+                }
+                bufferedWriter.close();
+
+                //mostrar informacion
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Mensaje de confirmacion");
+                alert.setHeaderText("Resultado de la operacion");
+                alert.setContentText("Nuevo dueno agregado correctamente");
+
+                alert.showAndWait();
+                App.setRoot("admDuenos");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }else{
+            Alert alert2 = new Alert(Alert.AlertType.ERROR);
+            alert2.setTitle("Mensaje de confirmacion");
+            alert2.setHeaderText("Resultado de la operacion");
+            alert2.setContentText("La cedula le pertenece a otro dueño");
+
+            alert2.showAndWait();
+        }
     }
-    
 }
