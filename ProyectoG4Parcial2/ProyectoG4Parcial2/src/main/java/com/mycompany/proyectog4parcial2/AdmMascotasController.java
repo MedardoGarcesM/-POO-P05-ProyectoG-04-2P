@@ -60,6 +60,8 @@ public class AdmMascotasController{
     private Button elimMascota;
     @FXML
     private ImageView imagMasco;
+    @FXML
+    private Button botonDetalleMas;
 
     @FXML
     private void switchToMascota() throws IOException {
@@ -70,6 +72,12 @@ public class AdmMascotasController{
     private void switchToMenuPrincipal() throws IOException{
         App.setRoot("menu");
     }
+    
+    /*
+    @FXML
+    private void switchToDetalleMascota() throws IOException{
+        App.setRoot("detalleMascota");
+    }*/
     
     public void initialize(){
         colCodigo.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -200,7 +208,6 @@ public class AdmMascotasController{
     }
     
    
-    @FXML
     private void mostrarVentana() throws IOException {
         //App.setRoot("nuevo");
         //se carga el fxml de nueva ventana
@@ -226,6 +233,33 @@ public class AdmMascotasController{
         VBox root = (VBox) fxmlLoader.load(); 
 
         dt.llenarComboM(Dueno.cargarDuenos (App.pathDuenos));
+        dt.llenarCamposM(m);
+        App.changeRoot(root);
+
+    }
+    
+    private void mostrarVentanaDetalleMascota() throws IOException {
+        //App.setRoot("nuevo");
+        //se carga el fxml de nueva ventana
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("detalleMascota.fxml"));//no tiene el controlador especificado
+        DetalleMascotaController ct2 = new DetalleMascotaController();
+
+        fxmlLoader.setController(ct2);//se asigna el controlador
+
+        VBox root = (VBox) fxmlLoader.load();
+        App.changeRoot(root);
+    }
+    
+    @FXML
+    private void switchToDetalleMascota() throws IOException {
+        Mascota m = (Mascota) adMascota.getSelectionModel().getSelectedItem();
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("detalleMascota.fxml"));//no tiene el controlador especificado
+        DetalleMascotaController dt = new DetalleMascotaController();
+
+        fxmlLoader.setController(dt);//se asigna el controlador
+
+        VBox root = (VBox) fxmlLoader.load(); 
+
         dt.llenarCamposM(m);
         App.changeRoot(root);
 

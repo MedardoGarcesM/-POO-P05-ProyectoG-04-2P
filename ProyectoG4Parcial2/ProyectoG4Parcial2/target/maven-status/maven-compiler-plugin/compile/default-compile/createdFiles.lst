@@ -1,6 +1,5 @@
 Main\Extras.class
 com\mycompany\proyectog4parcial2\modelo\Ciudad.class
-com\mycompany\proyectog4parcial2\detalleMascotaController.class
 com\mycompany\proyectog4parcial2\ConcursoController.class
 utils\Correo.class
 com\mycompany\proyectog4parcial2\DuenoController.class
@@ -21,6 +20,7 @@ com\mycompany\proyectog4parcial2\MenuController.class
 com\mycompany\proyectog4parcial2\App.class
 com\mycompany\proyectog4parcial2\AdmCiudadController.class
 com\mycompany\proyectog4parcial2\modelo\Concurso.class
+com\mycompany\proyectog4parcial2\DetalleMascotaController.class
 com\mycompany\proyectog4parcial2\modelo\Mascota.class
 Main\Main.class
 com\mycompany\proyectog4parcial2\ConsultarGanadoresController.class

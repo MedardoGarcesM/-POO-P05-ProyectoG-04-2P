@@ -5,81 +5,77 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="219.0" prefWidth="588.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyectog4parcial2.detalleMascotaController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="238.0" prefWidth="540.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <BorderPane prefHeight="400.0" prefWidth="610.0">
-         <top>
-            <Label alignment="CENTER" text="Detalle de mascota" BorderPane.alignment="CENTER">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Label>
-         </top>
-         <bottom>
-            <HBox alignment="CENTER" prefHeight="39.0" prefWidth="596.0" BorderPane.alignment="CENTER">
-               <children>
-                  <Button fx:id="regresarDetalleMascota" mnemonicParsing="false" onAction="#switchToMascota" text="Regresar">
-                     <HBox.margin>
-                        <Insets left="20.0" />
-                     </HBox.margin>
-                  </Button>
-               </children>
-            </HBox>
-         </bottom>
-         <center>
-            <GridPane prefHeight="154.0" prefWidth="386.0" BorderPane.alignment="CENTER">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <Label text="Detalle Mascota">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <VBox.margin>
+            <Insets left="200.0" top="10.0" />
+         </VBox.margin>
+      </Label>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <GridPane prefHeight="145.0" prefWidth="291.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="141.0" minWidth="10.0" prefWidth="120.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="174.0" minWidth="10.0" prefWidth="171.0" />
+               </columnConstraints>
+               <rowConstraints>
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
                <children>
-                  <Label text="Nombre:">
+                  <Label text="Nombre">
                      <GridPane.margin>
-                        <Insets left="50.0" />
+                        <Insets left="35.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label text="Fecha de nacimiento:" GridPane.rowIndex="1">
+                  <Label text="Nacimiento" GridPane.rowIndex="1">
                      <GridPane.margin>
-                        <Insets left="50.0" />
+                        <Insets left="35.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label text="Raza:" GridPane.rowIndex="2">
+                  <Label text="Raza" GridPane.rowIndex="2">
                      <GridPane.margin>
-                        <Insets left="50.0" />
+                        <Insets left="35.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label text="Dueño:" GridPane.rowIndex="3">
+                  <Label text="Dueno" GridPane.rowIndex="3">
                      <GridPane.margin>
-                        <Insets left="50.0" />
+                        <Insets left="35.0" />
                      </GridPane.margin>
                   </Label>
-                  <TextField fx:id="nombreDetalleM" GridPane.columnIndex="1" />
-                  <TextField fx:id="nacimientoDetalleM" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <TextField fx:id="razaDetalleM" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <TextField fx:id="dueñoDetalleM" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <TextField fx:id="txtNombre" GridPane.columnIndex="1" />
+                  <TextField fx:id="txtNacimiento" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="txtRaza" prefHeight="25.0" prefWidth="176.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField fx:id="txtDueno" prefHeight="25.0" prefWidth="117.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                </children>
+               <HBox.margin>
+                  <Insets left="30.0" top="10.0" />
+               </HBox.margin>
             </GridPane>
-         </center>
-         <right>
-            <ImageView fx:id="ivFotoMascota" fitHeight="139.0" fitWidth="153.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
-               <BorderPane.margin>
-                  <Insets left="20.0" right="20.0" />
-               </BorderPane.margin>
+            <ImageView fx:id="imagenMascota" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <HBox.margin>
+                  <Insets left="10.0" top="5.0" />
+               </HBox.margin>
             </ImageView>
-         </right>
-      </BorderPane>
+         </children>
+      </HBox>
+      <Button fx:id="botonRegresar" mnemonicParsing="false" onAction="#switchToAdmMascota" text="Regresar">
+         <VBox.margin>
+            <Insets left="235.0" top="10.0" />
+         </VBox.margin>
+      </Button>
    </children>
-</HBox>
+</VBox>
