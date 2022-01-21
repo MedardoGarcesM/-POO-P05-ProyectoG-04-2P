@@ -1,7 +1,6 @@
 Main\Extras.class
 com\mycompany\proyectog4parcial2\modelo\Ciudad.class
 com\mycompany\proyectog4parcial2\ConcursoController.class
-utils\Correo.class
 com\mycompany\proyectog4parcial2\DuenoController.class
 com\mycompany\proyectog4parcial2\AdmAuspicianteController.class
 com\mycompany\proyectog4parcial2\PremioController.class

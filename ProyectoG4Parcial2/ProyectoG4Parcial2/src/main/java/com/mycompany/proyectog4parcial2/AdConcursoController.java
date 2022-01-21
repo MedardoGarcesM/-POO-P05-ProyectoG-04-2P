@@ -12,6 +12,7 @@ import java.io.FileWriter;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Optional;
+import java.util.Properties;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,7 +23,12 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
-import utils.Correo;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 /**
  * FXML Controller class
@@ -35,7 +41,7 @@ public class AdConcursoController {
      * Initializes the controller class.
      */
     @FXML
-    private TableView<Concurso> adConcurso;
+    TableView<Concurso> adConcurso;
 
     @FXML
     private TableColumn<Concurso, String> colCod;
@@ -85,23 +91,6 @@ public class AdConcursoController {
     @FXML
     private void switchToCrearConcurso() throws IOException {
         App.setRoot("concurso");
-    }
-
-    private void probarCorreo() {
-        System.out.println("Enviar correo");
-        String destinatario = "mjmoyano@espol.edu.ec";//agregar a todos los usuarios tipo dueño
-        String asunto = "Invitacion a un nuevo concurso";
-        String cuerpo = "Cuerpo de email.  Saludos";
-        Correo.enviarCorreo(destinatario, asunto, cuerpo);
-
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);//mostrar informacion sobre el correo a enviar
-        alert.setTitle("Informacion del correo");
-        alert.setHeaderText("Enviar correo");
-        alert.setContentText("Enviando correo....");
-        alert.setContentText("Correo enviado!");
-        alert.showAndWait();///
-
-        System.out.println("Correo enviado!");
     }
 
     private void mostrarVentana() throws IOException {
@@ -348,5 +337,118 @@ public class AdConcursoController {
         ct.campos();
         ct.llenartxt(d);
         App.changeRoot(root);
+    }
+    
+    @FXML
+    public void probarCorreo() {
+        Concurso concursoCorreo = (Concurso) adConcurso.getSelectionModel().getSelectedItem();
+        ArrayList<Dueno> duenos = Dueno.cargarDuenos(App.pathDuenos);
+        if(concursoCorreo.isConcursoAbierto()){
+            System.out.println("Enviar correo");
+            /*for(Dueno d:duenos){
+                String destinatario = d.getEmail();//agregar a todos los usuarios tipo dueño
+                String asunto = "Invitacion al concurso: "+concursoCorreo.getNombre();
+                String cuerpo = "Estimad@ "+d.getNombres()+" "+d.getApellidos()+" se lo invita a participar en el concurso "
+                                +concursoCorreo.getNombre()+" que se realizara el dia "+concursoCorreo.getFechaEvento()+" en la ciudad de "+concursoCorreo.getCiudad().getNombreC()+"."
+                                +"\nLe indicamos que tenga en consideracion los siguientes datos importantes: \n"
+                                +" \n   Fecha de inicio de inscripcion: "+concursoCorreo.getFechaInicioInscripción()
+                                +" \n   Fecha de cierre de inscripcion: "+concursoCorreo.getFechaCierreInscripción()
+                                +" \n   Lugar del concurso: "+concursoCorreo.getLugar().toUpperCase()
+                                +" \n   Concurso dirigido a: "+concursoCorreo.getDirigido().toLowerCase()+"s"
+                                +" \n   Premio al primer lugar: $"+concursoCorreo.getPremios()[0]
+                                +" \n   Premio al segundo lugar: $"+concursoCorreo.getPremios()[1]
+                                +" \n   Premio al tercer lugar: $"+concursoCorreo.getPremios()[2]
+                                +"\n\n"+
+                                "Agradecemos al auspiciante del concurso "+concursoCorreo.getAuspiciantes().getNombreA().toUpperCase()+"."
+                                +"\n\n"+
+                                concursoCorreo.getAuspiciantes().getNombreA().toUpperCase()+" telefono: "+concursoCorreo.getAuspiciantes().getTelefonoA()+", direccion: "+concursoCorreo.getAuspiciantes().getDireccionA()+"-"+concursoCorreo.getAuspiciantes().getCiudadA()
+                                +"\ncorreo electronico: "+concursoCorreo.getAuspiciantes().getEmailA()+", pagina web: "+concursoCorreo.getAuspiciantes().getWebPage();
+                Correo.enviarCorreo(destinatario, asunto, cuerpo);
+                Thread th = new Thread(new Correo());
+                th.start();
+            }*/
+            Thread th = new Thread(new CorreoDue());
+            th.start();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);//mostrar informacion sobre el correo a enviar
+            alert.setTitle("Informacion del correo");
+            alert.setHeaderText("Enviar correo");
+            alert.setContentText("Enviando correo....");
+            alert.setContentText("Correo enviado!");
+            alert.showAndWait();///
+
+            System.out.println("Correo enviado!");
+        }else{
+            Alert alert = new Alert(Alert.AlertType.ERROR);//mostrar informacion sobre el correo a enviar
+            alert.setTitle("Informacion del correo");
+            alert.setHeaderText("Enviar no enviado");
+            alert.setContentText("No se pueden enviar correos porque el concurso finalizo.");
+            alert.showAndWait();
+        }
+        
+    }
+    
+    class CorreoDue implements Runnable{        
+        
+        @Override
+        public void run() {
+            Concurso concursoCorreo = (Concurso) adConcurso.getSelectionModel().getSelectedItem();
+            ArrayList<Dueno> duenos = Dueno.cargarDuenos(App.pathDuenos);
+            for(Dueno d:duenos){
+                System.out.println("ENVIADO MUCHACHO");
+                String destinatario = d.getEmail();//agregar a todos los usuarios tipo dueño
+                String asunto = "Invitacion al concurso: "+concursoCorreo.getNombre();
+                String cuerpo = "Estimad@ "+d.getNombres()+" "+d.getApellidos()+" se lo invita a participar en el concurso "
+                                +concursoCorreo.getNombre()+" que se realizara el dia "+concursoCorreo.getFechaEvento()+" en la ciudad de "+concursoCorreo.getCiudad().getNombreC()+"."
+                                +"\nLe indicamos que tenga en consideracion los siguientes datos importantes: \n"
+                                +" \n   Fecha de inicio de inscripcion: "+concursoCorreo.getFechaInicioInscripción()
+                                +" \n   Fecha de cierre de inscripcion: "+concursoCorreo.getFechaCierreInscripción()
+                                +" \n   Lugar del concurso: "+concursoCorreo.getLugar().toUpperCase()
+                                +" \n   Concurso dirigido a: "+concursoCorreo.getDirigido().toLowerCase()+"s"
+                                +" \n   Premio al primer lugar: $"+concursoCorreo.getPremios()[0]
+                                +" \n   Premio al segundo lugar: $"+concursoCorreo.getPremios()[1]
+                                +" \n   Premio al tercer lugar: $"+concursoCorreo.getPremios()[2]
+                                +"\n\n"+
+                                "Agradecemos al auspiciante del concurso "+concursoCorreo.getAuspiciantes().getNombreA().toUpperCase()+"."
+                                +"\n\n"+
+                                concursoCorreo.getAuspiciantes().getNombreA().toUpperCase()+" telefono: "+concursoCorreo.getAuspiciantes().getTelefonoA()+", direccion: "+concursoCorreo.getAuspiciantes().getDireccionA()+"-"+concursoCorreo.getAuspiciantes().getCiudadA()
+                                +"\ncorreo electronico: "+concursoCorreo.getAuspiciantes().getEmailA()+", pagina web: "+concursoCorreo.getAuspiciantes().getWebPage();
+                enviarCorreo(destinatario, asunto, cuerpo);
+            }
+        }
+        
+        public static final String remitente = "pooespol@gmail.com";
+        public static final String clave = "FIEC_2022";
+
+        public void enviarCorreo(String destinatario, String asunto, String cuerpo) {
+        // Esto es lo que va delante de @gmail.com en tu cuenta de correo. Es el remitente también.
+
+            Properties props = System.getProperties();
+            props.put("mail.smtp.host", "smtp.gmail.com");  //El servidor SMTP de Google
+            props.put("mail.smtp.user", remitente);
+            props.put("mail.smtp.clave",clave);    //La clave de la cuenta
+            props.put("mail.smtp.auth", "true");    //Usar autenticación mediante usuario y clave
+            props.put("mail.smtp.starttls.enable", "true"); //Para conectar de manera segura al servidor SMTP
+            props.put("mail.smtp.port", "587"); //El puerto SMTP seguro de Google
+
+            Session session = Session.getDefaultInstance(props);
+            MimeMessage message = new MimeMessage(session);
+
+            try {
+                message.setFrom(new InternetAddress(remitente));
+                message.addRecipients(Message.RecipientType.TO, destinatario);
+
+
+                message.setSubject(asunto);
+                message.setText(cuerpo);
+                Transport transport = session.getTransport("smtp");
+                transport.connect("smtp.gmail.com", remitente, clave);
+                transport.sendMessage(message, message.getAllRecipients());
+                transport.close();
+            }
+            catch (MessagingException me) {
+                me.printStackTrace();   //Si se produce un error
+            }
+        }
+        
     }
 }

@@ -56,7 +56,7 @@
                   <Insets right="35.0" top="7.5" />
                </HBox.margin>
             </Button>
-            <Button fx:id="enviarCorreo" mnemonicParsing="false" prefHeight="25.0" prefWidth="96.0" text="Enviar Correos">
+            <Button fx:id="enviarCorreo" mnemonicParsing="false" onAction="#probarCorreo" prefHeight="25.0" prefWidth="96.0" text="Enviar Correos">
                <HBox.margin>
                   <Insets right="20.0" top="10.0" />
                </HBox.margin>
