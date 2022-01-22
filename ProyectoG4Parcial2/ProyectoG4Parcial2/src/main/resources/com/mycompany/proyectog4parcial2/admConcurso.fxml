@@ -5,24 +5,90 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="339.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyectog4parcial2.AdConcursoController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="408.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyectog4parcial2.AdConcursoController">
    <children>
-      <Label alignment="CENTER" text="Administrar  Concurso">
-         <font>
-            <Font name="System Bold" size="17.0" />
-         </font>
+      <HBox prefHeight="69.0" prefWidth="600.0">
+         <children>
+            <Label alignment="CENTER" text="Administrar  Concurso">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="100.0" right="100.0" top="15.0" />
+               </HBox.margin>
+            </Label>
+            <VBox prefHeight="55.0" prefWidth="215.0">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label text="Fecha del sistema:">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </Label>
+                        <TextField fx:id="txtFechaSistema" prefHeight="25.0" prefWidth="84.0">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin></TextField>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label text="Concurso:">
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </Label>
+                        <TextField fx:id="txtNomConcur" prefHeight="25.0" prefWidth="112.0">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin></TextField>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
          <VBox.margin>
-            <Insets left="225.0" top="10.0" />
+            <Insets top="10.0" />
          </VBox.margin>
-      </Label>
+      </HBox>
+      <HBox prefHeight="34.0" prefWidth="600.0">
+         <children>
+            <Label text="Fecha Cierre Inscripcion:">
+               <HBox.margin>
+                  <Insets left="85.0" />
+               </HBox.margin>
+            </Label>
+            <TextField fx:id="txtCierreIns" prefHeight="25.0" prefWidth="84.0">
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin></TextField>
+            <Label text="Fecha Inicio Inscripcion:">
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </Label>
+            <TextField fx:id="txtInicioIns" prefHeight="25.0" prefWidth="84.0">
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin></TextField>
+         </children>
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin>
+      </HBox>
       <FlowPane prefHeight="200.0" prefWidth="200.0">
          <children>
-            <TableView fx:id="adConcurso" prefHeight="200.0" prefWidth="535.0">
+            <TableView fx:id="adConcurso" onMouseClicked="#mostrarDetalles" prefHeight="200.0" prefWidth="535.0">
                <FlowPane.margin>
                   <Insets left="35.0" top="15.0" />
                </FlowPane.margin>
@@ -30,11 +96,12 @@
                   <Insets />
                </opaqueInsets>
                <columns>
-                  <TableColumn fx:id="colCod" prefWidth="74.0" text="Codigo" />
-                  <TableColumn fx:id="colNombres" prefWidth="113.0" text="Nombre" />
-                  <TableColumn fx:id="colFecha" prefWidth="98.0" style="-fx-alignment: CENTER;" text="Fecha" />
-                  <TableColumn fx:id="colCiudad" prefWidth="147.0" style="-fx-alignment: CENTER;" text="Ciudad" />
-                  <TableColumn fx:id="colCorreo" prefWidth="88.0" text="Abierto" />
+                  <TableColumn fx:id="colCod" prefWidth="68.0" text="Codigo" />
+                  <TableColumn fx:id="colNombres" prefWidth="108.0" text="Nombre" />
+                  <TableColumn fx:id="colFecha" prefWidth="89.0" style="-fx-alignment: CENTER;" text="Fecha" />
+                  <TableColumn fx:id="colCiudad" prefWidth="103.0" style="-fx-alignment: CENTER;" text="Ciudad" />
+                  <TableColumn fx:id="colCorreo" prefWidth="77.0" text="Abierto" />
+                  <TableColumn fx:id="colDirigido" prefWidth="77.0" text="Dirigido" />
                </columns>
             </TableView>
          </children>

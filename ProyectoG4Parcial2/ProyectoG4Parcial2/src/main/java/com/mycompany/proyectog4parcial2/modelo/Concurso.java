@@ -20,6 +20,7 @@ import java.util.Collections;
 public class Concurso extends Sistema implements Serializable {
 
     private static int idausp = 1;
+    public static final LocalDate fechaSistema = LocalDate.of(2022, 01, 01);
     private String nombre;
     private LocalDate fechaEvento;
     private LocalTime horaEvento;

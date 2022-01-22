@@ -186,13 +186,18 @@ public class AgregarMascotaController {
 
     }
 
-    public void campos() {
+    public void campos(Concurso c){
         colmCod.setCellValueFactory(new PropertyValueFactory<>("id"));
         colmNom.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         colTipo.setCellValueFactory(new PropertyValueFactory<>("tipoMascota"));
-
-        admM.getItems().setAll(Mascota.cargarMascotas(App.pathMascotas));
-
+        
+        ArrayList<Mascota> listMasSelecConcurso = new ArrayList<>();
+        for(Mascota m:Mascota.cargarMascotas(App.pathMascotas)){
+            if(m.getTipoMascota().equals(c.getDirigido().toLowerCase())){
+                listMasSelecConcurso.add(m);
+            }
+        }
+        admM.getItems().setAll(listMasSelecConcurso);
     }
 
     public void llenartxt(Concurso c) {

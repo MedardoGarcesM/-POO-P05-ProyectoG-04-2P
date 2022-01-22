@@ -9,6 +9,7 @@ import java.io.IOException;
 import com.mycompany.proyectog4parcial2.modelo.*;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
+import java.io.InputStream;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Optional;
@@ -21,7 +22,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -71,6 +74,16 @@ public class AdConcursoController {
     private Button botonAnaPartici;
     @FXML
     private Button botonEditarGana;
+    @FXML
+    private TableColumn<Concurso, String> colDirigido;
+    @FXML
+    private TextField txtFechaSistema;
+    @FXML
+    private TextField txtNomConcur;
+    @FXML
+    private TextField txtCierreIns;
+    @FXML
+    private TextField txtInicioIns;
 
     public void initialize() {
 
@@ -79,10 +92,36 @@ public class AdConcursoController {
         colFecha.setCellValueFactory(new PropertyValueFactory<>("fechaEvento"));
         colCiudad.setCellValueFactory(new PropertyValueFactory<>("ciudad"));
         colCorreo.setCellValueFactory(new PropertyValueFactory<>("concursoAbierto"));
+        colDirigido.setCellValueFactory(new PropertyValueFactory<>("dirigido"));
 
         adConcurso.getItems().setAll(Concurso.cargarArchivo(App.pathConcurso));
     }
-
+    
+    @FXML
+    private void mostrarDetalles() throws IOException{
+        Concurso p = (Concurso) adConcurso.getSelectionModel().getSelectedItem();
+        txtNomConcur.setEditable(false); 
+        txtNomConcur.setText(p.getNombre());
+        
+        txtCierreIns.setEditable(false);
+        String diaC = String.valueOf(p.getFechaCierreInscripción().getDayOfMonth());
+        String mesC = String.valueOf(p.getFechaCierreInscripción().getMonthValue());
+        String anioC = String.valueOf(p.getFechaCierreInscripción().getYear());
+        txtCierreIns.setText(diaC+"/"+mesC+"/"+anioC);
+        
+        txtInicioIns.setEditable(false);
+        String diaI = String.valueOf(p.getFechaInicioInscripción().getDayOfMonth());
+        String mesI = String.valueOf(p.getFechaInicioInscripción().getMonthValue());
+        String anioI = String.valueOf(p.getFechaInicioInscripción().getYear());
+        txtInicioIns.setText(diaI+"/"+mesI+"/"+anioI);
+        
+        String dia = String.valueOf(Concurso.fechaSistema.getDayOfMonth());
+        String mes = String.valueOf(Concurso.fechaSistema.getMonthValue());
+        String anio = String.valueOf(Concurso.fechaSistema.getYear());
+        txtFechaSistema.setEditable(false); 
+        txtFechaSistema.setText(dia+"/"+mes+"/"+anio);
+    }
+    
     @FXML
     private void switchToMenuPrincipal() throws IOException {
         App.setRoot("menu");
@@ -112,19 +151,19 @@ public class AdConcursoController {
     @FXML
     private void editarConcurso() throws IOException {
         Concurso d = (Concurso) adConcurso.getSelectionModel().getSelectedItem();
-        LocalDate fechac = LocalDate.of(2022, 01, 01);
+        LocalDate fechac = Concurso.fechaSistema;
         if (d.getFechaEvento().compareTo(fechac) > 0) {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("editarConcurso.fxml"));//no tiene el controlador especificado
-        EditarConcursoController ct = new EditarConcursoController();
+            FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("editarConcurso.fxml"));//no tiene el controlador especificado
+            EditarConcursoController ct = new EditarConcursoController();
 
-        fxmlLoader.setController(ct);//se asigna el controlador
+            fxmlLoader.setController(ct);//se asigna el controlador
 
-        VBox root = (VBox) fxmlLoader.load();
-        ct.llenarCombod();
-        ct.llenarCombo(Ciudad.cargarCiudades(App.pathCiudades));
-        ct.llenarComboa(Auspiciante.cargarAuspiciantes(App.pathAuspiciantes));
-        ct.llenarCampos(d);
-        App.changeRoot(root);
+            VBox root = (VBox) fxmlLoader.load();
+            ct.llenarCombod();
+            ct.llenarCombo(Ciudad.cargarCiudades(App.pathCiudades));
+            ct.llenarComboa(Auspiciante.cargarAuspiciantes(App.pathAuspiciantes));
+            ct.llenarCampos(d);
+            App.changeRoot(root);
         } else{
             App.mostrarAlerta(Alert.AlertType.ERROR, "CONCURSO TERMINADO, NO SE PUEDEN EDITAR LOS DATOS");
             
@@ -247,13 +286,10 @@ public class AdConcursoController {
             // ... user chose CANCEL or closed the
             System.out.println(concursos.get(posicion)+" no fue eliminado");
         }
-    }
+    } 
 
-    
 
-   
-
-     private void mostrarVentana1() throws IOException {
+    private void mostrarVentana1() throws IOException {
         //App.setRoot("nuevo");
         //se carga el fxml de nueva ventana
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("consultarGanadores.fxml"));//no tiene el controlador especificado
@@ -266,26 +302,28 @@ public class AdConcursoController {
         
         App.changeRoot(root);
     }
-     @FXML
-       private void consultarGanadores() throws IOException {
+     
+    @FXML
+    private void consultarGanadores() throws IOException {
         //Si el concurso ya ha finalizado se deberá poder consultar la lista de ganadores.
         // menor a 0 primera fecha es anterior a segunda fecha
-        LocalDate fechac = LocalDate.of(2022, 01, 01);
+        LocalDate fechac = Concurso.fechaSistema;
         Concurso d = (Concurso) adConcurso.getSelectionModel().getSelectedItem();
         if (d.getFechaEvento().compareTo(fechac) < 0) {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("consultarGanadores.fxml"));//no tiene el controlador especificado
-        ConsultarGanadoresController ct = new ConsultarGanadoresController();
+            FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("consultarGanadores.fxml"));//no tiene el controlador especificado
+            ConsultarGanadoresController ct = new ConsultarGanadoresController();
 
-        fxmlLoader.setController(ct);//se asigna el controlador
+            fxmlLoader.setController(ct);//se asigna el controlador
 
-        VBox root = (VBox) fxmlLoader.load();
-        ct.llenarCampo(d);
-        App.changeRoot(root);
+            VBox root = (VBox) fxmlLoader.load();
+            ct.llenarCampo(d);
+            App.changeRoot(root);
         }else {
             App.mostrarAlerta(Alert.AlertType.ERROR, "EL CONCURSO AUN NO ACABA, NO SE PUEDEN MOSTRAR GANADORES");
         }
     }
-       private void mostrarVentana2() throws IOException {
+       
+    private void mostrarVentana2() throws IOException{
         //App.setRoot("nuevo");
         //se carga el fxml de nueva ventana
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("mascotaInscrita.fxml"));//no tiene el controlador especificado
@@ -298,8 +336,9 @@ public class AdConcursoController {
         
         App.changeRoot(root);
     }
-        @FXML
-       private void consultarM() throws IOException {
+       
+    @FXML
+    private void consultarM() throws IOException {
         Concurso d = (Concurso) adConcurso.getSelectionModel().getSelectedItem();
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("mascotaInscrita.fxml"));//no tiene el controlador especificado
         MascotaInscritaController ct = new MascotaInscritaController();
@@ -308,7 +347,8 @@ public class AdConcursoController {
 
         VBox root = (VBox) fxmlLoader.load();
         ct.llenarCampo(d);
-        App.changeRoot(root);}
+        App.changeRoot(root);
+   }
        
 
     // ventana para agregar concursantes
@@ -329,14 +369,27 @@ public class AdConcursoController {
     @FXML
     private void anadirParticipantes() throws IOException {
         Concurso d = (Concurso) adConcurso.getSelectionModel().getSelectedItem();
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("agregarMascota.fxml"));//no tiene el controlador especificado
-        AgregarMascotaController ct = new AgregarMascotaController();
-        fxmlLoader.setController(ct);//se asigna el controlador
+        LocalDate fechac = Concurso.fechaSistema;
+        boolean verfCierreIns = d.getFechaCierreInscripción().compareTo(fechac)>0;
+        boolean verfInicioIns = d.getFechaInicioInscripción().compareTo(fechac)<0;
+        //d.getFechaCierreInscripción();
+        if((d.isConcursoAbierto())){
+            if(verfInicioIns&&verfCierreIns){
+                FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("agregarMascota.fxml"));//no tiene el controlador especificado
+                AgregarMascotaController ct = new AgregarMascotaController();
+                fxmlLoader.setController(ct);//se asigna el controlador
 
-        VBox root = (VBox) fxmlLoader.load();
-        ct.campos();
-        ct.llenartxt(d);
-        App.changeRoot(root);
+                VBox root = (VBox) fxmlLoader.load();
+                ct.campos(d);
+                ct.llenartxt(d);
+                App.changeRoot(root);
+            }else{
+                App.mostrarAlerta(Alert.AlertType.ERROR, "El tiempo de inscripcion de mascotas culmino.");
+            }
+            
+        }else {
+            App.mostrarAlerta(Alert.AlertType.ERROR, "EL CONCURSO YA ACABO, NO SE PUEDEN INSCRIBIR MASCOTAS");
+        }
     }
     
     @FXML
@@ -345,28 +398,6 @@ public class AdConcursoController {
         ArrayList<Dueno> duenos = Dueno.cargarDuenos(App.pathDuenos);
         if(concursoCorreo.isConcursoAbierto()){
             System.out.println("Enviar correo");
-            /*for(Dueno d:duenos){
-                String destinatario = d.getEmail();//agregar a todos los usuarios tipo dueño
-                String asunto = "Invitacion al concurso: "+concursoCorreo.getNombre();
-                String cuerpo = "Estimad@ "+d.getNombres()+" "+d.getApellidos()+" se lo invita a participar en el concurso "
-                                +concursoCorreo.getNombre()+" que se realizara el dia "+concursoCorreo.getFechaEvento()+" en la ciudad de "+concursoCorreo.getCiudad().getNombreC()+"."
-                                +"\nLe indicamos que tenga en consideracion los siguientes datos importantes: \n"
-                                +" \n   Fecha de inicio de inscripcion: "+concursoCorreo.getFechaInicioInscripción()
-                                +" \n   Fecha de cierre de inscripcion: "+concursoCorreo.getFechaCierreInscripción()
-                                +" \n   Lugar del concurso: "+concursoCorreo.getLugar().toUpperCase()
-                                +" \n   Concurso dirigido a: "+concursoCorreo.getDirigido().toLowerCase()+"s"
-                                +" \n   Premio al primer lugar: $"+concursoCorreo.getPremios()[0]
-                                +" \n   Premio al segundo lugar: $"+concursoCorreo.getPremios()[1]
-                                +" \n   Premio al tercer lugar: $"+concursoCorreo.getPremios()[2]
-                                +"\n\n"+
-                                "Agradecemos al auspiciante del concurso "+concursoCorreo.getAuspiciantes().getNombreA().toUpperCase()+"."
-                                +"\n\n"+
-                                concursoCorreo.getAuspiciantes().getNombreA().toUpperCase()+" telefono: "+concursoCorreo.getAuspiciantes().getTelefonoA()+", direccion: "+concursoCorreo.getAuspiciantes().getDireccionA()+"-"+concursoCorreo.getAuspiciantes().getCiudadA()
-                                +"\ncorreo electronico: "+concursoCorreo.getAuspiciantes().getEmailA()+", pagina web: "+concursoCorreo.getAuspiciantes().getWebPage();
-                Correo.enviarCorreo(destinatario, asunto, cuerpo);
-                Thread th = new Thread(new Correo());
-                th.start();
-            }*/
             Thread th = new Thread(new CorreoDue());
             th.start();
             Alert alert = new Alert(Alert.AlertType.INFORMATION);//mostrar informacion sobre el correo a enviar
