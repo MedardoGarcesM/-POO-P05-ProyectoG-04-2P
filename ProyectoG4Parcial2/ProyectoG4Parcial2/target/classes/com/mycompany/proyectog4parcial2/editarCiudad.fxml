@@ -11,16 +11,16 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="168.0" prefWidth="319.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="168.0" prefWidth="319.0" style="-fx-background-color: #b3b3ff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox prefHeight="45.0" prefWidth="319.0">
          <children>
-            <Label fx:id="labelTitulo" text="Editar Ciudad">
+            <Label fx:id="labelTitulo" text="Editar Ciudad" textFill="#262540">
                <font>
-                  <Font name="System Bold" size="18.0" />
+                  <Font name="System Bold" size="20.0" />
                </font>
                <HBox.margin>
-                  <Insets left="75.0" right="70.0" top="10.0" />
+                  <Insets left="50.0" right="70.0" top="10.0" />
                </HBox.margin>
             </Label>
             <TextField fx:id="txtCodigo" prefHeight="25.0" prefWidth="50.0">

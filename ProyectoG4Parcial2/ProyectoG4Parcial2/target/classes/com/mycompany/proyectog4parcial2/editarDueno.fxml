@@ -12,14 +12,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="342.0" prefWidth="494.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="342.0" prefWidth="494.0" style="-fx-background-color: #b3b3ff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label fx:id="lblTitulo" text="Editar Dueno">
+      <Label fx:id="lblTitulo" text="Editar Dueno" textFill="#262540">
          <font>
-            <Font size="27.0" />
+            <Font name="System Bold" size="20.0" />
          </font>
          <VBox.margin>
-            <Insets left="175.0" />
+            <Insets left="200.0" />
          </VBox.margin>
       </Label>
       <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="450.0">

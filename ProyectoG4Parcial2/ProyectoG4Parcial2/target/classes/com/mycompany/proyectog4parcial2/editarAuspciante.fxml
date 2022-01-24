@@ -11,14 +11,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="304.0" prefWidth="510.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="304.0" prefWidth="510.0" style="-fx-background-color: #b3b3ff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label fx:id="labelTitulo" text="Editar Auspiciante">
+      <Label fx:id="labelTitulo" text="Editar Auspiciante" textFill="#262540">
          <font>
-            <Font name="System Bold" size="25.0" />
+            <Font name="System Bold" size="20.0" />
          </font>
          <VBox.margin>
-            <Insets left="160.0" top="5.0" />
+            <Insets left="180.0" top="5.0" />
          </VBox.margin>
       </Label>
       <GridPane>

@@ -11,16 +11,16 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="408.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyectog4parcial2.AdConcursoController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="408.0" prefWidth="600.0" style="-fx-background-color: #b3b3ff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyectog4parcial2.AdConcursoController">
    <children>
       <HBox prefHeight="69.0" prefWidth="600.0">
          <children>
-            <Label alignment="CENTER" text="Administrar  Concurso">
+            <Label alignment="CENTER" text="Administrar  Concurso" textFill="#262540">
                <font>
-                  <Font name="System Bold" size="17.0" />
+                  <Font name="System Bold" size="20.0" />
                </font>
                <HBox.margin>
-                  <Insets left="100.0" right="100.0" top="15.0" />
+                  <Insets left="70.0" right="100.0" top="15.0" />
                </HBox.margin>
             </Label>
             <VBox prefHeight="55.0" prefWidth="215.0">

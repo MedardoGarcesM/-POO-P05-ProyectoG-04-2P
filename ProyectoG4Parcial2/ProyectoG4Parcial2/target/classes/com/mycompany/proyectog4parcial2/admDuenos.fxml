@@ -10,14 +10,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="288.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyectog4parcial2.AdmDuenosController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="297.0" prefWidth="600.0" style="-fx-background-color: #b3b3ff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyectog4parcial2.AdmDuenosController">
    <children>
-      <Label alignment="CENTER" text="Administrar Dueños de mascotas">
+      <Label alignment="CENTER" text="Administrar Dueños de mascotas" textFill="#262540">
          <font>
-            <Font name="System Bold" size="14.0" />
+            <Font name="System Bold" size="20.0" />
          </font>
          <VBox.margin>
-            <Insets left="200.0" top="5.0" />
+            <Insets left="150.0" top="5.0" />
          </VBox.margin>
       </Label>
       <FlowPane prefHeight="200.0" prefWidth="200.0">

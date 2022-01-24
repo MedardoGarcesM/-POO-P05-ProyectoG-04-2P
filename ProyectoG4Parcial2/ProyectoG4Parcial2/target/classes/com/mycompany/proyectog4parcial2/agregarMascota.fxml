@@ -10,16 +10,16 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="318.0" prefWidth="591.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="318.0" prefWidth="591.0" style="-fx-background-color: #b3b3ff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox prefHeight="57.0" prefWidth="591.0">
          <children>
-            <Label fx:id="labelTitulo" prefHeight="21.0" prefWidth="221.0" text="Agregar Mascota a concurso">
+            <Label fx:id="labelTitulo" prefHeight="30.0" prefWidth="272.0" text="Agregar Mascota a Concurso" textFill="#262540">
                <font>
-                  <Font name="System Bold" size="15.0" />
+                  <Font name="System Bold" size="20.0" />
                </font>
                <HBox.margin>
-                  <Insets left="75.0" right="225.0" top="20.0" />
+                  <Insets left="50.0" right="200.0" top="20.0" />
                </HBox.margin>
             </Label>
             <TextField fx:id="txtCodigo" prefHeight="25.0" prefWidth="46.0">

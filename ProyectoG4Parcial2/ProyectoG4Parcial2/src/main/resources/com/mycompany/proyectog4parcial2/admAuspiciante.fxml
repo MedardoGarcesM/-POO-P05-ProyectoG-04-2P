@@ -9,14 +9,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="306.0" prefWidth="591.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyectog4parcial2.AdmAuspicianteController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="306.0" prefWidth="591.0" style="-fx-background-color: #b3b3ff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyectog4parcial2.AdmAuspicianteController">
    <children>
-      <Label fx:id="labelTitulo" text="Administrar Auspiciantes">
+      <Label fx:id="labelTitulo" text="Administrar Auspiciantes" textFill="#262540">
          <font>
-            <Font name="System Bold" size="15.0" />
+            <Font name="System Bold" size="20.0" />
          </font>
          <VBox.margin>
-            <Insets left="225.0" top="5.0" />
+            <Insets left="185.0" top="5.0" />
          </VBox.margin>
       </Label>
       <TableView fx:id="admAusp" prefHeight="200.0" prefWidth="499.0">

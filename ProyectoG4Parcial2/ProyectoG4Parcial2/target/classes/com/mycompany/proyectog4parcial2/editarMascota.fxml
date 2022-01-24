@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="438.0" prefWidth="492.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="438.0" prefWidth="492.0" style="-fx-background-color: #b3b3ff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <BorderPane prefHeight="478.0" prefWidth="491.0">
          <center>
@@ -72,7 +72,7 @@
                      </GridPane.margin>
                   </TextField>
                   <ComboBox fx:id="dueñoM" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <HBox alignment="CENTER_LEFT" prefHeight="21.0" prefWidth="278.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <children>
                         <RadioButton fx:id="perroM" mnemonicParsing="false" text="Perro">
                            <toggleGroup>
@@ -97,9 +97,9 @@
             </GridPane>
          </center>
          <top>
-            <Label fx:id="lblTituloM" text="Editar mascota" BorderPane.alignment="CENTER">
+            <Label fx:id="lblTituloM" text="Editar mascota" textFill="#262540" BorderPane.alignment="CENTER">
                <font>
-                  <Font name="System Bold" size="14.0" />
+                  <Font name="System Bold" size="20.0" />
                </font>
             </Label>
          </top>

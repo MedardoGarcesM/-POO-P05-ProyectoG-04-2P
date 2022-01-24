@@ -14,14 +14,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="383.0" prefWidth="584.0" spacing="20.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyectog4parcial2.ConcursoController">
+<VBox alignment="CENTER" prefHeight="399.0" prefWidth="584.0" spacing="20.0" style="-fx-background-color: #b3b3ff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyectog4parcial2.ConcursoController">
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
    </padding>
    <children>
       <BorderPane prefHeight="347.0" prefWidth="276.0">
          <center>
-            <GridPane prefHeight="282.0" prefWidth="276.0" BorderPane.alignment="CENTER">
+            <GridPane prefHeight="277.0" prefWidth="544.0" BorderPane.alignment="CENTER">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -58,6 +58,9 @@
                      <padding>
                         <Insets left="150.0" />
                      </padding>
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
                   </Label>
                   <Label text="Nombre:" GridPane.rowIndex="1">
                      <padding>
@@ -146,17 +149,23 @@
                   <TextField fx:id="CCs" prefHeight="25.0" prefWidth="181.0" GridPane.columnIndex="1" GridPane.rowIndex="10" />
                   <TextField fx:id="CCt" layoutX="282.0" layoutY="241.0" prefHeight="25.0" prefWidth="181.0" GridPane.columnIndex="1" GridPane.rowIndex="11" />
                </children>
+               <BorderPane.margin>
+                  <Insets bottom="5.0" top="5.0" />
+               </BorderPane.margin>
             </GridPane>
          </center>
          <top>
-            <Label text="Crear Concurso" BorderPane.alignment="CENTER">
+            <Label text="Crear Concurso" textFill="#262540" BorderPane.alignment="CENTER">
                <font>
-                  <Font name="System Bold" size="14.0" />
+                  <Font name="System Bold" size="20.0" />
                </font>
+               <BorderPane.margin>
+                  <Insets bottom="5.0" />
+               </BorderPane.margin>
             </Label>
          </top>
          <bottom>
-            <HBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="44.0" prefWidth="567.0" BorderPane.alignment="CENTER">
+            <HBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="34.0" prefWidth="544.0" BorderPane.alignment="CENTER">
                <children>
                   <Button fx:id="CCguardar" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#guardarConcurso" text="Guardar">
                      <HBox.margin>
